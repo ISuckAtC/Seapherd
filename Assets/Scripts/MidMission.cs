@@ -21,11 +21,14 @@ public class MidMission : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(optionalObjective == true)
+        {
+            GM.OptionalObjectiveCompleted = true;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag== "sheep")
+        if(other.tag== "Sheep")
         {
             other.GetComponent<FishSheep>().GrazingTime += Time.deltaTime;
         }
