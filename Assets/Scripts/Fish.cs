@@ -21,29 +21,32 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
     {
-        Collider[] col = Physics.OverlapSphere(transform.position, DetectionRange, (1 << LayerMask.NameToLayer("Dog") | 1 << LayerMask.NameToLayer("Fish") | 1 << LayerMask.NameToLayer("Bear")));
+        Collider[] col = Physics.OverlapSphere(transform.position, DetectionRange, (1 << LayerMask.NameToLayer("Dog") | 1 << LayerMask.NameToLayer("Sheep") | 1 << LayerMask.NameToLayer("Bear") | 1 << LayerMask.NameToLayer("Player")));
 
         if (col.Length > 1)
         {
-            if (col.Any(x => x.gameObject.layer == LayerMask.NameToLayer("Dog")) || col.Any(x => x.gameObject.layer == LayerMask.NameToLayer("Bear")))
+            if (col.Any(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")))
             {
-                transform.forward = (transform.position - col.First(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear")).transform.position).normalized;
+                transform.forward = (transform.position - col.First(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")).transform.position).normalized;
                 runtimer = Runtime;
             }
-            Collider[] fishes = col.Where(x => x.gameObject.layer == LayerMask.NameToLayer("Fish")).ToArray();
-            Vector3 averageDirection = Vector3.zero;
-            foreach (Collider fish in fishes)
+            Collider[] fishes = col.Where(x => x.gameObject.layer == LayerMask.NameToLayer("Sheep")).ToArray();
+            if (fishes.Length > 0)
             {
-                averageDirection += fish.transform.forward;
-            }
-            averageDirection /= fishes.Length;
+                Vector3 averageDirection = Vector3.zero;
+                foreach (Collider fish in fishes)
+                {
+                    averageDirection += fish.transform.forward;
+                }
+                averageDirection /= fishes.Length;
 
-            transform.forward = Vector3.Lerp(transform.forward, averageDirection, DirectionInfluence);
+                transform.forward = Vector3.Lerp(transform.forward, averageDirection, DirectionInfluence);
+            }
         }
 
         if (runtimer > 0)
