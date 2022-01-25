@@ -39,5 +39,9 @@ public class MissionNavigate : MonoBehaviour
             Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
             GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
         }
+        else
+        {
+            GameManager.Instance.MissionObjectiveText.text = "COMPLETE!";
+        }
     }
 }
