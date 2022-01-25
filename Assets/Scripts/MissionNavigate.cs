@@ -12,6 +12,7 @@ public class MissionNavigate : MonoBehaviour
     {
         SetPoints();
         Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
+        GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
     }
 
     // Update is called once per frame
@@ -36,6 +37,7 @@ public class MissionNavigate : MonoBehaviour
         {
             Waypoints[currentIndex++].GetComponent<MissionWaypoint>().Deactivate();
             Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
+            GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
         }
     }
 }
