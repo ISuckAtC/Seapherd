@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class EndMission : MonoBehaviour
 {
     public GameManager GM;
-    public Text EndText, OptionalEndText;
+    public TextMeshProUGUI EndText, OptionalEndText;
     public string ExternalMissionEndText, ExternalOptionalEndText;
     // Start is called before the first frame update
     void Start()

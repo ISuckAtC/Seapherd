@@ -11,7 +11,8 @@ public class FishSheep : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MidMission>();
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame

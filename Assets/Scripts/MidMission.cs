@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class MidMission : MonoBehaviour
 {
 
     public bool optionalObjective;
-    public GameObject OptionalObjective;
-    public Text ExitText;
+    public GameObject OptionalObjective, ExitZone;
+    public TextMeshProUGUI ExitText;
     public GameManager GM;
     public bool ExitOn;
     public float Grazing, MissionGrazingTime;
@@ -15,7 +16,12 @@ public class MidMission : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OptionalObjective = GameObject.FindGameObjectWithTag("Optional");
+
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        ExitText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
+        ExitZone = GameObject.FindGameObjectWithTag("Exit");
+        ExitZone.SetActive(false);
+        //OptionalObjective = GameObject.FindGameObjectWithTag("Optional");
     }
 
     // Update is called once per frame
@@ -41,10 +47,12 @@ public class MidMission : MonoBehaviour
         {
             ExitOn = true;
             ExitText.text = "time to head back!";
+            ExitZone.SetActive(true);
         }
         if(this.tag == "Exit" && GM.FishSheepTotal == GM.MissionStartFishSheepTotal && GM.FishSheepTotal == FinishedGrazingInt)
         {
             ExitOn = true;
+            ExitZone.SetActive(true);
             //Insert what to do if all fish sheep are alive and the mission is done and you need to head back.
         }
     }
