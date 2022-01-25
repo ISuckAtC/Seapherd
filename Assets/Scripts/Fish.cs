@@ -14,8 +14,11 @@ public class Fish : MonoBehaviour
     private Rigidbody rb;
     public float GrazingTime;
     public bool DoneGrazing;
-    bool DoneOnce,Dead, DiedOnce;
+    bool DoneOnce, Dead, DiedOnce;
     MidMission MissionController;
+    public float ForceGroupDuration;
+    Vector3 ForceTarget;
+    float forceGroupTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +28,12 @@ public class Fish : MonoBehaviour
 
     void Update()
     {
-        if(DoneGrazing && !DoneOnce)
+        if (DoneGrazing && !DoneOnce)
         {
             MissionController.FinishedGrazingInt++;
             DoneOnce = true;
         }
-        if(Dead && !DiedOnce)
+        if (Dead && !DiedOnce)
         {
             GameManager.Instance.FishSheepTotal--;
             DiedOnce = true;
@@ -39,28 +42,38 @@ public class Fish : MonoBehaviour
 
     void FixedUpdate()
     {
-        Collider[] col = Physics.OverlapSphere(transform.position, DetectionRange, (1 << LayerMask.NameToLayer("Dog") | 1 << LayerMask.NameToLayer("Sheep") | 1 << LayerMask.NameToLayer("Bear") | 1 << LayerMask.NameToLayer("Player")));
-
-        if (col.Length > 1)
+        if (forceGroupTimer > 0)
         {
-            if (col.Any(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")))
-            {
-                transform.forward = (transform.position - col.First(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")).transform.position).normalized;
-                runtimer = Runtime;
-            }
-            Collider[] fishes = col.Where(x => x.gameObject.layer == LayerMask.NameToLayer("Sheep")).ToArray();
-            if (fishes.Length > 0)
-            {
-                Vector3 averageDirection = Vector3.zero;
-                foreach (Collider fish in fishes)
-                {
-                    averageDirection += fish.transform.forward;
-                }
-                averageDirection /= fishes.Length;
+            forceGroupTimer -= Time.deltaTime;
+            runtimer = forceGroupTimer;
+            transform.forward = (ForceTarget - transform.position).normalized;
+        }
+        else
+        {
+            Collider[] col = Physics.OverlapSphere(transform.position, DetectionRange, (1 << LayerMask.NameToLayer("Dog") | 1 << LayerMask.NameToLayer("Sheep") | 1 << LayerMask.NameToLayer("Bear") | 1 << LayerMask.NameToLayer("Player")));
 
-                transform.forward = Vector3.Lerp(transform.forward, averageDirection, DirectionInfluence);
+            if (col.Length > 1)
+            {
+                if (col.Any(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")))
+                {
+                    transform.forward = (transform.position - col.First(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")).transform.position).normalized;
+                    runtimer = Runtime;
+                }
+                Collider[] fishes = col.Where(x => x.gameObject.layer == LayerMask.NameToLayer("Sheep")).ToArray();
+                if (fishes.Length > 0)
+                {
+                    Vector3 averageDirection = Vector3.zero;
+                    foreach (Collider fish in fishes)
+                    {
+                        averageDirection += fish.transform.forward;
+                    }
+                    averageDirection /= fishes.Length;
+
+                    transform.forward = Vector3.Lerp(transform.forward, averageDirection, DirectionInfluence);
+                }
             }
         }
+
 
         if (runtimer > 0)
         {
@@ -70,5 +83,11 @@ public class Fish : MonoBehaviour
         }
 
         CurrentSpeed = rb.velocity.magnitude;
+    }
+
+    public void ForceGroup(Vector3 target)
+    {
+        forceGroupTimer = ForceGroupDuration;
+        ForceTarget = target;
     }
 }

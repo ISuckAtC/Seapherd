@@ -13,12 +13,26 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 averagePosition = Vector3.zero;
+            foreach (Fish fish in GameObject.FindObjectsOfType<Fish>())
+            {
+                averagePosition += fish.transform.position;
+            }
+            averagePosition /= GameObject.FindObjectsOfType<Fish>().Length;
+            foreach (Fish fish in GameObject.FindObjectsOfType<Fish>())
+            {
+                fish.ForceGroup(averagePosition);
+            }
+        }
         Vector2 mouseAxis = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, mouseAxis.x, 0));

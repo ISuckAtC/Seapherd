@@ -40,7 +40,8 @@ public class MissionNavigate : MonoBehaviour
         {
             Waypoints[currentIndex - 1].GetComponent<MissionWaypoint>().Deactivate();
             Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
-            GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
+            if (currentIndex < 8) GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
+            else GameManager.Instance.MissionObjectiveText.text = "Herd your sheep back home! (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
         }
         else
         {
