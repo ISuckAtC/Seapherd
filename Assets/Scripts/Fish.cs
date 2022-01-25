@@ -51,7 +51,7 @@ public class Fish : MonoBehaviour
 
         if (runtimer > 0)
         {
-            Debug.Log("Setting speed");
+            //Debug.Log("Setting speed");
             rb.velocity = transform.forward * Speed;
             runtimer -= Time.deltaTime;
         }
