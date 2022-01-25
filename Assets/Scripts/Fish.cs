@@ -12,16 +12,29 @@ public class Fish : MonoBehaviour
     public float CurrentSpeed;
     private float runtimer;
     private Rigidbody rb;
+    public float GrazingTime;
+    public bool DoneGrazing;
+    bool DoneOnce,Dead, DiedOnce;
+    MidMission MissionController;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MidMission>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        if(DoneGrazing && !DoneOnce)
+        {
+            MissionController.FinishedGrazingInt++;
+            DoneOnce = true;
+        }
+        if(Dead && !DiedOnce)
+        {
+            GameManager.Instance.FishSheepTotal--;
+            DiedOnce = true;
+        }
     }
 
     void FixedUpdate()

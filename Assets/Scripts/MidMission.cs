@@ -7,52 +7,56 @@ public class MidMission : MonoBehaviour
 {
 
     public bool optionalObjective;
-    public GameObject OptionalObjective, ExitZone;
-    public TextMeshProUGUI ExitText;
-    public GameManager GM;
+    public GameObject OptionalObjective;//, ExitZone;
     public bool ExitOn;
     public float Grazing, MissionGrazingTime;
     public int FinishedGrazingInt;
+    MissionWaypoint waypoint;
+    public Material GoalMarker;
+    bool entered;
     // Start is called before the first frame update
     void Start()
     {
-
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        ExitText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
-        ExitZone = GameObject.FindGameObjectWithTag("Exit");
-        ExitZone.SetActive(false);
+        waypoint = GetComponent<MissionWaypoint>();
+        waypoint.Override = true;
+        //ExitZone = GameObject.FindGameObjectWithTag("Exit");
+        //ExitZone.SetActive(false);
         //OptionalObjective = GameObject.FindGameObjectWithTag("Optional");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(optionalObjective == true)
+        if (optionalObjective == true)
         {
-            GM.OptionalObjectiveCompleted = true;
+            GameManager.Instance.OptionalObjectiveCompleted = true;
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag== "Sheep")
+        if (other.gameObject.layer == LayerMask.NameToLayer("Sheep"))
         {
-            other.GetComponent<FishSheep>().GrazingTime += Time.deltaTime;
+            if (!entered)
+            {
+                GetComponent<MeshRenderer>().material = GoalMarker;
+                entered = true;
+                GameManager.Instance.MissionObjectiveText.text = "Let the sheep graze (" + (waypoint.SelfIndex + 1) + "/10)";
+            }
+            other.GetComponent<Fish>().GrazingTime += Time.deltaTime;
+            if (other.GetComponent<Fish>().GrazingTime > MissionGrazingTime)
+            {
+                other.GetComponent<Fish>().DoneGrazing = true;
+
+            }
         }
-        if(other.GetComponent<FishSheep>().GrazingTime > MissionGrazingTime)
+        if (GameManager.Instance.FishSheepTotal == FinishedGrazingInt)
         {
-            other.GetComponent<FishSheep>().DoneGrazing = true;
-            
+            waypoint.ParentNavigator.Acvivated();
         }
-        if(GM.FishSheepTotal == FinishedGrazingInt)
+        if (this.tag == "Exit" && GameManager.Instance.FishSheepTotal == GameManager.Instance.MissionStartFishSheepTotal && GameManager.Instance.FishSheepTotal == FinishedGrazingInt)
         {
             ExitOn = true;
-            ExitText.text = "time to head back!";
-            ExitZone.SetActive(true);
-        }
-        if(this.tag == "Exit" && GM.FishSheepTotal == GM.MissionStartFishSheepTotal && GM.FishSheepTotal == FinishedGrazingInt)
-        {
-            ExitOn = true;
-            ExitZone.SetActive(true);
+            //ExitZone.SetActive(true);
             //Insert what to do if all fish sheep are alive and the mission is done and you need to head back.
         }
     }

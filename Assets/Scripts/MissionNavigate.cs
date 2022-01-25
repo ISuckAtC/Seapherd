@@ -12,7 +12,7 @@ public class MissionNavigate : MonoBehaviour
     {
         SetPoints();
         Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
-        GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
+        GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
     }
 
     // Update is called once per frame
@@ -25,23 +25,27 @@ public class MissionNavigate : MonoBehaviour
     {
         for (int i = 0; i < Waypoints.Length; i++)
         {
-            Waypoints[i].GetComponent<MissionWaypoint>().ParentNavigator = this;
-            Waypoints[i].GetComponent<MissionWaypoint>().Deactivate();
+            MissionWaypoint waypoint = Waypoints[i].GetComponent<MissionWaypoint>();;
+            waypoint.ParentNavigator = this;
+            waypoint.Deactivate();
+            waypoint.SelfIndex = i;
+            
         }
     }
 
     public void Acvivated()
     {
-        Debug.Log("Waypoint activated");
-        if (currentIndex < Waypoints.Length)
+        Debug.Log("Waypoint " + currentIndex + " activated");
+        if (++currentIndex < Waypoints.Length)
         {
-            Waypoints[currentIndex++].GetComponent<MissionWaypoint>().Deactivate();
+            Waypoints[currentIndex - 1].GetComponent<MissionWaypoint>().Deactivate();
             Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
-            GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
+            GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
         }
         else
         {
             GameManager.Instance.MissionObjectiveText.text = "COMPLETE!";
+            Time.timeScale = 0;
         }
     }
 }
