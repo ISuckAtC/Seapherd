@@ -12,4 +12,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc38003c0e0db6641a4762d4f392de52, type: 3}
   m_Name: PrefabPalette-Default
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - gameObject: {fileID: 5337023404254580586, guid: 1dbc9b5e1867a204590f45321acb23ef, type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 90, y: 0, z: 0}
+      m_RotationRangeMax: {x: 90, y: 0, z: 360}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 0.91549295}
+      m_ScaleRangeMax: {x: 1.3521127, y: 1.2816901, z: 2.2535212}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 1
+      m_YRotationBool: 0
+      m_ZRotationBool: 1
+      m_XScaleBool: 0
+      m_YScaleBool: 0
+      m_ZScaleBool: 1
+    name: Seaweed
+  - gameObject: {fileID: 6106329080185382132, guid: 80ea3d6c9f7ed6f45a01f2057ae22a3e, type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 90, y: 0, z: 0}
+      m_RotationRangeMax: {x: 90, y: 0, z: 360}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 0.85915494}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 2.1267605}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 1
+      m_YRotationBool: 0
+      m_ZRotationBool: 1
+      m_XScaleBool: 0
+      m_YScaleBool: 0
+      m_ZScaleBool: 1
+    name: Grass_green
+  - gameObject: {fileID: 2071052906088904387, guid: c55edfadc7003cd4ab909e8912b1bb13, type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 90, y: 0, z: 0}
+      m_RotationRangeMax: {x: 90, y: 0, z: 360}
+      m_ScaleRangeMin: {x: 0.64788735, y: 0.7183099, z: 0.5774648}
+      m_ScaleRangeMax: {x: 1.3521127, y: 1.3521127, z: 2.1971831}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 1
+      m_YRotationBool: 0
+      m_ZRotationBool: 1
+      m_XScaleBool: 0
+      m_YScaleBool: 0
+      m_ZScaleBool: 1
+    name: Grass_blue
+  - gameObject: {fileID: 5039754060094039832, guid: 8f7c6212aaf2b904392c03503f58c510, type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 90, y: 0, z: 0}
+      m_RotationRangeMax: {x: 90, y: 40.56338, z: 360}
+      m_ScaleRangeMin: {x: 0.64788735, y: 0.64788735, z: 0.5774648}
+      m_ScaleRangeMax: {x: 1.4225352, y: 1.2816901, z: 1.7042253}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 1
+      m_YRotationBool: 0
+      m_ZRotationBool: 1
+      m_XScaleBool: 0
+      m_YScaleBool: 0
+      m_ZScaleBool: 1
+    name: Grass_white
