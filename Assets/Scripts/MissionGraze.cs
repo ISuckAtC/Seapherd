@@ -47,11 +47,11 @@ public class MissionGraze : MonoBehaviour
 
             }
         }
-        if (GameManager.Instance.FishSheepTotal == FinishedGrazingInt)
+        if (GameManager.Instance.SheepCount == FinishedGrazingInt)
         {
             waypoint.ParentNavigator.Acvivated();
         }
-        if (this.tag == "Exit" && GameManager.Instance.FishSheepTotal == GameManager.Instance.MissionStartFishSheepTotal && GameManager.Instance.FishSheepTotal == FinishedGrazingInt)
+        if (this.tag == "Exit" && GameManager.Instance.SheepCount == GameManager.Instance.SheepTotal && GameManager.Instance.SheepCount == FinishedGrazingInt)
         {
             ExitOn = true;
             //ExitZone.SetActive(true);

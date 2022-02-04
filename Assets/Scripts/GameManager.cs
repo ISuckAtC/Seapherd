@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public int FishSheepTotal, MissionStartFishSheepTotal;
+    public int SheepCount, SheepTotal;
     public int CurrentMission;
     public bool OptionalObjectiveCompleted;
     public TextMeshProUGUI MissionObjectiveText;
-    public Fish[] FishSheep;
+    public EntitySheep[] FishSheep;
+    public Transform Player;
     void Awake()
     {
         if (Instance == null)
@@ -25,7 +26,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         MissionObjectiveText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
-        FishSheep = GameObject.FindObjectsOfType<Fish>();
+        FishSheep = GameObject.FindObjectsOfType<EntitySheep>();
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     // Start is called before the first frame update
     void Start()

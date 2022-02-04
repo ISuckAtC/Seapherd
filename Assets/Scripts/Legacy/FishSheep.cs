@@ -25,7 +25,7 @@ public class FishSheep : MonoBehaviour
         }
         if(Dead== true && DiedOnce == false)
         {
-            GM.FishSheepTotal--;
+            GM.SheepCount--;
             DiedOnce = true;
         }
     }

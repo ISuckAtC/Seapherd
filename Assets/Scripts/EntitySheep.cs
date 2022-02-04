@@ -14,11 +14,12 @@ public class EntitySheep : MonoBehaviour
     private Rigidbody rb;
     public float GrazingTime;
     public bool DoneGrazing;
-    bool DoneOnce, Dead, DiedOnce;
+    bool DoneOnce;
     MissionGraze MissionController;
     public float ForceGroupDuration;
     Vector3 ForceTarget;
     float forceGroupTimer;
+    bool captured;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,15 +34,11 @@ public class EntitySheep : MonoBehaviour
             MissionController.FinishedGrazingInt++;
             DoneOnce = true;
         }
-        if (Dead && !DiedOnce)
-        {
-            GameManager.Instance.FishSheepTotal--;
-            DiedOnce = true;
-        }
     }
 
     void FixedUpdate()
     {
+        if (captured) return;
         if (forceGroupTimer > 0)
         {
             forceGroupTimer -= Time.deltaTime;
@@ -89,5 +86,27 @@ public class EntitySheep : MonoBehaviour
     {
         forceGroupTimer = ForceGroupDuration;
         ForceTarget = target;
+    }
+
+    public void Capture(Transform captor)
+    {
+        transform.forward = captor.right;
+        transform.parent = captor;
+        transform.localPosition = Vector3.forward * 2.5f;
+        rb.isKinematic = true;
+        captured = true;
+    }
+
+    public void Release()
+    {
+        transform.parent = null;
+        rb.isKinematic = false;
+        captured = false;
+    }
+
+    public void Kill()
+    {
+        GameManager.Instance.SheepCount--;
+        Destroy(gameObject);
     }
 }

@@ -35,7 +35,7 @@ public class Fish : MonoBehaviour
         }
         if (Dead && !DiedOnce)
         {
-            GameManager.Instance.FishSheepTotal--;
+            GameManager.Instance.SheepCount--;
             DiedOnce = true;
         }
     }

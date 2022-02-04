@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
     public float StoppingBoost;
 
+    public float ThreatenRange;
+    public float ThreatenAmount;
 
     private Rigidbody rb;
     private Vector3 direction;
@@ -33,6 +36,18 @@ public class PlayerController : MonoBehaviour
                 fish.ForceGroup(averagePosition);
             }
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
+
+            if (col.Length > 0)
+            {
+                foreach (Collider c in col)
+                {
+                    c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
+                }
+            }
+        }
         Vector2 mouseAxis = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, mouseAxis.x, 0));
@@ -46,7 +61,7 @@ public class PlayerController : MonoBehaviour
         Vector3 currentVelocity = rb.velocity;
         Vector3 alignment = currentVelocity.normalized - direction;
         Vector3 movementForce = new Vector3(
-            direction.x * ((alignment.x > 1 || alignment.x < -1) ? StoppingBoost : 1), 
+            direction.x * ((alignment.x > 1 || alignment.x < -1) ? StoppingBoost : 1),
             direction.y * ((alignment.y > 1 || alignment.y < -1) ? StoppingBoost : 1),
             direction.z * ((alignment.z > 1 || alignment.z < -1) ? StoppingBoost : 1)) * Speed;
         rb.AddForce(movementForce, ForceMode.Acceleration);

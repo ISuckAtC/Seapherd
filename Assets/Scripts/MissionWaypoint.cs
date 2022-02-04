@@ -31,7 +31,7 @@ public class MissionWaypoint : MonoBehaviour
         {
             Debug.Log("Sheep entered waypoint");
             RaycastHit[] hits = Physics.BoxCastAll(transform.position, Vector3.Scale(triggerCollider.size, transform.localScale) / 2f, Vector3.forward, transform.rotation, 0f, (1 << LayerMask.NameToLayer("Sheep")));
-            if (hits.Length == GameManager.Instance.MissionStartFishSheepTotal)
+            if (hits.Length == GameManager.Instance.SheepTotal)
             {
                 ParentNavigator.Acvivated();
             }
