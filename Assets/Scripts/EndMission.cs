@@ -12,12 +12,13 @@ public class EndMission : MonoBehaviour
     void Start()
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        switch (GM.CurrentMission)
+       /* switch (GM.CurrentMission)
         {
             case 1:
                 //Code Goes here, can pull specific strings from certain objects in this case for the text.
             break;
-        }
+        }*/
+
     }
 
     // Update is called once per frame

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public int SheepCount, SheepTotal;
-    public int CurrentMission;
+    public int CurrentMission, TotalMissionCompletion;
     public bool OptionalObjectiveCompleted;
     public TextMeshProUGUI MissionObjectiveText;
     public EntitySheep[] FishSheep;

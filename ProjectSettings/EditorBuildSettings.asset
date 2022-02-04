@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/David/MainMenu.unity
     guid: a7c01aaf89f748741a166f5eecd79a80
   - enabled: 1
+    path: Assets/Scenes/TavernTesting.unity
+    guid: 2973d7ae7faa3e64cb3a5c99abe6d733
+  - enabled: 0
     path: Assets/Scenes/Prototype1.unity
     guid: fd09e2985ee6ff940a2e5d21ade817f9
+  - enabled: 1
+    path: Assets/Scenes/TestMission1.unity
+    guid: 5510341a17651a44ab397503df5ab26f
+  - enabled: 1
+    path: Assets/Scenes/TestMission2.unity
+    guid: b18f59e5b259cae4ea97cce3c64d22f9
   m_configObjects: {}
