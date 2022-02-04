@@ -58,7 +58,7 @@ public class EntityBear : MonoBehaviour
     {
         threatLevel += threatAmount;
         Debug.Log("Scared (" + threatLevel + "/" + ThreatThreshold + ")");
-        if (threatLevel >= ThreatThreshold)
+        if (!escaping && threatLevel >= ThreatThreshold)
         {
             capturedFish.Release();
             capturedFish = null;

@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
 
     public float ThreatenRange;
     public float ThreatenAmount;
+    public float InteractRange;
 
     private Rigidbody rb;
     private Vector3 direction;
+    public TMPro.TextMeshProUGUI ToolTipText;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,21 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, InteractRange))
+        {
+            if (hit.transform.TryGetComponent<IToolTip>(out IToolTip toolTip))
+            {
+                ToolTipText.text = toolTip.ToolTip;
+            }
+            else
+            {
+                ToolTipText.text = "";
+            }
+        }
+        else
+        {
+            ToolTipText.text = "";
+        }
         Vector3 currentVelocity = rb.velocity;
         Vector3 alignment = currentVelocity.normalized - direction;
         Vector3 movementForce = new Vector3(
