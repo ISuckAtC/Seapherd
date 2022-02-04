@@ -15,7 +15,7 @@ public class Fish : MonoBehaviour
     public float GrazingTime;
     public bool DoneGrazing;
     bool DoneOnce, Dead, DiedOnce;
-    MidMission MissionController;
+    MissionGraze MissionController;
     public float ForceGroupDuration;
     Vector3 ForceTarget;
     float forceGroupTimer;
@@ -23,7 +23,7 @@ public class Fish : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MidMission>();
+        MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MissionGraze>();
     }
 
     void Update()

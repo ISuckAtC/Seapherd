@@ -6,12 +6,12 @@ public class FishSheep : MonoBehaviour
 {
     public float GrazingTime;
     public bool DoneGrazing, DoneOnce,Dead, DiedOnce;
-    public MidMission MissionController;
+    public MissionGraze MissionController;
     public GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
-        MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MidMission>();
+        MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MissionGraze>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class StartMission : MonoBehaviour
+
+public class MissionStart : MonoBehaviour
 {
     public int CurrentMission;
     public GameManager GM;

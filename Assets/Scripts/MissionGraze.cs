@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-public class MidMission : MonoBehaviour
-{
 
+public class MissionGraze : MonoBehaviour
+{
     public bool optionalObjective;
     public GameObject OptionalObjective;//, ExitZone;
     public bool ExitOn;
