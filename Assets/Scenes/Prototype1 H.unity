@@ -621,6 +621,28 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &452690846 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6204335271337887627, guid: 289d2687d755ee04f8da032f96b3b6cc, type: 3}
+  m_PrefabInstance: {fileID: 6204335271554201717}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &475614332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6204335271795263318, guid: 289d2687d755ee04f8da032f96b3b6cc, type: 3}
+  m_PrefabInstance: {fileID: 6204335271554201717}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &597748571
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +889,6 @@ MonoBehaviour:
   ThreatenRange: 50
   ThreatenAmount: 10
   InteractRange: 10
-  ToolTipText: {fileID: 1048369240}
 --- !u!1 &641269550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1463,7 @@ GameObject:
   - component: {fileID: 1177819494}
   - component: {fileID: 1177819498}
   m_Layer: 0
-  m_Name: Bearfish (1)
+  m_Name: Artifact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1539,6 +1560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToolTipText: Artifact
+  PickupNameText: Artifact
 --- !u!1 &1187257795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,6 +2187,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 328766034, guid: 289d2687d755ee04f8da032f96b3b6cc, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204335271795263318, guid: 289d2687d755ee04f8da032f96b3b6cc, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204335271795263318, guid: 289d2687d755ee04f8da032f96b3b6cc, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204335271795263319, guid: 289d2687d755ee04f8da032f96b3b6cc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 116.95
+      objectReference: {fileID: 0}
     - target: {fileID: 6204335272515267009, guid: 289d2687d755ee04f8da032f96b3b6cc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2262,6 +2300,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3969709838699231347, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 611775922}
+    - target: {fileID: 3969709838699231347, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
+      propertyPath: RevealText
+      value: 
+      objectReference: {fileID: 475614332}
+    - target: {fileID: 3969709838699231347, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
+      propertyPath: ToolTipText
+      value: 
+      objectReference: {fileID: 1048369240}
+    - target: {fileID: 3969709838699231347, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
+      propertyPath: MissionObjectiveText
+      value: 
+      objectReference: {fileID: 452690846}
     - target: {fileID: 7177635438059463002, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
       propertyPath: m_RootOrder
       value: 4

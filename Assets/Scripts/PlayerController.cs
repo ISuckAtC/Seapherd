@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 direction;
-    public TMPro.TextMeshProUGUI ToolTipText;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +49,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, InteractRange))
+            {
+                if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
+                {
+                    GameManager.Instance.RevealText.text = "You picked up " + pickup.PickupName;
+                    GameManager.Instance.RevealText.GetComponent<Animator>().Play("RevealText", -1, 0f);
+                    Destroy(hit.transform.gameObject);
+                }
+            }
+        }
         Vector2 mouseAxis = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, mouseAxis.x, 0));
@@ -64,16 +75,16 @@ public class PlayerController : MonoBehaviour
         {
             if (hit.transform.TryGetComponent<IToolTip>(out IToolTip toolTip))
             {
-                ToolTipText.text = toolTip.ToolTip;
+                GameManager.Instance.ToolTipText.text = toolTip.ToolTip;
             }
             else
             {
-                ToolTipText.text = "";
+                GameManager.Instance.ToolTipText.text = "";
             }
         }
         else
         {
-            ToolTipText.text = "";
+            GameManager.Instance.ToolTipText.text = "";
         }
         Vector3 currentVelocity = rb.velocity;
         Vector3 alignment = currentVelocity.normalized - direction;

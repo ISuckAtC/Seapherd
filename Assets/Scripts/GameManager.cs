@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI MissionObjectiveText;
     public EntitySheep[] FishSheep;
     public Transform Player;
+    public TextMeshProUGUI ToolTipText;
+    public TextMeshProUGUI RevealText;
+
     void Awake()
     {
         if (Instance == null)
