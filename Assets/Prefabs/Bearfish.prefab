@@ -144,12 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1949441c16b984fb0d6f5e0e8ec78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  ChaseSpeed: 10
-  EscapeSpeed: 15
-  StealSpeed: 2
+  Speed: 10
+  ChaseSpeed: 15
+  EscapeSpeed: 20
+  StealSpeed: 7
   ChaseRange: 30
-  EscapeThreshold: 100
+  EscapeThreshold: 80
   threatLevel: 0
   ThreatThreshold: 50
 --- !u!54 &4867042258905506284

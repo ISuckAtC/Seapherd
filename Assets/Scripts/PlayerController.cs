@@ -27,12 +27,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Vector3 averagePosition = Vector3.zero;
-            foreach (Fish fish in GameObject.FindObjectsOfType<Fish>())
+            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
             {
                 averagePosition += fish.transform.position;
             }
-            averagePosition /= GameObject.FindObjectsOfType<Fish>().Length;
-            foreach (Fish fish in GameObject.FindObjectsOfType<Fish>())
+            averagePosition /= GameObject.FindObjectsOfType<EntitySheep>().Length;
+            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
             {
                 fish.ForceGroup(averagePosition);
             }
@@ -51,13 +51,17 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, InteractRange))
+            if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
             {
                 if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
                 {
-                    GameManager.Instance.RevealText.text = "You picked up " + pickup.PickupName;
-                    GameManager.Instance.RevealText.GetComponent<Animator>().Play("RevealText", -1, 0f);
+                    GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
+                    GameManager.Instance.artifactGET = true;
                     Destroy(hit.transform.gameObject);
+                }
+                if (hit.transform.tag == "Quest")
+                {
+                    hit.transform.GetComponent<MissionGiver>().StartMission();
                 }
             }
         }
@@ -71,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, InteractRange))
+        if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange))
         {
             if (hit.transform.TryGetComponent<IToolTip>(out IToolTip toolTip))
             {

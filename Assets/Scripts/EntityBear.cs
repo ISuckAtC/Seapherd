@@ -16,6 +16,7 @@ public class EntityBear : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.SplashText("A bear has appeared!\nTo chase it away, get close and spam left mouse", 18);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -37,6 +38,7 @@ public class EntityBear : MonoBehaviour
         }
         else
         {
+            if (GameManager.Instance.FishSheep.Length == 0) return;
             EntitySheep closestFish = GameManager.Instance.FishSheep.OrderBy(x => Vector3.Distance(x.transform.position, transform.position)).First();
             if (closestFish != null)
             {
@@ -60,7 +62,7 @@ public class EntityBear : MonoBehaviour
         Debug.Log("Scared (" + threatLevel + "/" + ThreatThreshold + ")");
         if (!escaping && threatLevel >= ThreatThreshold)
         {
-            capturedFish.Release();
+            if (capturedFish) capturedFish.Release();
             capturedFish = null;
             escaping = true;
         }

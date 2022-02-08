@@ -5,22 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
     path: Assets/Scenes/David/MainMenu.unity
     guid: a7c01aaf89f748741a166f5eecd79a80
   - enabled: 1
+    path: Assets/Scenes/TavernTesting H.unity
+    guid: 2b37da38659c6a34ab679d1c0833e00b
+  - enabled: 1
+    path: Assets/Scenes/Prototype1 H.unity
+    guid: b0fda384bea467548b6d772ea2d92d49
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 0
     path: Assets/Scenes/TavernTesting.unity
     guid: 2973d7ae7faa3e64cb3a5c99abe6d733
   - enabled: 0
     path: Assets/Scenes/Prototype1.unity
     guid: fd09e2985ee6ff940a2e5d21ade817f9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestMission1.unity
     guid: 5510341a17651a44ab397503df5ab26f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestMission2.unity
     guid: b18f59e5b259cae4ea97cce3c64d22f9
   m_configObjects: {}

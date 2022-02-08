@@ -37,11 +37,11 @@ public class MenuButton : MonoBehaviour
 
     public void LoadScene()
     {
-        if(SceneToLoadInt !=0 && SceneToLoadStr == null)
+        if(SceneToLoadInt > -1)
         {
             SceneManager.LoadScene(SceneToLoadInt);
         } 
-        else if (SceneToLoadStr != null)
+        else if (SceneToLoadStr.Length > 0)
         {
             SceneManager.LoadScene(SceneToLoadStr);
         }

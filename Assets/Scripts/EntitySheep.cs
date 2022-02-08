@@ -7,6 +7,7 @@ public class EntitySheep : MonoBehaviour
 {
     public float DetectionRange;
     public float DirectionInfluence;
+    public float ScareInfluence;
     public float Speed;
     public float Runtime;
     public float CurrentSpeed;
@@ -20,6 +21,8 @@ public class EntitySheep : MonoBehaviour
     Vector3 ForceTarget;
     float forceGroupTimer;
     bool captured;
+    Vector3 scarePoint;
+    bool scared;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,20 +44,24 @@ public class EntitySheep : MonoBehaviour
         if (captured) return;
         if (forceGroupTimer > 0)
         {
+            scared = false;
             forceGroupTimer -= Time.deltaTime;
             runtimer = forceGroupTimer;
             transform.forward = (ForceTarget - transform.position).normalized;
         }
         else
         {
+            if (scared) transform.forward = Vector3.Lerp(transform.forward, (transform.position - scarePoint).normalized, ScareInfluence);
             Collider[] col = Physics.OverlapSphere(transform.position, DetectionRange, (1 << LayerMask.NameToLayer("Dog") | 1 << LayerMask.NameToLayer("Sheep") | 1 << LayerMask.NameToLayer("Bear") | 1 << LayerMask.NameToLayer("Player")));
 
             if (col.Length > 1)
             {
                 if (col.Any(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")))
                 {
-                    transform.forward = (transform.position - col.First(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")).transform.position).normalized;
+                    scarePoint = col.First(x => x.gameObject.layer == LayerMask.NameToLayer("Dog") || x.gameObject.layer == LayerMask.NameToLayer("Bear") || x.gameObject.layer == LayerMask.NameToLayer("Player")).transform.position;
+                    transform.forward = (transform.position - scarePoint).normalized;
                     runtimer = Runtime;
+                    scared = true;
                 }
                 Collider[] fishes = col.Where(x => x.gameObject.layer == LayerMask.NameToLayer("Sheep")).ToArray();
                 if (fishes.Length > 0)
@@ -74,10 +81,11 @@ public class EntitySheep : MonoBehaviour
 
         if (runtimer > 0)
         {
+            
             //Debug.Log("Setting speed");
             rb.velocity = transform.forward * Speed;
             runtimer -= Time.deltaTime;
-        }
+        } else scared = false;
 
         CurrentSpeed = rb.velocity.magnitude;
     }

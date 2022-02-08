@@ -5,7 +5,8 @@ using UnityEngine;
 public class MissionNavigate : MonoBehaviour
 {
     public Transform[] Waypoints;
-    int currentIndex;
+    public int currentIndex;
+    bool next;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,11 @@ public class MissionNavigate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (next)
+        {
+            GameManager.Instance.alt = true;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);  
+        }
     }
 
     public void SetPoints()
@@ -46,7 +51,11 @@ public class MissionNavigate : MonoBehaviour
         else
         {
             GameManager.Instance.MissionObjectiveText.text = "COMPLETE!";
-            Time.timeScale = 0;
+            new System.Threading.Thread(() => 
+            {
+                System.Threading.Thread.Sleep(1000);
+                next = true;
+            }).Start();
         }
     }
 }

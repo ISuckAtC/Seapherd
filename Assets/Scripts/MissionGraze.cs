@@ -40,10 +40,10 @@ public class MissionGraze : MonoBehaviour
                 entered = true;
                 GameManager.Instance.MissionObjectiveText.text = "Let the sheep graze (" + (waypoint.SelfIndex + 1) + "/10)";
             }
-            other.GetComponent<Fish>().GrazingTime += Time.deltaTime;
-            if (other.GetComponent<Fish>().GrazingTime > MissionGrazingTime)
+            other.GetComponent<EntitySheep>().GrazingTime += Time.deltaTime;
+            if (other.GetComponent<EntitySheep>().GrazingTime > MissionGrazingTime)
             {
-                other.GetComponent<Fish>().DoneGrazing = true;
+                other.GetComponent<EntitySheep>().DoneGrazing = true;
 
             }
         }
