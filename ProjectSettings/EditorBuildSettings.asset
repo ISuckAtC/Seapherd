@@ -29,4 +29,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestMission2.unity
     guid: b18f59e5b259cae4ea97cce3c64d22f9
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 10a7b929c50e9804aad81d6ee5b9e8c0, type: 2}
