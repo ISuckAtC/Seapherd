@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -20,8 +21,13 @@ public class GameManager : MonoBehaviour
     public bool alt;
     public bool artifactGET;
 
+
+    public AudioMixer _AM;
+
     void Awake()
     {
+        _AM = Resources.Load<AudioMixer>("MasterVolume");
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (Instance == null)
         {
@@ -62,5 +68,38 @@ public class GameManager : MonoBehaviour
         RevealText.text = text;
         RevealText.fontSize = fontSize;
         RevealText.GetComponent<Animator>().Play("RevealText", -1, 0f);
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
+    // Basis for volume settings
+    public void VolumeControl(float Value, string VolumeType)
+    {
+        switch (VolumeType)
+        {
+            case "Master":
+                _AM.SetFloat("ExposedMasterParam", Value);
+                break;
+
+            case "Effect":
+                _AM.SetFloat("ExposedEffectParam", Value);
+                break;
+
+            case "Music":
+                _AM.SetFloat("ExposedMusicParam", Value);
+                break;
+
+            case "Voice":
+                _AM.SetFloat("ExposedVoiceParam", Value);
+                break;
+
+            case "Ambiance":
+                _AM.SetFloat("ExposedAmbianceParam", Value);
+                break;
+        }
     }
 }
