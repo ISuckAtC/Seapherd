@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: -0.5
+    m_Value: 0
   contrast:
     m_OverrideState: 1
     m_Value: 5
@@ -46,16 +46,16 @@ MonoBehaviour:
     m_Value: 0.57
   intensity:
     m_OverrideState: 1
-    m_Value: 7.57
+    m_Value: 3
   scatter:
-    m_OverrideState: 0
-    m_Value: 0.7
+    m_OverrideState: 1
+    m_Value: 0.534
   clamp:
     m_OverrideState: 0
-    m_Value: 65472
+    m_Value: 65382.37
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 0.1476504, g: 0.1890797, b: 0.3962264, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.43952474, g: 0.49404758, b: 0.7830189, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   dirtIntensity:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 49
 --- !u!114 &-681346258151372402
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -86,13 +86,13 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 150
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 500
+    m_Value: 200
   gaussianMaxRadius:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.5
   highQualitySampling:
     m_OverrideState: 1
     m_Value: 0
