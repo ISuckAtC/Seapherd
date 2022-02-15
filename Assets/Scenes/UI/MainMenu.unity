@@ -787,7 +787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1989584084045651229, guid: 817aa56073cadb143bdbf0f440bf5bf7, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1989584084045651229, guid: 817aa56073cadb143bdbf0f440bf5bf7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1486,7 +1486,7 @@ Transform:
   m_Children:
   - {fileID: 1100551383}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418472441
 GameObject:
@@ -1576,7 +1576,6 @@ GameObject:
   - component: {fileID: 427218976}
   - component: {fileID: 427218975}
   - component: {fileID: 427218974}
-  - component: {fileID: 427218973}
   m_Layer: 5
   m_Name: Video
   m_TagString: Untagged
@@ -1605,18 +1604,6 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &427218973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427218971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95583da39aff8d448bb2410cae1c146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &427218974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,7 +1648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 427218973}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ToggleUI
         m_Mode: 1
@@ -2134,19 +2121,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuSettings, Assembly-CSharp
-        m_MethodName: SetFullscreen
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
 --- !u!1 &482678155
 GameObject:
@@ -2758,7 +2733,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &541700202
 Canvas:
   m_ObjectHideFlags: 0
@@ -2768,7 +2743,7 @@ Canvas:
   m_GameObject: {fileID: 541700199}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
+  m_RenderMode: 0
   m_Camera: {fileID: 432601988}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2788,8 +2763,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541700199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 931249290}
@@ -2802,8 +2777,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800.00006, y: 500}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &541700204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3137,19 +3112,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuSettings, Assembly-CSharp
-        m_MethodName: MouseSpeed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &579675424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,7 +3205,6 @@ GameObject:
   - component: {fileID: 600310082}
   - component: {fileID: 600310081}
   - component: {fileID: 600310080}
-  - component: {fileID: 600310079}
   m_Layer: 5
   m_Name: Volume
   m_TagString: Untagged
@@ -3271,18 +3233,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &600310079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600310077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95583da39aff8d448bb2410cae1c146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &600310080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3327,7 +3277,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 600310079}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ToggleUI
         m_Mode: 1
@@ -4622,7 +4572,6 @@ GameObject:
   - component: {fileID: 893647028}
   - component: {fileID: 893647027}
   - component: {fileID: 893647026}
-  - component: {fileID: 893647025}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -4651,18 +4600,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &893647025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893647023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95583da39aff8d448bb2410cae1c146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &893647026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4706,19 +4643,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 893647027}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 893647025}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: ToggleUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &893647027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5596,7 +5521,6 @@ GameObject:
   - component: {fileID: 1077077425}
   - component: {fileID: 1077077424}
   - component: {fileID: 1077077423}
-  - component: {fileID: 1077077426}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -5668,19 +5592,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1077077424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1077077426}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: ToggleUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1077077424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5719,18 +5631,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077077421}
   m_CullTransparentMesh: 1
---- !u!114 &1077077426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077077421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95583da39aff8d448bb2410cae1c146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1087182220
 GameObject:
   m_ObjectHideFlags: 0
@@ -6868,7 +6768,6 @@ GameObject:
   - component: {fileID: 1377135223}
   - component: {fileID: 1377135222}
   - component: {fileID: 1377135221}
-  - component: {fileID: 1377135220}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -6897,18 +6796,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1377135220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377135218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95583da39aff8d448bb2410cae1c146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1377135221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6953,7 +6840,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1377135220}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ToggleUI
         m_Mode: 1
@@ -7245,7 +7132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425448864}
   m_Layer: 0
-  m_Name: __App
+  m_Name: __app
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7265,7 +7152,7 @@ Transform:
   m_Children:
   - {fileID: 1692424060}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438308113
 GameObject:
@@ -8494,7 +8381,6 @@ GameObject:
   - component: {fileID: 1611961291}
   - component: {fileID: 1611961290}
   - component: {fileID: 1611961289}
-  - component: {fileID: 1611961288}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -8523,18 +8409,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1611961288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611961286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95583da39aff8d448bb2410cae1c146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1611961289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8579,7 +8453,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611961288}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ToggleUI
         m_Mode: 1
@@ -8837,7 +8711,6 @@ GameObject:
   - component: {fileID: 1692080544}
   - component: {fileID: 1692080543}
   - component: {fileID: 1692080542}
-  - component: {fileID: 1692080541}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -8866,18 +8739,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1692080541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692080539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95583da39aff8d448bb2410cae1c146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1692080542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8921,19 +8782,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1692080543}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1692080541}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: ToggleUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1692080543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10274,19 +10123,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuSettings, Assembly-CSharp
-        m_MethodName: SetScreenResolution
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!224 &2063807338
 RectTransform:
@@ -10544,7 +10381,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2129819705
 GameObject:
