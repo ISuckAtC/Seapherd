@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8686e630bad34bc4cb70a10fc6677981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DetectionRange: 30
+  DetectionRange: 15
   DirectionInfluence: 0.7
-  Speed: 10
+  ScareInfluence: 0.4
+  Speed: 9
   Runtime: 2
   CurrentSpeed: 0
   GrazingTime: 0
