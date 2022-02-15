@@ -38,7 +38,7 @@ public class MissionGraze : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().material = GoalMarker;
                 entered = true;
-                GameManager.Instance.MissionObjectiveText.text = "Let the sheep graze (" + (waypoint.SelfIndex + 1) + "/10)";
+                GameManager.Instance.MissionObjectiveText.text = "Let the sheep graze (" + (waypoint.SelfIndex + 1) + "/" + waypoint.ParentNavigator.Waypoints.Length + ")";
             }
             other.GetComponent<EntitySheep>().GrazingTime += Time.deltaTime;
             if (other.GetComponent<EntitySheep>().GrazingTime > MissionGrazingTime)
