@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     public float ThreatenRange;
     public float ThreatenAmount;
     public float InteractRange;
-
+    public GameObject Marker;
     private Rigidbody rb;
     private Vector3 direction;
+    public bool stopMarker;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonUp(1))
         {
             Vector3 averagePosition = Vector3.zero;
             foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
@@ -37,6 +38,11 @@ public class PlayerController : MonoBehaviour
             {
                 fish.ForceGroup(averagePosition);
             }
+            stopMarker = true;
+        }
+        if (Input.GetMouseButton(1))
+        {
+            Marker.transform.position += transform.forward / 10;
         }
         if (Input.GetMouseButtonDown(0))
         {

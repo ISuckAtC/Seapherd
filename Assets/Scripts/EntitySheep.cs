@@ -15,6 +15,8 @@ public class EntitySheep : MonoBehaviour
     private Rigidbody rb;
     public float GrazingTime;
     public bool DoneGrazing;
+    public bool GotoPlayer, RunFromPlayer, GotoMarker;
+    public GameObject Player, Marker;
     bool DoneOnce;
     MissionGraze MissionController;
     public float ForceGroupDuration;
@@ -27,6 +29,8 @@ public class EntitySheep : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Marker = GameObject.FindGameObjectWithTag("PlayerMarker");
         MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MissionGraze>();
     }
 
@@ -37,11 +41,38 @@ public class EntitySheep : MonoBehaviour
             MissionController.FinishedGrazingInt++;
             DoneOnce = true;
         }
+
     }
 
     void FixedUpdate()
     {
         if (captured) return;
+        if (GotoMarker == true && forceGroupTimer > 0)
+        {
+            scared = false;
+            forceGroupTimer -= Time.deltaTime;
+            runtimer = forceGroupTimer;
+            transform.LookAt(Marker.transform);
+            transform.position += transform.forward / 10;
+            goto EscapeOrders;
+        }
+        if (GotoPlayer == true && forceGroupTimer > 0)
+        {
+            scared = false;
+            forceGroupTimer -= Time.deltaTime;
+            runtimer = forceGroupTimer;
+            transform.LookAt(Player.transform);
+            transform.position += transform.forward / 10;
+            goto EscapeOrders;
+        }
+        if (RunFromPlayer == true && forceGroupTimer > 0)
+        {
+            scared = false;
+            forceGroupTimer -= Time.deltaTime;
+            runtimer = forceGroupTimer;
+            transform.forward = (ForceTarget - Player.transform.position).normalized;
+            goto EscapeOrders;
+        }
         if (forceGroupTimer > 0)
         {
             scared = false;
