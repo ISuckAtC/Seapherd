@@ -108,7 +108,7 @@ public class EntitySheep : MonoBehaviour
                 }
             }
         }
-
+    EscapeOrders:
 
         if (runtimer > 0)
         {
