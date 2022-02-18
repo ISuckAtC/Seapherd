@@ -15,7 +15,7 @@ public class EntitySheep : MonoBehaviour
     private Rigidbody rb;
     public float GrazingTime;
     public bool DoneGrazing;
-    public bool GotoPlayer, RunFromPlayer, GotoMarker;
+    public bool GotoPlayer, RunFromPlayer, GotoMarker, GoUp;
     public GameObject Player, Marker;
     bool DoneOnce;
     MissionGraze MissionController;
@@ -71,6 +71,15 @@ public class EntitySheep : MonoBehaviour
             forceGroupTimer -= Time.deltaTime;
             runtimer = forceGroupTimer;
             transform.forward = (ForceTarget - Player.transform.position).normalized;
+            goto EscapeOrders;
+        }
+        if (GoUp == true && forceGroupTimer > 0)
+        {
+            scared = false;
+            forceGroupTimer -= Time.deltaTime;
+            runtimer = forceGroupTimer;
+           
+            transform.position += transform.up / 10;
             goto EscapeOrders;
         }
         if (forceGroupTimer > 0)
