@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI RevealText;
     public bool alt;
     public bool artifactGET;
-
+    public int DebugSkill;
+    public bool GotoPlayer, RunFromPlayer, GotoMarker, GoUp;
 
     public AudioMixer _AM;
 
@@ -60,7 +61,31 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.U))
+        {
+            switch (DebugSkill)
+            {
+                case 1:
+                    GotoPlayer = true;
+                 break;
+                case 2:
+                    RunFromPlayer = true;
+                    break;
+                case 3:
+                    GotoMarker = true;
+                    break;
+                case 4:
+                    GoUp = true;
+                    break;
+                case 5:
+                    DebugSkill = 0;
+                    GotoPlayer = false;
+                    RunFromPlayer = false;
+                    GotoMarker = false;
+                    GoUp = false;
+                    break;
+            }
+        }
     }
 
     public void SplashText(string text, int fontSize = 36)

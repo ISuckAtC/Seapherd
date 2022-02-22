@@ -17,6 +17,7 @@ public class EntitySheep : MonoBehaviour
     public bool DoneGrazing;
     public bool GotoPlayer, RunFromPlayer, GotoMarker, GoUp;
     public GameObject Player, Marker;
+    public GameManager GM;
     bool DoneOnce;
     MissionGraze MissionController;
     public float ForceGroupDuration;
@@ -30,6 +31,7 @@ public class EntitySheep : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         Marker = GameObject.FindGameObjectWithTag("PlayerMarker");
         MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MissionGraze>();
     }
@@ -41,7 +43,22 @@ public class EntitySheep : MonoBehaviour
             MissionController.FinishedGrazingInt++;
             DoneOnce = true;
         }
-
+        if(GM.GotoMarker == true)
+        {
+            GotoMarker = true;
+        }
+        if (GM.GotoPlayer == true)
+        {
+            GotoPlayer = true;
+        }
+        if (GM.GoUp == true)
+        {
+            GM.GoUp = true;
+        }
+        if (GM.RunFromPlayer == true)
+        {
+            RunFromPlayer = true;
+        }
     }
 
     void FixedUpdate()
