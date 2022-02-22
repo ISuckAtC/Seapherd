@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2947414000592233860}
   - component: {fileID: 2947414000592233880}
   - component: {fileID: 2947414000592233887}
+  - component: {fileID: 1265754392}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -133,6 +134,24 @@ MonoBehaviour:
   ThreatenRange: 50
   ThreatenAmount: 10
   InteractRange: 10
+  UsingXR: 1
+--- !u!114 &1265754392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2947414000592233861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 2947414000832597424}
+  m_OriginBaseGameObject: {fileID: 2947414000592233861}
+  m_CameraFloorOffsetObject: {fileID: 0}
+  m_RequestedTrackingOriginMode: 1
+  m_CameraYOffset: 0
 --- !u!1 &2947414000832597426
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +164,7 @@ GameObject:
   - component: {fileID: 2947414000832597424}
   - component: {fileID: 2947414000832597425}
   - component: {fileID: 2947414000832597430}
+  - component: {fileID: 1573980584}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -241,7 +261,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -251,3 +271,21 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1573980584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2947414000832597426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Device: 0
+  m_PoseSource: 2
+  m_PoseProviderComponent: {fileID: 0}
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_UseRelativeTransform: 0
