@@ -6,6 +6,8 @@ public class MissionGiver : MonoBehaviour, IToolTip
 {
     public GameObject Player;
     public GameObject ExclamationMark;
+    [Header("Please put the number the mission is meant to be, from 1 and up.")]
+    [Tooltip("Change to send to different Mission number")]
     public int MissionNumber;
     public GameManager GM;
     public bool OptionalObjectiveCheck;
