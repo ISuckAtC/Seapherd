@@ -134,7 +134,10 @@ MonoBehaviour:
   ThreatenRange: 50
   ThreatenAmount: 10
   InteractRange: 10
+  Marker: {fileID: 0}
+  stopMarker: 0
   UsingXR: 1
+  UnfuckValue: 0
 --- !u!114 &1265754392
 MonoBehaviour:
   m_ObjectHideFlags: 0
