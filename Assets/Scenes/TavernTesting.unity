@@ -764,6 +764,8 @@ MonoBehaviour:
   MissionNumber: 2
   GM: {fileID: 1220976464}
   OptionalObjectiveCheck: 0
+  ToolTipText: 
+  ToolTipTextAlt: 
 --- !u!65 &958689703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1213,6 +1215,8 @@ MonoBehaviour:
   MissionNumber: 1
   GM: {fileID: 1220976464}
   OptionalObjectiveCheck: 0
+  ToolTipText: 
+  ToolTipTextAlt: 
 --- !u!1 &1535995346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,6 +1612,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793373560}
   m_CullTransparentMesh: 1
+--- !u!1001 &1835489944
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4028222026348173011, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: QuestGivers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028222026348173011, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: QuestGivers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1426478410}
+    - target: {fileID: 4028222026348173011, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: QuestGivers.Array.data[1]
+      value: 
+      objectReference: {fileID: 958689701}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.2339504
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.602969
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.5343275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101295099856040072, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747624614937647529, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
+      propertyPath: m_Name
+      value: TavernManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c3b4da5dddcead45ab68370c5449c7f, type: 3}
 --- !u!1 &1895640568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,11 +2082,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3969709838699231347, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
       propertyPath: CurrentMission
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3969709838699231347, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
       propertyPath: TotalMissionCompletion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7177635438059463002, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
       propertyPath: m_RootOrder
@@ -2100,6 +2173,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1
   StoppingBoost: 1
+  ThreatenRange: 0
+  ThreatenAmount: 0
+  InteractRange: 0
+  Marker: {fileID: 0}
+  stopMarker: 0
+  UsingXR: 0
+  UnfuckValue: 0
 --- !u!54 &2118619069
 Rigidbody:
   m_ObjectHideFlags: 0

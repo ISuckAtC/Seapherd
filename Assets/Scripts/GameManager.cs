@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public bool alt;
     public bool artifactGET;
     public int DebugSkill;
+    public bool StartBugStop;
     public bool GotoPlayer, RunFromPlayer, GotoMarker, GoUp;
 
     public AudioMixer _AM;

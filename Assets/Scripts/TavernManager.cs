@@ -9,6 +9,8 @@ public class TavernManager : MonoBehaviour
     [Header("remember to put new questgivers into the array")]
     [Tooltip("Handles the amount of questgivers")]
     public GameObject[] QuestGivers;
+
+    public bool CheckOnce;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +31,24 @@ public class TavernManager : MonoBehaviour
         {
             goto NoMoreMissions;
         }
-        while (CurrentMissionAvailible < GM.TotalMissionCompletion + 1)
+        if (Input.GetKeyUp(KeyCode.E) && CheckOnce == false)
         {
-            
+            if(GM.StartBugStop == false)
+            {
+                GM.StartBugStop = true;
+                CheckOnce = true;
+                goto NoMoreMissions;
+            }
+            GM.TotalMissionCompletion++;
+            CheckOnce = true;
+        }
+        if (CurrentMissionAvailible < GM.TotalMissionCompletion + 1)
+        {
+
             QuestGivers[CurrentMissionAvailible].gameObject.SetActive(true);
+
             CurrentMissionAvailible++;
-        
+            
         }
     NoMoreMissions:;
     }
