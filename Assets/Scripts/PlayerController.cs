@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private bool handControlConfigMin = true;
     private bool handControlConfigMax;
     public TextMeshProUGUI ConfigText;
+    [HideInInspector]
+    public float ExternalSpeedMod = 1f;
 
     public float UnfuckValue;
     private bool unfuckVrStart;
@@ -253,7 +255,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movementForce = new Vector3(
             direction.x * ((alignment.x > 1 || alignment.x < -1) ? StoppingBoost : 1),
             direction.y * ((alignment.y > 1 || alignment.y < -1) ? StoppingBoost : 1),
-            direction.z * ((alignment.z > 1 || alignment.z < -1) ? StoppingBoost : 1)) * Speed * speedMod;
+            direction.z * ((alignment.z > 1 || alignment.z < -1) ? StoppingBoost : 1)) * Speed * speedMod * ExternalSpeedMod;
         rb.AddForce(movementForce, ForceMode.Acceleration);
     }
 }
