@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7177635438059463002}
   - component: {fileID: 3969709838699231347}
+  - component: {fileID: 4653494052714747046}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,7 +45,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e68299a349b78488017c96e8c5f8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FishSheepTotal: 3
-  MissionStartFishSheepTotal: 3
+  SheepCount: 0
+  SheepTotal: 0
   CurrentMission: 0
+  TotalMissionCompletion: 0
   OptionalObjectiveCompleted: 0
+  MissionObjectiveText: {fileID: 0}
+  FishSheep: []
+  Player: {fileID: 0}
+  ToolTipText: {fileID: 0}
+  RevealText: {fileID: 0}
+  alt: 0
+  artifactGET: 0
+  DebugSkill: 0
+  StartBugStop: 0
+  GotoPlayer: 0
+  RunFromPlayer: 0
+  GotoMarker: 0
+  GoUp: 0
+  _AM: {fileID: 0}
+--- !u!114 &4653494052714747046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177635438059463003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc3d4b18363abd448a79d52aef4ec39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 3969709838699231347}
+  timer: 0
+  scene:
+    m_Handle: 0
+  InTavern: 0
