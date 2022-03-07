@@ -223,12 +223,15 @@ public class PlayerController : MonoBehaviour
                 updown = ((Input.GetKey(KeyCode.Space) ? 1 : 0) + (Input.GetKey(KeyCode.LeftShift) ? -1 : 0));
             }
 
-            direction = (transform.right * (UsingXR ? Input.GetAxisRaw("LHorizontal") : Input.GetAxisRaw("Horizontal")) + transform.up * updown + transform.forward * (UsingXR ? Input.GetAxisRaw("LVertical") : Input.GetAxisRaw("Vertical"))).normalized;
+            Debug.Log(Input.GetAxisRaw("Horizontal"));
+
+            direction = (transform.right * (UsingXR ? Input.GetAxisRaw("Horizontal") : Input.GetAxisRaw("DHorizontal")) + transform.up * updown + transform.forward * (UsingXR ? Input.GetAxisRaw("Vertical") : Input.GetAxisRaw("DVertical"))).normalized;
         }
     }
 
     void FixedUpdate()
     {
+        Debug.Log(direction);
         if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange))
         {
             if (hit.transform.TryGetComponent<IToolTip>(out IToolTip toolTip))
@@ -244,6 +247,7 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.ToolTipText.text = "";
         }
+        
         Vector3 currentVelocity = rb.velocity;
         Vector3 alignment = currentVelocity.normalized - direction;
         Vector3 movementForce = new Vector3(

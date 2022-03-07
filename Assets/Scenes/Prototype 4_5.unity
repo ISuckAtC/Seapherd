@@ -96777,7 +96777,9 @@ MonoBehaviour:
   UsingXR: 0
   HandControlMovement: 0
   HandController: {fileID: 0}
+  HandOrigin: {fileID: 0}
   speedMod: 1
+  HandControlDeadzone: 0
   handControlMin: 100
   handControlMax: 100
   ConfigText: {fileID: 0}
@@ -121841,8 +121843,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: UsingXR
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: ConfigText
       value: 
       objectReference: {fileID: 959166107}
+    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: HandControlMovement
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
