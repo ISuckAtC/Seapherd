@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,19 @@ public class PlayerController : MonoBehaviour
     private Vector3 direction;
     public bool stopMarker;
     public bool UsingXR;
+    public bool HandControlMovement;
+    public Transform HandController;
+    public Transform HandOrigin;
+    [SerializeField]
+    private float speedMod = 1f;
+    public float HandControlDeadzone;
+    [SerializeField]
+    private float handControlMin = 100f;
+    [SerializeField]
+    private float handControlMax = 100f;
+    private bool handControlConfigMin = true;
+    private bool handControlConfigMax;
+    public TextMeshProUGUI ConfigText;
 
     public float UnfuckValue;
     private bool unfuckVrStart;
@@ -25,10 +39,12 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
-        (new System.Threading.Thread(() => {
+        (new System.Threading.Thread(() =>
+        {
             System.Threading.Thread.Sleep(500);
             unfuckVrStart = true;
         })).Start();
+        if (!HandControlMovement) ConfigText.text = "";
     }
 
     // Update is called once per frame
@@ -44,11 +60,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
             {
                 Debug.Log("Quit");
-                #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
-                #else
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
                     Application.Quit(0);
-                #endif
+#endif
             }
             if (Input.GetButtonDown("X"))
             {
@@ -69,7 +85,7 @@ public class PlayerController : MonoBehaviour
             Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
 
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-joyAxis.y, 0, 0));
+            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-joyAxis.y, 0, 0));
 
             if (Input.GetButtonDown("A"))
             {
@@ -84,7 +100,7 @@ public class PlayerController : MonoBehaviour
                     fish.ForceGroup(averagePosition);
                 }
             }
-            if (Input.GetButtonDown("B"))
+            if (Input.GetButtonDown("Y"))
             {
                 Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
 
@@ -147,17 +163,68 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-mouseAxis.y, 0, 0));
         }
 
-        float updown; 
-        if (UsingXR)
+        if (HandControlMovement)
         {
-            updown = Input.GetAxisRaw("RShoulder") - Input.GetAxisRaw("LShoulder");
+            if (Input.GetButtonDown("B"))
+            {
+                if (handControlConfigMin)
+                {
+                    HandOrigin.position = HandController.position;
+                    handControlConfigMin = false;
+                    handControlConfigMax = true;
+                    ConfigText.text = "Move your hand far away from your body (max radius), press B to confirm";
+                }
+                else if (handControlConfigMax)
+                {
+                    handControlMax = Vector3.Distance(HandOrigin.position, HandController.position);
+                    handControlMin = Mathf.Lerp(0, handControlMax, HandControlDeadzone);
+                    handControlConfigMax = false;
+                    ConfigText.text = "";
+                }
+                else
+                {
+                    handControlConfigMin = true;
+                    ConfigText.text = "Move your hand to your origin, press B to confirm";
+                }
+            }
+            if (handControlConfigMin || handControlConfigMax)
+            {
+                speedMod = 0f;
+            }
+            else
+            {
+                Vector3 handPosition = HandController.position;
+                float distance = Vector3.Distance(HandOrigin.position, handPosition);
+                if (distance < handControlMin)
+                {
+                    speedMod = 0f;
+                }
+                else if (distance > handControlMax)
+                {
+                    speedMod = 1f;
+                }
+                else
+                {
+                    speedMod = distance / handControlMax;
+                }
+                direction = (handPosition - HandOrigin.position).normalized;
+            }
         }
         else
         {
-            updown = ((Input.GetKey(KeyCode.Space) ? 1 : 0) + (Input.GetKey(KeyCode.LeftShift) ? -1 : 0));
-        }
+            speedMod = 1f;
+            float updown;
+            if (UsingXR)
+            {
+                updown = Input.GetAxisRaw("RShoulder") - Input.GetAxisRaw("LShoulder");
+            }
+            else
+            {
+                updown = ((Input.GetKey(KeyCode.Space) ? 1 : 0) + (Input.GetKey(KeyCode.LeftShift) ? -1 : 0));
+            }
 
-        direction = (transform.right * Input.GetAxisRaw("LHorizontal") + transform.up * updown + transform.forward * Input.GetAxisRaw("LVertical")).normalized;
+            direction = (transform.right * Input.GetAxisRaw("LHorizontal") + transform.up * updown + transform.forward * Input.GetAxisRaw("LVertical")).normalized;
+        }
     }
 
     void FixedUpdate()
@@ -182,7 +249,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movementForce = new Vector3(
             direction.x * ((alignment.x > 1 || alignment.x < -1) ? StoppingBoost : 1),
             direction.y * ((alignment.y > 1 || alignment.y < -1) ? StoppingBoost : 1),
-            direction.z * ((alignment.z > 1 || alignment.z < -1) ? StoppingBoost : 1)) * Speed;
+            direction.z * ((alignment.z > 1 || alignment.z < -1) ? StoppingBoost : 1)) * Speed * speedMod;
         rb.AddForce(movementForce, ForceMode.Acceleration);
     }
 }
