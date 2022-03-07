@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour
                 updown = ((Input.GetKey(KeyCode.Space) ? 1 : 0) + (Input.GetKey(KeyCode.LeftShift) ? -1 : 0));
             }
 
-            direction = (transform.right * Input.GetAxisRaw("LHorizontal") + transform.up * updown + transform.forward * Input.GetAxisRaw("LVertical")).normalized;
+            direction = (transform.right * (UsingXR ? Input.GetAxisRaw("LHorizontal") : Input.GetAxisRaw("Horizontal")) + transform.up * updown + transform.forward * (UsingXR ? Input.GetAxisRaw("LVertical") : Input.GetAxisRaw("Vertical"))).normalized;
         }
     }
 
