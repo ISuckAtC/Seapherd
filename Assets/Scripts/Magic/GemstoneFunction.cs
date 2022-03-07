@@ -43,6 +43,10 @@ public class GemstoneFunction : MonoBehaviour
                     Debug.Log(RuneType + " was cast.");
                     break;
 
+                case "PlayerBoost":
+                    Debug.Log(RuneType + " was cast.");
+                    break;
+
                 default:
                     Debug.LogWarning(RuneType + " not recognised.");
                     break;
