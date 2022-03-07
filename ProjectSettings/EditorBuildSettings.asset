@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI/MainMenu.unity
     guid: a7c01aaf89f748741a166f5eecd79a80
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/Prototype 4_Erik.unity
+    guid: 0594c22dafcb23f4db44633f07b5ec68
+  - enabled: 0
     path: Assets/Scenes/Prototype 3.unity
     guid: cb93b24572d247748bc27c2a995c5914
   - enabled: 0
@@ -35,6 +38,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestMission2.unity
     guid: b18f59e5b259cae4ea97cce3c64d22f9
+  - enabled: 1
+    path: Assets/Scenes/Prototype 4_5.unity
+    guid: 3152dc8cc9675b544b98cad33d3b5029
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1596868a1dca014459e09533da20c11f, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: a719677b57edf1e4ab26971bd0103d37, type: 2}
