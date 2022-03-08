@@ -222,7 +222,7 @@ MonoBehaviour:
       Data4: 9164371
     Path: event:/SFX/Animals/BearGrab
   Event: 
-  PlayEvent: 7
+  PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
       Data4: -766758300
     Path: event:/SFX/Animals/BearRelease
   Event: 
-  PlayEvent: 8
+  PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0

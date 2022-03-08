@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TestMission2.unity
     guid: b18f59e5b259cae4ea97cce3c64d22f9
   - enabled: 1
-    path: Assets/Scenes/Prototype 4_5.unity
+    path: Assets/Scenes/_InBuild/Level1.unity
     guid: 3152dc8cc9675b544b98cad33d3b5029
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1596868a1dca014459e09533da20c11f, type: 2}
