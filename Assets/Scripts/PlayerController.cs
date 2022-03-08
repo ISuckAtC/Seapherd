@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     public bool stopMarker;
     public bool UsingXR;
     public bool HandControlMovement;
-    public Transform HandController;
+    public Transform HandControllerR;
+    public Transform HandControllerL;
     public Transform HandOrigin;
     [SerializeField]
     private float speedMod = 1f;
@@ -35,7 +36,18 @@ public class PlayerController : MonoBehaviour
     public float ExternalSpeedMod = 1f;
 
     public float UnfuckValue;
+    public float HandDragExponent;
     private bool unfuckVrStart;
+    private Vector3 lastRHandPos, lastLHandPos;
+
+    public enum ControlType
+    {
+        KBM,
+        VR_Joystick,
+        VR_Leading,
+        VR_Dragging
+    }
+    public ControlType Control;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,177 +69,21 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, UnfuckValue, transform.position.z);
             unfuckVrStart = false;
         }
-        if (UsingXR)
+
+        switch (Control)
         {
-            if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
-            {
-                Debug.Log("Quit");
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-                    Application.Quit(0);
-#endif
-            }
-            if (Input.GetButtonDown("X"))
-            {
-                if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
-                {
-                    if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
-                    {
-                        GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
-                        GameManager.Instance.artifactGET = true;
-                        Destroy(hit.transform.gameObject);
-                    }
-                    if (hit.transform.tag == "Quest")
-                    {
-                        hit.transform.GetComponent<MissionGiver>().StartMission();
-                    }
-                }
-            }
-            Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
-
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
-            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-joyAxis.y, 0, 0));
-
-            if (Input.GetButtonDown("A"))
-            {
-                Vector3 averagePosition = Vector3.zero;
-                foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
-                {
-                    averagePosition += fish.transform.position;
-                }
-                averagePosition /= GameObject.FindObjectsOfType<EntitySheep>().Length;
-                foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
-                {
-                    fish.ForceGroup(averagePosition);
-                }
-            }
-            if (Input.GetButtonDown("Y"))
-            {
-                Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
-
-                if (col.Length > 0)
-                {
-                    foreach (Collider c in col)
-                    {
-                        c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
-                {
-                    if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
-                    {
-                        GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
-                        GameManager.Instance.artifactGET = true;
-                        Destroy(hit.transform.gameObject);
-                    }
-                    if (hit.transform.tag == "Quest")
-                    {
-                        hit.transform.GetComponent<MissionGiver>().StartMission();
-                    }
-                }
-            }
-            if (Input.GetMouseButtonDown(1))
-            {
-                Vector3 averagePosition = Vector3.zero;
-                foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
-                {
-                    averagePosition += fish.transform.position;
-                }
-                averagePosition /= GameObject.FindObjectsOfType<EntitySheep>().Length;
-                foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
-                {
-                    fish.ForceGroup(averagePosition);
-                }
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
-
-                if (col.Length > 0)
-                {
-                    foreach (Collider c in col)
-                    {
-                        c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
-                    }
-                }
-            }
-
-            Vector2 mouseAxis = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, mouseAxis.x, 0));
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-mouseAxis.y, 0, 0));
-        }
-
-        if (HandControlMovement)
-        {
-            if (Input.GetButtonDown("B"))
-            {
-                if (handControlConfigMin)
-                {
-                    HandOrigin.position = HandController.position;
-                    handControlConfigMin = false;
-                    handControlConfigMax = true;
-                    ConfigText.text = "Move your hand far away from your body (max radius), press B to confirm";
-                }
-                else if (handControlConfigMax)
-                {
-                    handControlMax = Vector3.Distance(HandOrigin.position, HandController.position);
-                    handControlMin = Mathf.Lerp(0, handControlMax, HandControlDeadzone);
-                    handControlConfigMax = false;
-                    ConfigText.text = "";
-                }
-                else
-                {
-                    handControlConfigMin = true;
-                    ConfigText.text = "Move your hand to your origin, press B to confirm";
-                }
-            }
-            if (handControlConfigMin || handControlConfigMax)
-            {
-                speedMod = 0f;
-            }
-            else
-            {
-                Vector3 handPosition = HandController.position;
-                float distance = Vector3.Distance(HandOrigin.position, handPosition);
-                if (distance < handControlMin)
-                {
-                    speedMod = 0f;
-                }
-                else if (distance > handControlMax)
-                {
-                    speedMod = 1f;
-                }
-                else
-                {
-                    speedMod = distance / handControlMax;
-                }
-                direction = (handPosition - HandOrigin.position).normalized;
-            }
-        }
-        else
-        {
-            speedMod = 1f;
-            float updown;
-            if (UsingXR)
-            {
-                updown = Input.GetAxisRaw("RShoulder") - Input.GetAxisRaw("LShoulder");
-            }
-            else
-            {
-                updown = ((Input.GetKey(KeyCode.Space) ? 1 : 0) + (Input.GetKey(KeyCode.LeftShift) ? -1 : 0));
-            }
-
-            Debug.Log(Input.GetAxisRaw("Horizontal"));
-
-            direction = (transform.right * (UsingXR ? Input.GetAxisRaw("Horizontal") : Input.GetAxisRaw("DHorizontal")) + transform.up * updown + transform.forward * (UsingXR ? Input.GetAxisRaw("Vertical") : Input.GetAxisRaw("DVertical"))).normalized;
+            case ControlType.KBM:
+                KBMControls();
+                break;
+            case ControlType.VR_Joystick:
+                VRJoystickControls();
+                break;
+            case ControlType.VR_Leading:
+                VRLeadingControls();
+                break;
+            case ControlType.VR_Dragging:
+                VRDraggingControls();
+                break;
         }
     }
 
@@ -249,13 +105,230 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.ToolTipText.text = "";
         }
-        
-        Vector3 currentVelocity = rb.velocity;
-        Vector3 alignment = currentVelocity.normalized - direction;
-        Vector3 movementForce = new Vector3(
-            direction.x * ((alignment.x > 1 || alignment.x < -1) ? StoppingBoost : 1),
-            direction.y * ((alignment.y > 1 || alignment.y < -1) ? StoppingBoost : 1),
-            direction.z * ((alignment.z > 1 || alignment.z < -1) ? StoppingBoost : 1)) * Speed * speedMod * ExternalSpeedMod;
-        rb.AddForce(movementForce, ForceMode.Acceleration);
+
+        if (Control != ControlType.VR_Dragging)
+        {
+            Vector3 currentVelocity = rb.velocity;
+            Vector3 alignment = currentVelocity.normalized - direction;
+            Vector3 movementForce = new Vector3(
+                direction.x * ((alignment.x > 1 || alignment.x < -1) ? StoppingBoost : 1),
+                direction.y * ((alignment.y > 1 || alignment.y < -1) ? StoppingBoost : 1),
+                direction.z * ((alignment.z > 1 || alignment.z < -1) ? StoppingBoost : 1)) * Speed * speedMod * ExternalSpeedMod;
+            rb.AddForce(movementForce, ForceMode.Acceleration);
+        }
+    }
+
+    void KBMControls()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Quit");
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit(0);
+#endif
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
+            {
+                if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
+                {
+                    GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
+                    GameManager.Instance.artifactGET = true;
+                    Destroy(hit.transform.gameObject);
+                }
+                if (hit.transform.tag == "Quest")
+                {
+                    hit.transform.GetComponent<MissionGiver>().StartMission();
+                }
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 averagePosition = Vector3.zero;
+            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
+            {
+                averagePosition += fish.transform.position;
+            }
+            averagePosition /= GameObject.FindObjectsOfType<EntitySheep>().Length;
+            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
+            {
+                fish.ForceGroup(averagePosition);
+            }
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
+
+            if (col.Length > 0)
+            {
+                foreach (Collider c in col)
+                {
+                    c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
+                }
+            }
+        }
+
+        Vector2 mouseAxis = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, mouseAxis.x, 0));
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-mouseAxis.y, 0, 0));
+
+        speedMod = 1f;
+
+        float updown = ((Input.GetKey(KeyCode.Space) ? 1 : 0) + (Input.GetKey(KeyCode.LeftShift) ? -1 : 0));
+
+        direction = (transform.right * Input.GetAxisRaw("DHorizontal") + transform.up * updown + transform.forward * Input.GetAxisRaw("DVertical")).normalized;
+    }
+    void VRJoystickControls()
+    {
+        if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
+        {
+            Debug.Log("Quit");
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit(0);
+#endif
+        }
+        if (Input.GetButtonDown("X"))
+        {
+            if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
+            {
+                if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
+                {
+                    GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
+                    GameManager.Instance.artifactGET = true;
+                    Destroy(hit.transform.gameObject);
+                }
+                if (hit.transform.tag == "Quest")
+                {
+                    hit.transform.GetComponent<MissionGiver>().StartMission();
+                }
+            }
+        }
+        Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
+
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
+        //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-joyAxis.y, 0, 0));
+
+        if (Input.GetButtonDown("A"))
+        {
+            Vector3 averagePosition = Vector3.zero;
+            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
+            {
+                averagePosition += fish.transform.position;
+            }
+            averagePosition /= GameObject.FindObjectsOfType<EntitySheep>().Length;
+            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
+            {
+                fish.ForceGroup(averagePosition);
+            }
+        }
+        if (Input.GetButtonDown("Y"))
+        {
+            Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
+
+            if (col.Length > 0)
+            {
+                foreach (Collider c in col)
+                {
+                    c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
+                }
+            }
+        }
+
+        speedMod = 1f;
+        float updown;
+
+        updown = Input.GetAxisRaw("RShoulder") - Input.GetAxisRaw("LShoulder");
+
+        direction = (transform.right * Input.GetAxisRaw("Horizontal") + transform.up * updown + transform.forward * Input.GetAxisRaw("Vertical")).normalized;
+    }
+    void VRLeadingControls()
+    {
+        if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
+        {
+            Debug.Log("Quit");
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit(0);
+#endif
+        }
+        if (Input.GetButtonDown("B"))
+        {
+            if (handControlConfigMin)
+            {
+                HandOrigin.position = HandControllerR.position;
+                handControlConfigMin = false;
+                handControlConfigMax = true;
+                ConfigText.text = "Move your hand far away from your body (max radius), press B to confirm";
+            }
+            else if (handControlConfigMax)
+            {
+                handControlMax = Vector3.Distance(HandOrigin.position, HandControllerR.position);
+                handControlMin = Mathf.Lerp(0, handControlMax, HandControlDeadzone);
+                handControlConfigMax = false;
+                ConfigText.text = "";
+            }
+            else
+            {
+                handControlConfigMin = true;
+                ConfigText.text = "Move your hand to your origin, press B to confirm";
+            }
+        }
+        if (handControlConfigMin || handControlConfigMax)
+        {
+            speedMod = 0f;
+        }
+        else if (Input.GetButton("")) // TODO: Add a button to hold to move
+        {
+            Vector3 handPosition = HandControllerR.position;
+            float distance = Vector3.Distance(HandOrigin.position, handPosition);
+            if (distance < handControlMin)
+            {
+                speedMod = 0f;
+            }
+            else if (distance > handControlMax)
+            {
+                speedMod = 1f;
+            }
+            else
+            {
+                speedMod = distance / handControlMax;
+            }
+            direction = (handPosition - HandOrigin.position).normalized;
+        }
+
+
+    }
+    void VRDraggingControls()
+    {
+        if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
+        {
+            Debug.Log("Quit");
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit(0);
+#endif
+        }
+
+        if (Input.GetButton("")) // TODO: Add a button to hold to drag yourself
+        {
+            Vector3 drag = lastLHandPos - HandControllerL.position;
+            rb.AddForce(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent), ForceMode.Acceleration);
+        }
+        if (Input.GetButton("")) // TODO: Add a button to hold to drag yourself
+        {
+            Vector3 drag = lastRHandPos - HandControllerR.position;
+            rb.AddForce(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent), ForceMode.Acceleration);
+        }
+
+        lastLHandPos = HandControllerL.position;
+        lastRHandPos = HandControllerR.position;
     }
 }
