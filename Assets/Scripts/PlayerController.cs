@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Control = GameManager._Settings.controlType;
+        Control = GameManager._Settings.controlType;
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
         (new System.Threading.Thread(() =>

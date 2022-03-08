@@ -18,7 +18,10 @@ public class MissionFail : MonoBehaviour
 
     void Update()
     {
-        
+        if(GM.InMainMenu == true)
+        {
+            goto SkipErrors;
+        }
         if (GM.SheepCount <= 0 && GM.InTavern == false)
         {
             Timer += Time.deltaTime;
@@ -31,5 +34,6 @@ public class MissionFail : MonoBehaviour
                 Timer = 0;
             }
         }
+    SkipErrors:;
     }
 }
