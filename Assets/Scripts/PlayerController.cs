@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 direction;
     public bool stopMarker;
-    public bool UsingXR;
-    public bool HandControlMovement;
     public Transform HandControllerR;
     public Transform HandControllerL;
     public Transform HandOrigin;
@@ -40,6 +38,8 @@ public class PlayerController : MonoBehaviour
     private bool unfuckVrStart;
     private Vector3 lastRHandPos, lastLHandPos;
 
+    public GameObject GripR, GripL;
+
     public enum ControlType
     {
         KBM,
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             System.Threading.Thread.Sleep(500);
             unfuckVrStart = true;
         })).Start();
-        if (!HandControlMovement) ConfigText.text = "";
+        if (Control != ControlType.VR_Leading) ConfigText.text = "";
     }
 
     // Update is called once per frame
@@ -284,7 +284,7 @@ public class PlayerController : MonoBehaviour
         {
             speedMod = 0f;
         }
-        else if (Input.GetButton("")) // TODO: Add a button to hold to move
+        else if (Input.GetAxisRaw("RGrip") > 0.5f) // TODO: Add a button to hold to move
         {
             Vector3 handPosition = HandControllerR.position;
             float distance = Vector3.Distance(HandOrigin.position, handPosition);
@@ -317,12 +317,12 @@ public class PlayerController : MonoBehaviour
 #endif
         }
 
-        if (Input.GetButton("")) // TODO: Add a button to hold to drag yourself
+        if (Input.GetAxisRaw("LGrip") > 0.5f && !GripL) // TODO: Add a button to hold to drag yourself
         {
             Vector3 drag = lastLHandPos - HandControllerL.position;
             rb.AddForce(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent), ForceMode.Acceleration);
         }
-        if (Input.GetButton("")) // TODO: Add a button to hold to drag yourself
+        if (Input.GetAxisRaw("RGrip") > 0.5f && !GripR) // TODO: Add a button to hold to drag yourself
         {
             Vector3 drag = lastRHandPos - HandControllerR.position;
             rb.AddForce(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent), ForceMode.Acceleration);
