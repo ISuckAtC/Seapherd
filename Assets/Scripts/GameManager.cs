@@ -8,6 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public struct Settings
+    {
+        PlayerController.ControlType controlType;
+        
+    }
+    public static Settings _Settings;
     public static GameManager Instance;
 
     public int SheepCount, SheepTotal;
