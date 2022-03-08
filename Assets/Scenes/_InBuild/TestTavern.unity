@@ -293,6 +293,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+--- !u!1 &76446188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9052568057076425752, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+  m_PrefabInstance: {fileID: 76446187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &107542421
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4be302211f455446a85c2aed9a28334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 76446188}
   ExclamationMark: {fileID: 1751211261}
   MissionNumber: 1
   GM: {fileID: 1220976464}

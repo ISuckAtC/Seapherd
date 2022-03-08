@@ -41,7 +41,7 @@ public class MissionWaypoint : MonoBehaviour
     {
         if (activated || Override) return;
         RaycastHit[] hits = Physics.BoxCastAll(transform.position, Vector3.Scale(triggerCollider.size, transform.localScale) / 2f, Vector3.forward, transform.rotation, 0f, (1 << LayerMask.NameToLayer("Sheep")));
-        if (hits.Length == GameManager.Instance.SheepCount)
+        if (hits.Length >= GameManager.Instance.SheepCount)
         {
             ParentNavigator.Acvivated();
             activated = true;

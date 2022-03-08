@@ -40,7 +40,7 @@ public class MenuSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     /*  This script was copied from Lonely Echo, commenting out the irrelevant stuff for now

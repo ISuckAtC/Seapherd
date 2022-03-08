@@ -35,8 +35,9 @@ public class PlayerController : MonoBehaviour
 
     public float UnfuckValue;
     public float HandDragExponent;
+    public float HandDragMultiplier;
     private bool unfuckVrStart;
-    private Vector3 lastRHandPos, lastLHandPos;
+    private Vector3 lastRHandPos, lastLHandPos, lastBodyPos;
 
     public GameObject GripR, GripL;
 
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Control = GameManager._Settings.controlType;
+        //Control = GameManager._Settings.controlType;
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
         (new System.Threading.Thread(() =>
@@ -223,6 +224,10 @@ public class PlayerController : MonoBehaviour
 
         FaceButtonControls();
 
+        Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
+
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
+
         if (Input.GetButtonDown("B"))
         {
             if (handControlConfigMin)
@@ -267,8 +272,6 @@ public class PlayerController : MonoBehaviour
             }
             direction = (handPosition - HandOrigin.position).normalized;
         }
-
-
     }
     void VRDraggingControls()
     {
@@ -284,19 +287,27 @@ public class PlayerController : MonoBehaviour
 
         FaceButtonControls();
 
-        if (Input.GetAxisRaw("LGrip") > 0.5f && !GripL) // TODO: Add a button to hold to drag yourself
+        Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
+
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
+
+        if (Input.GetAxisRaw("LGrip") > 0.5f)// && !GripL) // TODO: Add a button to hold to drag yourself
         {
-            Vector3 drag = lastLHandPos - HandControllerL.position;
-            rb.AddForce(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent), ForceMode.Acceleration);
+            Vector3 drag = (lastLHandPos - (lastBodyPos - transform.position)) - HandControllerL.position;
+            drag *= HandDragMultiplier;
+            rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
         }
-        if (Input.GetAxisRaw("RGrip") > 0.5f && !GripR) // TODO: Add a button to hold to drag yourself
+        if (Input.GetAxisRaw("RGrip") > 0.5f)// && !GripR) // TODO: Add a button to hold to drag yourself
         {
-            Vector3 drag = lastRHandPos - HandControllerR.position;
-            rb.AddForce(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent), ForceMode.Acceleration);
+            Vector3 drag = (lastRHandPos - (lastBodyPos - transform.position)) - HandControllerR.position;
+            drag *= HandDragMultiplier;
+            //Debug.Log(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent));
+            rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
         }
 
         lastLHandPos = HandControllerL.position;
         lastRHandPos = HandControllerR.position;
+        lastBodyPos = transform.position;
     }
 
     void FaceButtonControls()
