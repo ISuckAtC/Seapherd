@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 direction;
     public bool stopMarker;
-    public bool UsingXR;
-    public bool HandControlMovement;
     public Transform HandControllerR;
     public Transform HandControllerL;
     public Transform HandOrigin;
@@ -40,6 +38,8 @@ public class PlayerController : MonoBehaviour
     private bool unfuckVrStart;
     private Vector3 lastRHandPos, lastLHandPos;
 
+    public GameObject GripR, GripL;
+
     public enum ControlType
     {
         KBM,
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Control = GameManager._Settings.controlType;
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
         (new System.Threading.Thread(() =>
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
             System.Threading.Thread.Sleep(500);
             unfuckVrStart = true;
         })).Start();
-        if (!HandControlMovement) ConfigText.text = "";
+        if (Control != ControlType.VR_Leading) ConfigText.text = "";
     }
 
     // Update is called once per frame
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(direction);
+        //Debug.Log(direction);
         if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange))
         {
             if (hit.transform.TryGetComponent<IToolTip>(out IToolTip toolTip))
@@ -193,52 +194,13 @@ public class PlayerController : MonoBehaviour
                     Application.Quit(0);
 #endif
         }
-        if (Input.GetButtonDown("X"))
-        {
-            if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
-            {
-                if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
-                {
-                    GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
-                    GameManager.Instance.artifactGET = true;
-                    Destroy(hit.transform.gameObject);
-                }
-                if (hit.transform.tag == "Quest")
-                {
-                    hit.transform.GetComponent<MissionGiver>().StartMission();
-                }
-            }
-        }
+        
         Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
         //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-joyAxis.y, 0, 0));
 
-        if (Input.GetButtonDown("A"))
-        {
-            Vector3 averagePosition = Vector3.zero;
-            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
-            {
-                averagePosition += fish.transform.position;
-            }
-            averagePosition /= GameObject.FindObjectsOfType<EntitySheep>().Length;
-            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
-            {
-                fish.ForceGroup(averagePosition);
-            }
-        }
-        if (Input.GetButtonDown("Y"))
-        {
-            Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
-
-            if (col.Length > 0)
-            {
-                foreach (Collider c in col)
-                {
-                    c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
-                }
-            }
-        }
+        FaceButtonControls();
 
         speedMod = 1f;
         float updown;
@@ -258,6 +220,9 @@ public class PlayerController : MonoBehaviour
                     Application.Quit(0);
 #endif
         }
+
+        FaceButtonControls();
+
         if (Input.GetButtonDown("B"))
         {
             if (handControlConfigMin)
@@ -284,7 +249,7 @@ public class PlayerController : MonoBehaviour
         {
             speedMod = 0f;
         }
-        else if (Input.GetButton("")) // TODO: Add a button to hold to move
+        else if (Input.GetAxisRaw("RGrip") > 0.5f) // TODO: Add a button to hold to move
         {
             Vector3 handPosition = HandControllerR.position;
             float distance = Vector3.Distance(HandOrigin.position, handPosition);
@@ -317,12 +282,14 @@ public class PlayerController : MonoBehaviour
 #endif
         }
 
-        if (Input.GetButton("")) // TODO: Add a button to hold to drag yourself
+        FaceButtonControls();
+
+        if (Input.GetAxisRaw("LGrip") > 0.5f && !GripL) // TODO: Add a button to hold to drag yourself
         {
             Vector3 drag = lastLHandPos - HandControllerL.position;
             rb.AddForce(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent), ForceMode.Acceleration);
         }
-        if (Input.GetButton("")) // TODO: Add a button to hold to drag yourself
+        if (Input.GetAxisRaw("RGrip") > 0.5f && !GripR) // TODO: Add a button to hold to drag yourself
         {
             Vector3 drag = lastRHandPos - HandControllerR.position;
             rb.AddForce(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent), ForceMode.Acceleration);
@@ -330,5 +297,50 @@ public class PlayerController : MonoBehaviour
 
         lastLHandPos = HandControllerL.position;
         lastRHandPos = HandControllerR.position;
+    }
+
+    void FaceButtonControls()
+    {
+        if (Input.GetButtonDown("X"))
+        {
+            if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
+            {
+                if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
+                {
+                    GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
+                    GameManager.Instance.artifactGET = true;
+                    Destroy(hit.transform.gameObject);
+                }
+                if (hit.transform.tag == "Quest")
+                {
+                    hit.transform.GetComponent<MissionGiver>().StartMission();
+                }
+            }
+        }
+        if (Input.GetButtonDown("A"))
+        {
+            Vector3 averagePosition = Vector3.zero;
+            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
+            {
+                averagePosition += fish.transform.position;
+            }
+            averagePosition /= GameObject.FindObjectsOfType<EntitySheep>().Length;
+            foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
+            {
+                fish.ForceGroup(averagePosition);
+            }
+        }
+        if (Input.GetButtonDown("Y"))
+        {
+            Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
+
+            if (col.Length > 0)
+            {
+                foreach (Collider c in col)
+                {
+                    c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
+                }
+            }
+        }
     }
 }

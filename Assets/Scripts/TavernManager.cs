@@ -20,7 +20,7 @@ public class TavernManager : MonoBehaviour
 
         foreach (GameObject QuestGiver in QuestGivers)
         {
-            QuestGiver.SetActive(false);
+            //QuestGiver.SetActive(false);
         }
     }
 
@@ -42,11 +42,12 @@ public class TavernManager : MonoBehaviour
             GM.TotalMissionCompletion++;
             CheckOnce = true;
         }
-        if (CurrentMissionAvailible < GM.TotalMissionCompletion + 1)
+        if (CurrentMissionAvailible < GM.TotalMissionCompletion)
         {
 
-            QuestGivers[CurrentMissionAvailible].gameObject.SetActive(true);
+            // QuestGivers[CurrentMissionAvailible].gameObject.SetActive(true);
 
+            QuestGivers[CurrentMissionAvailible].GetComponent<MissionGiver>().MissionNumber++;
             CurrentMissionAvailible++;
             
         }

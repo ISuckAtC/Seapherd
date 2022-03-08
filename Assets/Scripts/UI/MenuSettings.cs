@@ -13,7 +13,7 @@ public class MenuSettings : MonoBehaviour
     public AudioMixer mixer;
 
     //public Dropdown ResolutionDropdown;
-    public Dropdown SceneLoadDropdown;
+    public Dropdown SceneLoadDropdown, ControlTypeDropdown;
 
     public int IndexOffset = 1;
 
@@ -30,31 +30,11 @@ public class MenuSettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _GM = GameObject.Find("__app").GetComponentInChildren<GameManager>();
+        _GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         
-        /*
-        ResolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-
-        int CurrentResolutionIndex = 0;
-        for (int i=0; i < _GM.ScreenResolutions.Length; i++)
-        {
-            string NewRes = _GM.ScreenResolutions[i].width + "x" + _GM.ScreenResolutions[i].height;
-            options.Add(NewRes);
-            if (_GM.ScreenResolutions[i].width == Screen.currentResolution.width && _GM.ScreenResolutions[i].height == Screen.currentResolution.height)
-            {
-                CurrentResolutionIndex = i;
-            }
-        }
-
-        ResolutionDropdown.AddOptions(options);
-        ResolutionDropdown.value = CurrentResolutionIndex;
-        ResolutionDropdown.RefreshShownValue();
-        SetScreenResolution(CurrentResolutionIndex);
-        */
 
         RefreshSceneDropdown();
+        RefreshControlDropdown();
     }
 
     // Update is called once per frame
@@ -137,11 +117,60 @@ public class MenuSettings : MonoBehaviour
             SceneLoadDropdown.value = 0;
             SceneLoadDropdown.RefreshShownValue();
         }
+    }private void RefreshControlDropdown()
+    {
+        if (ControlTypeDropdown != null)
+        {
+            ControlTypeDropdown.ClearOptions();
+
+            List<string> ControlList = new List<string>();
+            ControlList.Add("Keyboard and Mouse");
+            ControlList.Add("VR Joystick");
+            ControlList.Add("VR_Leading");
+            ControlList.Add("VR_Dragging");
+            /*
+            for (int i = 0; i < 4; i++)
+            {
+                string TempString;
+                switch (i)
+                {
+                    case 0:
+                        TempString = "Keyboard and Mouse";
+                        break;
+                    case 1:
+                        TempString = "VR Joystick";
+                        break;
+                    case 2:
+                        TempString = "VR_Leading";
+                        break;
+                    case 3:
+                        TempString = "VR_Dragging";
+                        break;
+
+                    default:
+                        Debug.LogWarning("Int outside bounds of array");
+                        break;
+                }
+                string newControlType = $"({i}) {TempString}";
+                ControlList.Add(newControlType);
+            }
+            */
+
+            ControlTypeDropdown.AddOptions(ControlList);
+
+            ControlTypeDropdown.value = 0;
+            ControlTypeDropdown.RefreshShownValue();
+        }
     }
 
     public void DebugLoadScene()
     {
         SceneManager.LoadScene(SceneLoadDropdown.value + IndexOffset);
+    }
+
+    public void SetControlType()
+    {
+        GameManager._Settings.controlType = (PlayerController.ControlType)ControlTypeDropdown.value;
     }
 
 

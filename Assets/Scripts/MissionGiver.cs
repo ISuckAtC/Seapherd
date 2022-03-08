@@ -31,11 +31,13 @@ public class MissionGiver : MonoBehaviour, IToolTip
     // Update is called once per frame
     void Update()
     {
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Player = GameObject.FindGameObjectWithTag("Player");
         if (next)
         {
             //GameManager.Instance.alt = false;
             //GameManager.Instance.artifactGET = false;
-            //SceneManager.LoadScene(0);
+            SceneManager.LoadScene(MissionNumber+1);
         }
         if (GM.TotalMissionCompletion >= MissionNumber)
         {
@@ -60,7 +62,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                //StartMission();
+                StartMission();
             }
         }
     }
@@ -77,8 +79,8 @@ public class MissionGiver : MonoBehaviour, IToolTip
         }
         else
         {
-            GM.CurrentMission = MissionNumber;
-            SceneManager.LoadScene(MissionNumber + 1);
+            GM.CurrentMission = MissionNumber+1;
+            SceneManager.LoadScene(GM.CurrentMission);
         }
     }
 

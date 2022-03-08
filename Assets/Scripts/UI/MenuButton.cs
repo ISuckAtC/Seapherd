@@ -37,14 +37,14 @@ public class MenuButton : MonoBehaviour
 
     public void LoadScene()
     {
-        if(SceneToLoadInt > -1)
-        {
-            SceneManager.LoadScene(SceneToLoadInt);
-        } 
-        else if (SceneToLoadStr.Length > 0)
+        if (SceneToLoadStr != null) //(SceneToLoadStr.Length > 0)
         {
             SceneManager.LoadScene(SceneToLoadStr);
         }
+        else if(SceneToLoadInt > 0)
+        {
+            SceneManager.LoadScene(SceneToLoadInt);
+        } 
         else
         {
             Debug.LogError("Please designate a scene to load.");
