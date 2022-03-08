@@ -22,7 +22,7 @@ public class ReturnToTavern : MonoBehaviour
         if(other.tag == "Player")
         {
 
-           // GM.TotalMissionCompletion++;
+            GM.TotalMissionCompletion++;
             SceneManager.LoadScene(1);
         }
     }

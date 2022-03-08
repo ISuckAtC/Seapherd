@@ -32,7 +32,7 @@ public class EntitySheep : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Player = GameObject.FindGameObjectWithTag("Player");
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Marker = GameObject.FindGameObjectWithTag("PlayerMarker");
+        //Marker = GameObject.FindGameObjectWithTag("PlayerMarker");        COMMENTED OUT FOR NOW
         MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MissionGraze>();
     }
 

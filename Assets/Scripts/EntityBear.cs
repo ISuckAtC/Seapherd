@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using FMODUnity;
+using FMOD;
+using FMOD.Studio;
 
 public class EntityBear : MonoBehaviour
 {
+    public FMODUnity.EventReference spawnEvent, grabEvent, releaseEvent; 
     public float Speed, ChaseSpeed, EscapeSpeed, StealSpeed;
     public float ChaseRange;
     public float EscapeThreshold;
@@ -18,6 +22,17 @@ public class EntityBear : MonoBehaviour
     {
         GameManager.Instance.SplashText("A bear has appeared!\nTo chase it away, get close and spam left mouse", 18);
         rb = GetComponent<Rigidbody>();
+
+        var bearSpawn = FMODUnity.RuntimeManager.CreateInstance(spawnEvent);
+        ATTRIBUTES_3D attributes;
+        attributes.position = this.transform.position.ToFMODVector();
+        attributes.velocity = rb.velocity.ToFMODVector();
+        attributes.forward = this.transform.forward.ToFMODVector();
+        attributes.up = this.transform.up.ToFMODVector();
+        bearSpawn.set3DAttributes(attributes);
+
+        bearSpawn.start();
+        bearSpawn.release();
     }
 
     // Update is called once per frame
@@ -31,7 +46,7 @@ public class EntityBear : MonoBehaviour
 
             if (Vector3.Distance(transform.position, GameManager.Instance.Player.position) > EscapeThreshold)
             {
-                Debug.Log("Escaped");
+                //Debug.Log("Escaped");
                 if (capturedFish) capturedFish.Kill();
                 Destroy(gameObject);
             }
@@ -59,12 +74,23 @@ public class EntityBear : MonoBehaviour
     public void Scare(float threatAmount)
     {
         threatLevel += threatAmount;
-        Debug.Log("Scared (" + threatLevel + "/" + ThreatThreshold + ")");
+        //Debug.Log("Scared (" + threatLevel + "/" + ThreatThreshold + ")");
         if (!escaping && threatLevel >= ThreatThreshold)
         {
             if (capturedFish) capturedFish.Release();
             capturedFish = null;
             escaping = true;
+
+            var bearRelease = FMODUnity.RuntimeManager.CreateInstance(releaseEvent);
+            ATTRIBUTES_3D attributes;
+            attributes.position = this.transform.position.ToFMODVector();
+            attributes.velocity = rb.velocity.ToFMODVector();
+            attributes.forward = this.transform.forward.ToFMODVector();
+            attributes.up = this.transform.up.ToFMODVector();
+            bearRelease.set3DAttributes(attributes);
+
+            bearRelease.start();
+            bearRelease.release();
         }
     }
 
@@ -72,9 +98,20 @@ public class EntityBear : MonoBehaviour
     {
         if (!escaping && !capturedFish && other.gameObject.layer == LayerMask.NameToLayer("Sheep"))
         {
-            Debug.Log("Captured a sheep");
+            //Debug.Log("Captured a sheep");
             capturedFish = other.gameObject.GetComponent<EntitySheep>();
             capturedFish.Capture(transform);
+
+            var bearGrab = FMODUnity.RuntimeManager.CreateInstance(grabEvent);
+            ATTRIBUTES_3D attributes;
+            attributes.position = this.transform.position.ToFMODVector();
+            attributes.velocity = rb.velocity.ToFMODVector();
+            attributes.forward = this.transform.forward.ToFMODVector();
+            attributes.up = this.transform.up.ToFMODVector();
+            bearGrab.set3DAttributes(attributes);
+
+            bearGrab.start();
+            bearGrab.release();
         }
     }
 }

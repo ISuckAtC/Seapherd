@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD;
+using FMODUnity;
 
 public class MissionGraze : MonoBehaviour
 {
+    public FMODUnity.EventReference startEvent, endEvent; 
     public bool optionalObjective;
     public GameObject OptionalObjective;//, ExitZone;
     public bool ExitOn;
@@ -39,6 +42,17 @@ public class MissionGraze : MonoBehaviour
                 GetComponent<MeshRenderer>().material = GoalMarker;
                 entered = true;
                 GameManager.Instance.MissionObjectiveText.text = "Let the sheep graze (" + (waypoint.SelfIndex + 1) + "/" + waypoint.ParentNavigator.Waypoints.Length + ")";
+                
+                var grazeStart = FMODUnity.RuntimeManager.CreateInstance(startEvent);
+                ATTRIBUTES_3D attributes;
+                attributes.position = this.transform.position.ToFMODVector();
+                attributes.velocity = Vector3.zero.ToFMODVector();
+                attributes.forward = this.transform.forward.ToFMODVector();
+                attributes.up = this.transform.up.ToFMODVector();
+                grazeStart.set3DAttributes(attributes);
+
+                grazeStart.start();
+                grazeStart.release();
             }
             other.GetComponent<EntitySheep>().GrazingTime += Time.deltaTime;
             if (other.GetComponent<EntitySheep>().GrazingTime > MissionGrazingTime)
@@ -50,6 +64,17 @@ public class MissionGraze : MonoBehaviour
         if (GameManager.Instance.SheepCount == FinishedGrazingInt)
         {
             waypoint.ParentNavigator.Acvivated();
+
+            var grazeEnd = FMODUnity.RuntimeManager.CreateInstance(endEvent);
+                ATTRIBUTES_3D attributes;
+                attributes.position = this.transform.position.ToFMODVector();
+                attributes.velocity = Vector3.zero.ToFMODVector();
+                attributes.forward = this.transform.forward.ToFMODVector();
+                attributes.up = this.transform.up.ToFMODVector();
+                grazeEnd.set3DAttributes(attributes);
+
+                grazeEnd.start();
+                grazeEnd.release();
         }
         if (this.tag == "Exit" && GameManager.Instance.SheepCount == GameManager.Instance.SheepTotal && GameManager.Instance.SheepCount == FinishedGrazingInt)
         {
