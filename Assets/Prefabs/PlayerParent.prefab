@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 9052568057076425754}
   m_Layer: 0
   m_Name: PlayerParent
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,9 +587,8 @@ MonoBehaviour:
   InteractRange: 10
   Marker: {fileID: 0}
   stopMarker: 0
-  UsingXR: 1
-  HandControlMovement: 1
-  HandController: {fileID: 4980133664077404076}
+  HandControllerR: {fileID: 0}
+  HandControllerL: {fileID: 0}
   HandOrigin: {fileID: 8847416370701377756}
   speedMod: 1
   HandControlDeadzone: 0.1
@@ -598,6 +597,10 @@ MonoBehaviour:
   ConfigText: {fileID: 0}
   ExternalSpeedMod: 1
   UnfuckValue: 37
+  HandDragExponent: 0
+  GripR: {fileID: 0}
+  GripL: {fileID: 0}
+  Control: 0
 --- !u!114 &9052568057076425755
 MonoBehaviour:
   m_ObjectHideFlags: 0
