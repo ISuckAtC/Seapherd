@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public int DebugSkill;
     public bool StartBugStop;
     public bool GotoPlayer, RunFromPlayer, GotoMarker, GoUp;
-    public bool InTavern;
+    public bool InTavern, InMainMenu;
     public AudioMixer _AM;
 
     void Awake()
@@ -53,21 +53,31 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+
         if (scene.buildIndex == 0) {
             SceneManager.LoadScene(1, LoadSceneMode.Single);
             return;
         }
         Debug.Log("start");
+
+        if (scene.buildIndex == 0)
+        {
+            InTavern = false;
+            InMainMenu = true;
+        }
+
         if (scene.buildIndex > 1)
         {
             FishSheep = GameObject.FindObjectsOfType<EntitySheep>();
             SheepCount = SheepTotal = FishSheep.Length;
 
             InTavern = false;
+            InMainMenu = false;
         }
         if (scene.buildIndex == 1)
         {
             InTavern = true;
+            InMainMenu = false;
         }
       
         MissionObjectiveText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
