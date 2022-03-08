@@ -40,7 +40,7 @@ public class MenuSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /*  This script was copied from Lonely Echo, commenting out the irrelevant stuff for now
@@ -165,6 +165,7 @@ public class MenuSettings : MonoBehaviour
 
     public void DebugLoadScene()
     {
+        Debug.Log("Debug load scene");
         SceneManager.LoadScene(SceneLoadDropdown.value + IndexOffset);
     }
 

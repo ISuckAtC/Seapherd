@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     {
         _AM = Resources.Load<AudioMixer>("MasterVolume");
 
+        _Settings.controlType = PlayerController.ControlType.VR_Dragging;
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (Instance == null)
         {
@@ -51,7 +53,10 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex == 0) return;
+        if (scene.buildIndex == 0) {
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            return;
+        }
         Debug.Log("start");
         if (scene.buildIndex > 1)
         {
