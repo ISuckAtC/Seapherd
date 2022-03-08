@@ -71687,6 +71687,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 720671728782860889, guid: dda3a92419a73a242a590c7cfb5fa0a4, type: 3}
   m_PrefabInstance: {fileID: 1151418642}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1152668834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152668835}
+  m_Layer: 0
+  m_Name: BearSpawnPont (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1152668835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152668834}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -699.9, y: 602.1, z: -502.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157358229
 GameObject:
   m_ObjectHideFlags: 0
@@ -95068,7 +95099,7 @@ PrefabInstance:
     - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
       propertyPath: Spawns.Array.data[0].SpawnPosition
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1152668835}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
 --- !u!4 &1489677166 stripped
@@ -96709,8 +96740,6 @@ MonoBehaviour:
   InteractRange: 0
   Marker: {fileID: 0}
   stopMarker: 0
-  UsingXR: 0
-  HandControlMovement: 0
   HandControllerR: {fileID: 0}
   HandControllerL: {fileID: 0}
   HandOrigin: {fileID: 0}
@@ -96722,6 +96751,8 @@ MonoBehaviour:
   ExternalSpeedMod: 1
   UnfuckValue: 0
   HandDragExponent: 0
+  GripR: {fileID: 0}
+  GripL: {fileID: 0}
   Control: 0
 --- !u!54 &1646736195
 Rigidbody:
