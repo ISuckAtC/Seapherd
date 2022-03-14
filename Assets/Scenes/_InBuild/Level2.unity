@@ -17378,6 +17378,10 @@ PrefabInstance:
       value: 5.85
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: Control
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: UsingXR
       value: 0
       objectReference: {fileID: 0}
@@ -17388,6 +17392,14 @@ PrefabInstance:
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: UnfuckValue
       value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: HandDragExponent
+      value: 1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: HandDragMultiplier
+      value: 17.96
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandControlMovement
