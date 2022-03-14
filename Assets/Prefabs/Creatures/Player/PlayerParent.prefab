@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 9052568057076425756}
   - component: {fileID: 9052568057076425755}
   - component: {fileID: 9052568057076425754}
+  - component: {fileID: 1664679862344039721}
   m_Layer: 0
   m_Name: PlayerParent
   m_TagString: Player
@@ -580,6 +581,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b968f7ef59609479ca7049aa7a1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupEvent:
+    Guid:
+      Data1: 2083831873
+      Data2: 1333911200
+      Data3: -508099935
+      Data4: -939283599
+    Path: event:/SFX/Player/PlayerPickup
+  magicEvent:
+    Guid:
+      Data1: -838450046
+      Data2: 1152365964
+      Data3: -378725970
+      Data4: 1516871058
+    Path: event:/SFX/Player/PlayerMagic
+  boostMagicEvent:
+    Guid:
+      Data1: 2108700717
+      Data2: 1148427175
+      Data3: 1047194010
+      Data4: -1071542846
+    Path: event:/SFX/Player/PlayerBoost
   Speed: 10
   StoppingBoost: 8
   ThreatenRange: 50
@@ -635,3 +657,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1664679862344039721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052568057076425752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -52284828
+      Data2: 1110982873
+      Data3: -634314354
+      Data4: 1042804853
+    Path: event:/AMBX/UnderwaterAmbience
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: AmbienceVolume
+    Value: 100
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

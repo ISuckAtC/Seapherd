@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Linq;
 using FMODUnity;
 using FMOD;
-using FMOD.Studio;
 
 public class EntityBear : MonoBehaviour
 {

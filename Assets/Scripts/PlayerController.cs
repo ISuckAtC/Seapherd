@@ -4,9 +4,13 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.InputSystem;
 using TMPro;
+using FMOD;
+using FMODUnity;
 
 public class PlayerController : MonoBehaviour
 {
+    public FMODUnity.EventReference pickupEvent, magicEvent, boostMagicEvent; //So far using only pickupEvent. The playerSpeedWhoosh will not be among these
+
     public float Speed;
     public float StoppingBoost;
 
@@ -124,7 +128,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Quit");
+            UnityEngine.Debug.Log("Quit");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -139,6 +143,17 @@ public class PlayerController : MonoBehaviour
                 {
                     GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
                     GameManager.Instance.artifactGET = true;
+
+                    var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
+                    ATTRIBUTES_3D attributes;
+                    attributes.position = this.transform.position.ToFMODVector();
+                    attributes.velocity = rb.velocity.ToFMODVector();
+                    attributes.forward = this.transform.forward.ToFMODVector();
+                    attributes.up = this.transform.up.ToFMODVector();
+                    pickupSound.set3DAttributes(attributes);
+                    pickupSound.start();
+                    pickupSound.release();
+
                     Destroy(hit.transform.gameObject);
                 }
                 if (hit.transform.tag == "Quest")
@@ -188,7 +203,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
         {
-            Debug.Log("Quit");
+            UnityEngine.Debug.Log("Quit");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -214,7 +229,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
         {
-            Debug.Log("Quit");
+            UnityEngine.Debug.Log("Quit");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -277,7 +292,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
         {
-            Debug.Log("Quit");
+            UnityEngine.Debug.Log("Quit");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -331,6 +346,17 @@ public class PlayerController : MonoBehaviour
                 {
                     GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
                     GameManager.Instance.artifactGET = true;
+
+                    var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
+                    ATTRIBUTES_3D attributes;
+                    attributes.position = this.transform.position.ToFMODVector();
+                    attributes.velocity = rb.velocity.ToFMODVector();
+                    attributes.forward = this.transform.forward.ToFMODVector();
+                    attributes.up = this.transform.up.ToFMODVector();
+                    pickupSound.set3DAttributes(attributes);
+                    pickupSound.start();
+                    pickupSound.release();
+
                     Destroy(hit.transform.gameObject);
                 }
                 if (hit.transform.tag == "Quest")
