@@ -6,11 +6,12 @@ public enum DogState
 {
     Stay,
     Follow,
-    Go
+    Go,
+    Chase
 }
 public class EntityDog : MonoBehaviour, IToolTip
 {
-    public Transform Player;
+    public Transform Player, Bear;
     public float Speed;
     public float FollowDistance;
     Rigidbody rb;
@@ -62,6 +63,19 @@ public class EntityDog : MonoBehaviour, IToolTip
                     rb.velocity = transform.forward * Speed;
                 }
                 break;
+            case DogState.Chase:
+                Bear = GameObject.Find("Bearfish").transform;
+                transform.forward = (Bear.position - transform.position).normalized;
+                float ChaseDistance = Vector3.Distance(Bear.position, transform.position);
+                if (ChaseDistance < 1)
+                {
+                    Bear.GetComponent<EntityBear>().Scare(Player.GetComponent<PlayerController>().ThreatenAmount);
+                }
+                if(Bear.GetComponent<EntityBear>().escaping == true)
+                {
+                    State = DogState.Follow;
+                }
+                    break;
         }
     }
 }

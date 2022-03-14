@@ -15,7 +15,7 @@ public class EntityBear : MonoBehaviour
     EntitySheep capturedFish = null;
     public float threatLevel;
     public float ThreatThreshold;
-    bool escaping;
+    public bool escaping;
     // Start is called before the first frame update
     void Start()
     {

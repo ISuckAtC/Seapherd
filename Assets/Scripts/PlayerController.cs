@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float ThreatenRange;
     public float ThreatenAmount;
     public float InteractRange;
-    public GameObject Marker;
+    public GameObject Marker, Dog;
     private Rigidbody rb;
     private Vector3 direction;
     public bool stopMarker;
@@ -340,7 +340,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("X"))
         {
-            if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
+            if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")|1<< LayerMask.NameToLayer("Bear")))
             {
                 if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
                 {
@@ -363,6 +363,10 @@ public class PlayerController : MonoBehaviour
                 {
                     hit.transform.GetComponent<MissionGiver>().StartMission();
                 }
+                if(hit.transform.tag == "Bear")
+                {
+                    Dog.GetComponent<EntityDog>().State = DogState.Chase;
+                }
             }
         }
         if (Input.GetButtonDown("A"))
@@ -380,6 +384,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Y"))
         {
+            
             Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
 
             if (col.Length > 0)
