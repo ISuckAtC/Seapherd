@@ -8,6 +8,8 @@ public class SpellSpeedBoostForPlayer : MonoBehaviour
 
     public float NewSpeedMultiplier = 2f, BoostDuration = 5f;
 
+    private float OldSpeedMultiplier = 1f;
+
     bool CanBoost = false;
 
     public KeyCode DebugBoost = KeyCode.Alpha1;
@@ -31,7 +33,8 @@ public class SpellSpeedBoostForPlayer : MonoBehaviour
         if (CanBoost)
         {
             CanBoost = false;
-            Player.ExternalSpeedMod = NewSpeedMultiplier;
+            OldSpeedMultiplier = Player.ExternalSpeedMod;
+            Player.ExternalSpeedMod = Player.ExternalSpeedMod * NewSpeedMultiplier;
             yield return new WaitForSeconds(BoostDuration);
             SpeedReset();
         }
@@ -39,7 +42,7 @@ public class SpellSpeedBoostForPlayer : MonoBehaviour
 
     public void SpeedReset()
     {
-        Player.ExternalSpeedMod = 1f;
+        Player.ExternalSpeedMod = OldSpeedMultiplier;
         CanBoost = true;
     }
 }

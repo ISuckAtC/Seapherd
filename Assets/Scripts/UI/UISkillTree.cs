@@ -6,15 +6,15 @@ using static GameManager;
 
 public class UISkillTree : MonoBehaviour
 {
-
+    public GameManager GM;
     public static UISkillTree TalentTree;
 
     private void Awake() => TalentTree = this;
 
-    public int[] SkillLevels;
-    public int[] SkillLimit;
-    public string[] SkillName;
-    public string[] SkillDescription;
+    //public int[] SkillLevels;
+    //public int[] SkillLimit;
+    //public string[] SkillName;
+    //public string[] SkillDescription;
 
     public TMP_Text RemainingSkillPoints;
 
@@ -23,8 +23,6 @@ public class UISkillTree : MonoBehaviour
 
     public List<DogfishSkills> DogfishSkillList;
     public GameObject DogfishSkillHolder;
-
-    public int SkillPoints;
 
     public KeyCode DebugSkillPoint = KeyCode.P;
     private void Start()
@@ -43,7 +41,7 @@ public class UISkillTree : MonoBehaviour
 
     public void GainSkillPoint()
     {
-        SkillPoints++;
+        GM.SkillPoints++;
         UpdateAllSkillUI();
     }
 
@@ -51,6 +49,6 @@ public class UISkillTree : MonoBehaviour
         foreach (var playerSkills in PlayerSkillList) {
             playerSkills.UpdateUI();
         }
-        RemainingSkillPoints.text = $"Remaining points: {SkillPoints}";
+        RemainingSkillPoints.text = $"Remaining points: {GM.SkillPoints}";
     }
 }

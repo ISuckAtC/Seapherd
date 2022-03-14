@@ -31,12 +31,19 @@ public class GameManager : MonoBehaviour
     public bool GotoPlayer, RunFromPlayer, GotoMarker, GoUp;
     public bool InTavern, InMainMenu;
     public AudioMixer _AM;
+    [Space(10)]
+    public int SkillPoints = 0;
+    public Dictionary<string, bool> SkillsUnlocked = new Dictionary<string, bool>();
 
     void Awake()
     {
         _AM = Resources.Load<AudioMixer>("MasterVolume");
 
         _Settings.controlType = PlayerController.ControlType.VR_Dragging;
+
+        SkillsUnlocked.Add("PlayerSpeed1", false);
+        SkillsUnlocked.Add("DpgfishHerdCommand", false);
+        SkillsUnlocked.Add("DogfishWaitCommand", false);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (Instance == null)
@@ -153,6 +160,17 @@ public class GameManager : MonoBehaviour
             case "Ambiance":
                 _AM.SetFloat("ExposedAmbianceParam", Value);
                 break;
+        }
+    }
+
+    public void UnlockSkill(string unlockedSkill)
+    {
+        if (SkillsUnlocked.ContainsKey(unlockedSkill))
+        {
+            SkillsUnlocked[unlockedSkill] = true;
+        } else
+        {
+            Debug.LogError(unlockedSkill + " is not recognised.");
         }
     }
 }

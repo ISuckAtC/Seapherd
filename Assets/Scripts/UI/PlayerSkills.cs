@@ -7,15 +7,37 @@ using static UISkillTree;
 
 public class PlayerSkills : MonoBehaviour
 {
-    public int id, Value = 1;
+    [Header("Each Skill needs a unique ID that tells the GameManager which skills are unlocked.")]
+    public string SkillID;
+    [Space(10f)]
+    public int Value = 1;
 
     public int SkillLevel, SkillCap;
 
     public string SkillName, Description;
     public TMP_Text TitleText, DescriptionText;
 
-    public string[] ConnectedSkills;
-    public Color NotBought = Color.white, BuyMore = Color.green, MaxedOut = Color.yellow; 
+    public GameObject[] ConnectedSkills;
+    public Color NotBought = Color.white, BuyMore = Color.green, MaxedOut = Color.yellow;
+
+    private void Awake()
+    {
+        if (SkillID == null)
+        {
+            Debug.LogWarning(gameObject.name + " is missing an ID.");
+        }
+
+        if (ConnectedSkills != null)
+        {
+            if (SkillLevel == 0)
+            {
+                foreach (var ConSkills in ConnectedSkills)
+                {
+                    ConSkills.SetActive(false);
+                }
+            }
+        }
+    }
 
     public void UpdateUI()
     {
@@ -27,9 +49,21 @@ public class PlayerSkills : MonoBehaviour
 
     public void BuySkill()
     {
-        if (TalentTree.SkillPoints < 1 || SkillLevel >= SkillCap) return;
-        TalentTree.SkillPoints -= Value;
+        if (TalentTree.GM.SkillPoints < 1 || SkillLevel >= SkillCap) return;
+        TalentTree.GM.SkillPoints -= Value;
         SkillLevel++;
+        if (ConnectedSkills != null)
+        {
+            if (SkillLevel == 1)
+            {
+                foreach (var ConSkills in ConnectedSkills)
+                {
+                    ConSkills.SetActive(true);
+                }
+            }
+        }
+        TalentTree.GM.UnlockSkill($"{SkillID}{SkillLevel}");
+
         TalentTree.UpdateAllSkillUI();
     }
 }
