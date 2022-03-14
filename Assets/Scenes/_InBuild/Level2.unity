@@ -13521,6 +13521,7 @@ MonoBehaviour:
   ThreatenAmount: 0
   InteractRange: 0
   Marker: {fileID: 0}
+  Dog: {fileID: 0}
   stopMarker: 0
   HandControllerR: {fileID: 0}
   HandControllerL: {fileID: 0}
@@ -13534,6 +13535,8 @@ MonoBehaviour:
   UnfuckValue: 0
   HandDragExponent: 0
   HandDragMultiplier: 0
+  StreamSpeedBoost: 0
+  SpeedUpTimer: 0
   GripR: {fileID: 0}
   GripL: {fileID: 0}
   Control: 0
@@ -17396,6 +17399,10 @@ PrefabInstance:
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandDragExponent
       value: 1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: StreamSpeedBoost
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandDragMultiplier

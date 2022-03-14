@@ -70,22 +70,20 @@ public class PlayerController : MonoBehaviour
         if (Control != ControlType.VR_Leading) ConfigText.text = "";
     }
 
-    public void SpeedBoost(float duration)
-    {
-        if (!speedUp) HandDragMultiplier += StreamSpeedBoost;
-        speedUp = true;
-        SpeedUpTimer = duration;
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (speedUp)
         {
+            HandDragMultiplier += StreamSpeedBoost;
+            speedMod += StreamSpeedBoost;
+
             if (SpeedUpTimer <= 0)
             {
                 speedUp = false;
                 HandDragMultiplier -= StreamSpeedBoost;
+                speedMod -= StreamSpeedBoost;
             } else SpeedUpTimer -= Time.deltaTime;
         } 
 
@@ -143,6 +141,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void SpeedMagic(float spellDuration)
+    {
+        speedUp = true;
+        SpeedUpTimer = spellDuration;
+    }
     void KBMControls()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -180,6 +183,10 @@ public class PlayerController : MonoBehaviour
                     hit.transform.GetComponent<MissionGiver>().StartMission();
                 }
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Q) && !speedUp)
+        {
+            SpeedMagic(5);
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -403,7 +410,8 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Y"))
         {
-            
+            SpeedMagic(5);
+            /*
             Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
 
             if (col.Length > 0)
@@ -413,6 +421,7 @@ public class PlayerController : MonoBehaviour
                     c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
                 }
             }
+            */
         }
     }
 }
