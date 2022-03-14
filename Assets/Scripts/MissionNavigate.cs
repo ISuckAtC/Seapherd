@@ -22,7 +22,7 @@ public class MissionNavigate : MonoBehaviour
         if (next)
         {
             GameManager.Instance.alt = true;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("TestTavern");
 
             GameManager.Instance.TotalMissionCompletion++;
         }

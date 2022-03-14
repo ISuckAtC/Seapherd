@@ -23,7 +23,7 @@ public class ReturnToTavern : MonoBehaviour
         {
 
             GM.TotalMissionCompletion++;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("TestTavern");
         }
     }
 }
