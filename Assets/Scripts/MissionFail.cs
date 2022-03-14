@@ -30,7 +30,7 @@ public class MissionFail : MonoBehaviour
 
             if(Timer > 5)
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene("TestTavern");
                 Timer = 0;
             }
         }
