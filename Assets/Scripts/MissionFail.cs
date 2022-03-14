@@ -22,7 +22,7 @@ public class MissionFail : MonoBehaviour
         {
             goto SkipErrors;
         }
-        if (GM.SheepCount <= 0 && GM.InTavern == false)
+        if (GM.SheepCount <= GM.SheepTotal / 2 && GM.InTavern == false)
         {
             Timer += Time.deltaTime;
             //float percentcomplete = Timer / MaxTimer;
