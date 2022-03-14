@@ -76,8 +76,6 @@ public class PlayerController : MonoBehaviour
     {
         if (speedUp)
         {
-            HandDragMultiplier += StreamSpeedBoost;
-            speedMod += StreamSpeedBoost;
 
             if (SpeedUpTimer <= 0)
             {
@@ -145,6 +143,9 @@ public class PlayerController : MonoBehaviour
     {
         speedUp = true;
         SpeedUpTimer = spellDuration;
+
+        HandDragMultiplier += StreamSpeedBoost;
+        speedMod += StreamSpeedBoost;
     }
     void KBMControls()
     {
