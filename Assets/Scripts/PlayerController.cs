@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
     public float UnfuckValue;
     public float HandDragExponent;
     public float HandDragMultiplier;
+    public float StreamSpeedBoost;
+    public float SpeedUpTimer;
+    private bool speedUp;
     private bool unfuckVrStart;
     private Vector3 lastRHandPos, lastLHandPos, lastBodyPos;
 
@@ -70,6 +73,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (speedUp)
+        {
+            if (SpeedUpTimer <= 0)
+            {
+                speedUp = false;
+                HandDragMultiplier -= StreamSpeedBoost;
+            } else SpeedUpTimer -= Time.deltaTime;
+        } 
+
         if (unfuckVrStart)
         {
             transform.position = new Vector3(transform.position.x, UnfuckValue, transform.position.z);
