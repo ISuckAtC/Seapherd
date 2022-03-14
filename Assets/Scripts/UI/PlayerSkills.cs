@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static UISkillTree;
+using static GameManager;
 
 public class PlayerSkills : MonoBehaviour
 {

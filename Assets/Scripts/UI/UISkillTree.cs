@@ -6,10 +6,14 @@ using static GameManager;
 
 public class UISkillTree : MonoBehaviour
 {
+
     public GameManager GM;
     public static UISkillTree TalentTree;
 
-    private void Awake() => TalentTree = this;
+    private void Awake() { 
+        TalentTree = this;
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     //public int[] SkillLevels;
     //public int[] SkillLimit;

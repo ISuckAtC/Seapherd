@@ -41,9 +41,12 @@ public class GameManager : MonoBehaviour
 
         _Settings.controlType = PlayerController.ControlType.VR_Dragging;
 
+        #region Dictionary for all the skills
         SkillsUnlocked.Add("PlayerSpeed1", false);
+        SkillsUnlocked.Add("PlayerSpeed2", false);
         SkillsUnlocked.Add("DpgfishHerdCommand", false);
         SkillsUnlocked.Add("DogfishWaitCommand", false);
+        #endregion
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (Instance == null)
