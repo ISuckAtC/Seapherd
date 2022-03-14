@@ -312,6 +312,17 @@ public class PlayerController : MonoBehaviour
 
     void FaceButtonControls()
     {
+        if (Input.GetButtonDown("RStickPush"))
+        {
+            int index = (int)Control;
+            index++;
+            if (index >= 4)
+            {
+                index = 1;
+            }
+            Control = (ControlType)index;
+            GameManager._Settings.controlType = Control;
+        }
         if (Input.GetButtonDown("X"))
         {
             if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
