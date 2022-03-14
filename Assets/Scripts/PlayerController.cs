@@ -70,6 +70,13 @@ public class PlayerController : MonoBehaviour
         if (Control != ControlType.VR_Leading) ConfigText.text = "";
     }
 
+    public void SpeedBoost(float duration)
+    {
+        if (!speedUp) HandDragMultiplier += StreamSpeedBoost;
+        speedUp = true;
+        SpeedUpTimer = duration;
+    }
+
     // Update is called once per frame
     void Update()
     {
