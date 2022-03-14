@@ -48,14 +48,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
         if (scene.buildIndex == 0) {
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            //SceneManager.LoadScene(1, LoadSceneMode.Single);
             return;
         }
         Debug.Log("start");

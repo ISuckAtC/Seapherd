@@ -10417,11 +10417,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bb3b7fd90109294489b4e7ef6b1254a8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13a02b597f7e928439af5a643923615b, type: 3}
---- !u!4 &154389331 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4980133664077404076, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-  m_PrefabInstance: {fileID: 9052568055982506368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &163574927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54619,11 +54614,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6603488554207994483, guid: 98f5378049f9b5745a77677f581b32b1, type: 3}
   m_PrefabInstance: {fileID: 912791638}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &921133882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4980133662424445430, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-  m_PrefabInstance: {fileID: 9052568055982506368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &933662391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61386,6 +61376,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c5a05b9fd058b40bb454fecd50c7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  endEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   optionalObjective: 0
   OptionalObjective: {fileID: 0}
   ExitOn: 0
@@ -95158,6 +95162,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c5a05b9fd058b40bb454fecd50c7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  endEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   optionalObjective: 0
   OptionalObjective: {fileID: 0}
   ExitOn: 0
@@ -121903,10 +121921,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425754, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052568057076425754, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
@@ -121922,22 +121936,6 @@ PrefabInstance:
       propertyPath: ConfigText
       value: 
       objectReference: {fileID: 959166107}
-    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: HandControllerL
-      value: 
-      objectReference: {fileID: 921133882}
-    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: HandControllerR
-      value: 
-      objectReference: {fileID: 154389331}
-    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: HandDragExponent
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: HandDragMultiplier
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandControlMovement
       value: 0

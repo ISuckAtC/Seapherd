@@ -8,6 +8,7 @@ public class EntitySheep : MonoBehaviour
     public float DetectionRange;
     public float DirectionInfluence;
     public float ScareInfluence;
+    public float CenterBias;
     public float Speed;
     public float Runtime;
     public float CurrentSpeed;
@@ -131,6 +132,16 @@ public class EntitySheep : MonoBehaviour
                     averageDirection /= fishes.Length;
 
                     transform.forward = Vector3.Lerp(transform.forward, averageDirection, DirectionInfluence);
+
+                    // Find the average position of all transforms in the fishes array
+                    Vector3 averagePosition = Vector3.zero;
+                    foreach (Collider fish in fishes)
+                    {
+                        averagePosition += fish.transform.position;
+                    }
+                    averagePosition /= fishes.Length;
+
+                    transform.forward = Vector3.Lerp(transform.forward, averagePosition - transform.position, CenterBias);
                 }
             }
         }
