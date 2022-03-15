@@ -7,9 +7,10 @@ using FMODUnity;
 public class IntroSequence : MonoBehaviour
 {
     //public FMODUnity.EventReference lineA;
-    public FMOD.Studio.EventInstance eventInstance;
-    public AudioSource audioSource;
-    public AudioClip[] clips;
+    FMOD.Studio.EventInstance eventInstance;
+    public FMODUnity.EventReference dadlanteanEvent;
+    //public AudioSource audioSource;
+    //public AudioClip[] clips;
     public Animator anim;
     int i;
 
@@ -26,23 +27,25 @@ public class IntroSequence : MonoBehaviour
         soundName.start();
         soundName.release();
     }
-    // Start is called before the first frame update
-    /*void Start()
+    void Start()
     {
-        anim.SetTrigger("LookAtDoor");
-        anim.SetTrigger("LookAtDad");
-        anim.SetTrigger("LeaveHouse");
-    }*/
-    // Update is called once per frame
+        eventInstance = FMODUnity.RuntimeManager.CreateInstance(dadlanteanEvent);
+        ATTRIBUTES_3D attributes;
+        attributes.position = this.transform.position.ToFMODVector();
+        attributes.velocity = this.GetComponent<Rigidbody>().velocity.ToFMODVector();
+        attributes.forward = this.transform.forward.ToFMODVector();
+        attributes.up = this.transform.up.ToFMODVector();
+        eventInstance.set3DAttributes(attributes);
+
+        eventInstance.start();
+        eventInstance.release();
+    }
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Animals/BearGrab");
-        //}
-
-        if (Input.anyKeyDown && eventInstance.getParameterByName("DadState", ))
+        if (Input.anyKeyDown)
         {
+            UnityEngine.Debug.Log("Pressed any key");
+            i++;
             switch (i)
             {
                 case 1:

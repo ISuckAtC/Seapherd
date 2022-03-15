@@ -377,6 +377,51 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+--- !u!1 &103650825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9052568057076425752, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+  m_PrefabInstance: {fileID: 103650824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &103650826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103650825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd1fe76b28c3c8449b60c88b9641a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dadlanteanEvent:
+    Guid:
+      Data1: 1469370825
+      Data2: 1316055486
+      Data3: -1927566661
+      Data4: 2089838547
+    Path: event:/VO/Dadlantean/Dadlantean
+  anim: {fileID: 103650827}
+--- !u!95 &103650827
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103650825}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72e846519623d46459d4f68c7b13a2dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &143479828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5784,7 +5829,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 998170957}
-  - component: {fileID: 998170958}
   m_Layer: 0
   m_Name: Intro
   m_TagString: Untagged
@@ -5815,28 +5859,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &998170958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998170956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd1fe76b28c3c8449b60c88b9641a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  clips:
-  - {fileID: 8300000, guid: cc037c59fc194ab46b421cc1211d9aea, type: 3}
-  - {fileID: 8300000, guid: 9330f3ba4e72f8941afee23f60a4a3ae, type: 3}
-  - {fileID: 8300000, guid: 03036b48b780a4b4fbfb497debe2ad6c, type: 3}
-  - {fileID: 8300000, guid: 6fada35c1fefa0b46bfb6841a73d00fc, type: 3}
-  - {fileID: 8300000, guid: 9e86ebf5321f0064a824e66cf9e5ccc1, type: 3}
-  - {fileID: 8300000, guid: 8d5e3790d392def44806a0d4f8131117, type: 3}
-  - {fileID: 8300000, guid: 46e1eca27c3e3084583d02492c538a0f, type: 3}
-  anim: {fileID: 377822622}
 --- !u!1001 &999898831
 PrefabInstance:
   m_ObjectHideFlags: 0
