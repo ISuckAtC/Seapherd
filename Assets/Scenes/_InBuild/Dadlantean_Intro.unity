@@ -698,7 +698,8 @@ PrefabInstance:
       propertyPath: Marker
       value: 
       objectReference: {fileID: 523896315}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
 --- !u!1 &110999867
 GameObject:
@@ -7908,13 +7909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd1fe76b28c3c8449b60c88b9641a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineA:
-    Guid:
-      Data1: -1198575528
-      Data2: 1334346569
-      Data3: 51766422
-      Data4: 2010130552
-    Path: event:/SFX/Animals/Bear
   audioSource: {fileID: 0}
   clips:
   - {fileID: 8300000, guid: cc037c59fc194ab46b421cc1211d9aea, type: 3}
