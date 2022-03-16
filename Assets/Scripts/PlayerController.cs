@@ -396,7 +396,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if (Input.GetButtonDown("A"))
+        if (Input.GetButtonDown("B"))
         {
             Vector3 averagePosition = Vector3.zero;
             foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
@@ -409,6 +409,12 @@ public class PlayerController : MonoBehaviour
                 fish.ForceGroup(averagePosition);
             }
         }
+
+        if (Input.GetButton("A"))
+        {
+            
+        }
+
         if (Input.GetButtonDown("Y"))
         {
             SpeedMagic(5);

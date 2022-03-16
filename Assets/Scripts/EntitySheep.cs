@@ -9,6 +9,8 @@ public class EntitySheep : MonoBehaviour
     public float DirectionInfluence;
     public float ScareInfluence;
     public float CenterBias;
+    public float GroundHoverHeight;
+    public float SocialDistancing;
     public float Speed;
     public float Runtime;
     public float CurrentSpeed;
@@ -143,6 +145,19 @@ public class EntitySheep : MonoBehaviour
 
                     transform.forward = Vector3.Lerp(transform.forward, averagePosition - transform.position, CenterBias);
                 }
+            }
+
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, GroundHoverHeight, (1 << LayerMask.NameToLayer("Ground"))))
+            {
+                float hitDistance = hit.distance;
+                transform.forward = Vector3.Lerp(transform.forward, Vector3.up, 1f - (hitDistance / GroundHoverHeight));
+            }
+
+            Collider[] hits = Physics.OverlapSphere(transform.position, SocialDistancing, 1 << LayerMask.NameToLayer("Sheep")).Where(x => x.gameObject != gameObject).ToArray();
+            foreach (Collider sheep in hits)
+            {
+                Vector3 direction = sheep.transform.position - transform.position;
+                transform.forward = Vector3.Lerp(transform.forward, direction, 1f - (Vector3.Distance(transform.position, sheep.transform.position) / SocialDistancing));
             }
         }
     EscapeOrders:
