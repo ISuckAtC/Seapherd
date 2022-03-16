@@ -79,7 +79,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
         }
         else
         {
-            GM.CurrentMission = MissionNumber+1;
+            GM.CurrentMission = MissionNumber+2;
             SceneManager.LoadScene(GM.CurrentMission);
         }
     }
