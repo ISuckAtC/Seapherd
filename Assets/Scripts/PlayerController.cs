@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
 
-        if (Input.GetButtonDown("B"))
+        /*if (Input.GetButtonDown("B"))
         {
             if (handControlConfigMin)
             {
@@ -302,10 +302,11 @@ public class PlayerController : MonoBehaviour
         {
             speedMod = 0f;
         }
-        else if (Input.GetAxisRaw("RGrip") > 0.5f) // TODO: Add a button to hold to move
+        */
+        if (Input.GetAxisRaw("RGrip") > 0.5f) // TODO: Add a button to hold to move
         {
             Vector3 handPosition = HandControllerR.position;
-            float distance = Vector3.Distance(HandOrigin.position, handPosition);
+            float distance = Vector3.Distance(Camera.main.transform.position, handPosition);
             if (distance < handControlMin)
             {
                 speedMod = 0f;
@@ -316,13 +317,14 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                speedMod = distance / handControlMax;
+                speedMod = 1f;
             }
-            direction = (handPosition - HandOrigin.position).normalized;
+            direction = (handPosition - Camera.main.transform.position).normalized;
         }
     }
     void VRDraggingControls()
     {
+        /*
         if (Input.GetButton("LStickPush") && Input.GetButton("RStickPush"))
         {
             UnityEngine.Debug.Log("Quit");
@@ -332,6 +334,7 @@ public class PlayerController : MonoBehaviour
                     Application.Quit(0);
 #endif
         }
+        */
 
         FaceButtonControls();
 
@@ -367,22 +370,9 @@ public class PlayerController : MonoBehaviour
                 PauseScreen.GetComponent<PauseMenu>().TogglePause();
             }
         }
-
-
-        if (Input.GetButtonDown("RStickPush"))
+        if (Input.GetAxisRaw("RShoulder") > 0.5f)
         {
-            int index = (int)Control;
-            index++;
-            if (index >= 4)
-            {
-                index = 1;
-            }
-            Control = (ControlType)index;
-            GameManager._Settings.controlType = Control;
-        }
-        if (Input.GetButtonDown("X"))
-        {
-            if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")|1<< LayerMask.NameToLayer("Bear")))
+            if (Physics.Raycast(Camera.main.transform.position, (HandControllerR.transform.position - Camera.main.transform.position).normalized, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
             {
                 if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
                 {
@@ -405,11 +395,18 @@ public class PlayerController : MonoBehaviour
                 {
                     hit.transform.GetComponent<MissionGiver>().StartMission();
                 }
-                if(hit.transform.tag == "Bear")
-                {
-                   // Dog.GetComponent<EntityDog>().State = DogState.Chase;
-                }
             }
+        }
+        if (Input.GetButtonDown("RStickPush"))
+        {
+            int index = (int)Control;
+            index++;
+            if (index >= 4)
+            {
+                index = 1;
+            }
+            Control = (ControlType)index;
+            GameManager._Settings.controlType = Control;
         }
         /*if (Input.GetButtonDown("B"))
         {
@@ -437,6 +434,19 @@ public class PlayerController : MonoBehaviour
 
             Dog.GetComponent<EntityDog>().State = DogState.Herd;
             Dog.GetComponent<EntityDog>().HerdDirection = direction;
+        }
+
+        if (Input.GetButtonDown("X"))
+        {
+            Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
+
+            if (col.Length > 0)
+            {
+                foreach (Collider c in col)
+                {
+                    c.GetComponentInParent<EntityBear>().Scare(ThreatenAmount);
+                }
+            }
         }
 
         if (Input.GetButtonDown("Y"))
