@@ -9,7 +9,7 @@ using FMODUnity;
 
 public class PlayerController : MonoBehaviour
 {
-    public FMODUnity.EventReference pickupEvent, magicEvent, boostMagicEvent; //So far using only pickupEvent. The playerSpeedWhoosh will not be among these
+    public FMODUnity.EventReference pickupEvent, magicEvent, boostMagicEvent, whistleEvent; //So far using only pickupEvent. The playerSpeedWhoosh will not be among these
 
     public float Speed;
     public float StoppingBoost;
@@ -434,6 +434,16 @@ public class PlayerController : MonoBehaviour
 
             Dog.GetComponent<EntityDog>().State = DogState.Herd;
             Dog.GetComponent<EntityDog>().HerdDirection = direction;
+
+            var whistleSound = FMODUnity.RuntimeManager.CreateInstance(whistleEvent);
+            ATTRIBUTES_3D attributes;
+            attributes.position = this.transform.position.ToFMODVector();
+            attributes.velocity = rb.velocity.ToFMODVector();
+            attributes.forward = this.transform.forward.ToFMODVector();
+            attributes.up = this.transform.up.ToFMODVector();
+            whistleSound.set3DAttributes(attributes);
+            whistleSound.start();
+            whistleSound.release();
         }
 
         if (Input.GetButtonDown("X"))

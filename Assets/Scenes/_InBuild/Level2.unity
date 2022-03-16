@@ -6304,6 +6304,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[0].SpawnObject
+      value: 
+      objectReference: {fileID: 4867042258905506285, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[1].SpawnObject
+      value: 
+      objectReference: {fileID: 4867042258905506285, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[2].SpawnObject
+      value: 
+      objectReference: {fileID: 4867042258905506285, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[0].SpawnPosition
+      value: 
+      objectReference: {fileID: 862706446}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[1].SpawnPosition
+      value: 
+      objectReference: {fileID: 862706446}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[2].SpawnPosition
+      value: 
+      objectReference: {fileID: 862706446}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
 --- !u!4 &854392832 stripped
@@ -6511,6 +6539,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5fabefdf9a0dec9418cd807863d7e191, type: 3}
   m_PrefabInstance: {fileID: 862607861}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &862706445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 862706446}
+  m_Layer: 0
+  m_Name: BearSpawnPont (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &862706446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862706445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 141, y: 602.1, z: -75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &864703330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13579,6 +13638,13 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  whistleEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   Speed: 15
   StoppingBoost: 30
   ThreatenRange: 0
@@ -14086,6 +14152,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[0].SpawnObject
+      value: 
+      objectReference: {fileID: 4867042258905506285, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[1].SpawnObject
+      value: 
+      objectReference: {fileID: 4867042258905506285, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[0].SpawnPosition
+      value: 
+      objectReference: {fileID: 1152668835}
+    - target: {fileID: 5477549180541939003, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
+      propertyPath: Spawns.Array.data[1].SpawnPosition
+      value: 
+      objectReference: {fileID: 1815902389}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cf4dfa12b4a333458ba3f7a0b501fbd, type: 3}
 --- !u!4 &1684452633 stripped
