@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7177635438059463003
+--- !u!1 &5810963307210545417
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7177635438059463002}
-  - component: {fileID: 3969709838699231347}
+  - component: {fileID: 5810963307210545416}
+  - component: {fileID: 5810963307210545419}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: DialoguePrimitive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7177635438059463002
+--- !u!4 &5810963307210545416
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7177635438059463003}
+  m_GameObject: {fileID: 5810963307210545417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,37 +32,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3969709838699231347
+--- !u!114 &5810963307210545419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7177635438059463003}
+  m_GameObject: {fileID: 5810963307210545417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e68299a349b78488017c96e8c5f8b0, type: 3}
+  m_Script: {fileID: 11500000, guid: ea9f8c142bd8e374ea26a279da1e1ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SheepCount: 0
-  SheepTotal: 0
-  CurrentMission: 0
-  TotalMissionCompletion: 0
-  OptionalObjectiveCompleted: 0
-  MissionObjectiveText: {fileID: 0}
-  FishSheep: []
-  Player: {fileID: 0}
-  ToolTipText: {fileID: 0}
-  RevealText: {fileID: 0}
-  alt: 0
-  artifactGET: 0
-  DebugSkill: 0
-  StartBugStop: 0
-  GotoPlayer: 0
-  RunFromPlayer: 0
-  GotoMarker: 0
-  GoUp: 0
-  InTavern: 0
-  InMainMenu: 0
-  _AM: {fileID: 0}
-  SkillPoints: 0
+  ViewRange: 0
+  CloseUpDistance: 0
+  DialogueText: 
+  PreDelay: 0
+  CharacterDelay: 0
+  Chain: []
+  Chained: 0
+  UseSkip: 0

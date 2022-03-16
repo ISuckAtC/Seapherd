@@ -56,6 +56,10 @@ public class MissionNavigate : MonoBehaviour
             new System.Threading.Thread(() => 
             {
                 System.Threading.Thread.Sleep(1000);
+                if (GameManager.Instance.SheepCount > GameManager.Instance.SheepTotal / 2f)
+                {
+                    GameManager.Instance.TotalMissionCompletion++;
+                }
                 next = true;
             }).Start();
         }

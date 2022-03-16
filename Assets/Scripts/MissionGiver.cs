@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MissionGiver : MonoBehaviour, IToolTip
 {
+    public GameObject BoardM1, BoardM2, BoardM1Complete, BoardM2Complete;
     public GameObject Player;
     public GameObject ExclamationMark;
     [Header("Please put the number the mission is meant to be, from 1 and up.")]
@@ -22,17 +23,37 @@ public class MissionGiver : MonoBehaviour, IToolTip
         }
     }
     bool next;
+
+    bool talking;
+    GameObject currentTalk;
     // Start is called before the first frame update
     void Start()
     {
-
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Player = GameObject.FindGameObjectWithTag("Player");
+        if (talking)
+        {
+            if (!currentTalk)
+            {
+                talking = false;
+                if (!GameManager.Instance.alt)
+                {
+                    SceneManager.LoadScene(3 + GameManager.Instance.CurrentMission);
+                }
+                if (GameManager.Instance.TotalMissionCompletion == 2)
+                {
+                    GameManager.Instance.TotalMissionCompletion = 0;
+                    GameManager.Instance.CurrentMission = 0;
+                    SceneManager.LoadScene(0);
+                }
+                GameManager.Instance.alt = false;
+            }
+        }
         if (next)
         {
             //GameManager.Instance.alt = false;
@@ -53,11 +74,12 @@ public class MissionGiver : MonoBehaviour, IToolTip
     }
     private void OnTriggerEnter(Collider other)
     {
+        return;
         ExclamationMark.SetActive(false);
     }
     private void OnTriggerStay(Collider other)
     {
-
+        return;
         if (other.tag == "Player")
         {
             if (Input.GetKey(KeyCode.Space))
@@ -69,23 +91,52 @@ public class MissionGiver : MonoBehaviour, IToolTip
 
     public void StartMission()
     {
+        Debug.Log("Start Mission call");
+        if (talking) 
+        {
+            currentTalk.transform.GetChild(1).GetComponent<Dialogue>().Skip();
+            return;
+        }
         if (GameManager.Instance.alt)
         {
             GameManager.Instance.SplashText("Mission Complete!" + (GameManager.Instance.artifactGET ? "\n(+ you got the artifact bonus)" : "") + (GameManager.Instance.SheepCount < GameManager.Instance.SheepTotal ? "\n(- missing sheep)" : ""), 32);
-            new System.Threading.Thread(() => {
-                System.Threading.Thread.Sleep(5000);
-                next = true;
-            }).Start();
+            if (GameManager.Instance.CurrentMission == 1)
+            {
+                currentTalk = Instantiate(BoardM1Complete, new Vector3(0, 0, 0), Quaternion.identity);
+                currentTalk.transform.GetChild(1).GetComponent<Dialogue>().DialogueText = "Mission Complete!";
+                currentTalk.transform.GetChild(2).GetComponent<Dialogue>().DialogueText = "You managed to herd " + GameManager.Instance.SheepCount + " out of " + GameManager.Instance.SheepTotal + " sheep.";
+            }
+            else if (GameManager.Instance.CurrentMission == 2)
+            {
+                currentTalk = Instantiate(BoardM2Complete, new Vector3(0, 0, 0), Quaternion.identity);
+                currentTalk.transform.GetChild(1).GetComponent<Dialogue>().DialogueText = GameManager.Instance.TotalMissionCompletion >= GameManager.Instance.CurrentMission ? "Mission Complete!" : "Mission Failed!";
+                currentTalk.transform.GetChild(2).GetComponent<Dialogue>().DialogueText = "You managed to herd " + GameManager.Instance.SheepCount + " out of " + GameManager.Instance.SheepTotal + " sheep.";
+                currentTalk.transform.GetChild(3).GetComponent<Dialogue>().DialogueText = GameManager.Instance.TotalMissionCompletion >= GameManager.Instance.CurrentMission ? "The Game will now end." : "Please try again.";
+            }
+            
+            currentTalk.transform.parent = transform;
+            talking = true;
         }
         else
         {
-            GM.CurrentMission = MissionNumber+2;
-            SceneManager.LoadScene(GM.CurrentMission);
+            if (GameManager.Instance.TotalMissionCompletion == 0)
+            {
+                GameManager.Instance.CurrentMission = 1;
+                currentTalk = Instantiate(BoardM1, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+            else
+            {
+                GameManager.Instance.CurrentMission = 2;
+                currentTalk = Instantiate(BoardM2, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+            currentTalk.transform.parent = transform;
+            talking = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        return;
         if (MissionNumber > GM.TotalMissionCompletion)
         {
             ExclamationMark.SetActive(true);

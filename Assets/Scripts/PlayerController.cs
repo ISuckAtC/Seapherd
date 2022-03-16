@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         VR_Dragging
     }
     public ControlType Control;
+    private bool shoulderPressR, shoulderPressL;
     // Start is called before the first frame update
     void Start()
     {
@@ -88,8 +89,9 @@ public class PlayerController : MonoBehaviour
                 speedUp = false;
                 HandDragMultiplier -= StreamSpeedBoost;
                 speedMod -= StreamSpeedBoost;
-            } else SpeedUpTimer -= Time.deltaTime;
-        } 
+            }
+            else SpeedUpTimer -= Time.deltaTime;
+        }
 
         if (unfuckVrStart)
         {
@@ -244,7 +246,7 @@ public class PlayerController : MonoBehaviour
                     Application.Quit(0);
 #endif
         }
-        
+
         Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
@@ -373,31 +375,36 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetAxisRaw("RShoulder") > 0.5f)
         {
-            if (Physics.Raycast(Camera.main.transform.position, (HandControllerR.transform.position - Camera.main.transform.position).normalized, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
+            if (!shoulderPressR)
             {
-                if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
+                shoulderPressR = true;
+                if (Physics.Raycast(Camera.main.transform.position, (HandControllerR.transform.position - Camera.main.transform.position).normalized, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
                 {
-                    GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
-                    GameManager.Instance.artifactGET = true;
+                    if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
+                    {
+                        GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
+                        GameManager.Instance.artifactGET = true;
 
-                    var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
-                    ATTRIBUTES_3D attributes;
-                    attributes.position = this.transform.position.ToFMODVector();
-                    attributes.velocity = rb.velocity.ToFMODVector();
-                    attributes.forward = this.transform.forward.ToFMODVector();
-                    attributes.up = this.transform.up.ToFMODVector();
-                    pickupSound.set3DAttributes(attributes);
-                    pickupSound.start();
-                    pickupSound.release();
+                        var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
+                        ATTRIBUTES_3D attributes;
+                        attributes.position = this.transform.position.ToFMODVector();
+                        attributes.velocity = rb.velocity.ToFMODVector();
+                        attributes.forward = this.transform.forward.ToFMODVector();
+                        attributes.up = this.transform.up.ToFMODVector();
+                        pickupSound.set3DAttributes(attributes);
+                        pickupSound.start();
+                        pickupSound.release();
 
-                    Destroy(hit.transform.gameObject);
-                }
-                if (hit.transform.tag == "Quest")
-                {
-                    hit.transform.GetComponent<MissionGiver>().StartMission();
+                        Destroy(hit.transform.gameObject);
+                    }
+                    if (hit.transform.tag == "Quest")
+                    {
+                        hit.transform.GetComponent<MissionGiver>().StartMission();
+                    }
                 }
             }
         }
+        else if (shoulderPressR) shoulderPressR = false;
         if (Input.GetButtonDown("RStickPush"))
         {
             int index = (int)Control;
