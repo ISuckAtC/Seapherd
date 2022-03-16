@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum DogState
 {
     Stay,
     Follow,
     Go,
-    Chase
+    Chase,
+    Herd
 }
 public class EntityDog : MonoBehaviour, IToolTip
 {
@@ -16,10 +18,13 @@ public class EntityDog : MonoBehaviour, IToolTip
     public float FollowDistance;
     Rigidbody rb;
     public DogState State;
+    public Vector3 HerdDirection;
+    public float StrayDistanceThreshold;
+    public float HerdDistance;
     private Vector3 GoLocation;
     public float GoLeeway;
     public string ToolTipText;
-    public string ToolTip {get {return ToolTipText;}}
+    public string ToolTip { get { return ToolTipText; } }
     // Start is called before the first frame update
     void Start()
     {
@@ -71,11 +76,38 @@ public class EntityDog : MonoBehaviour, IToolTip
                 {
                     Bear.GetComponent<EntityBear>().Scare(Player.GetComponent<PlayerController>().ThreatenAmount);
                 }
-                if(Bear.GetComponent<EntityBear>().escaping == true)
+                if (Bear.GetComponent<EntityBear>().escaping == true)
                 {
                     State = DogState.Follow;
                 }
-                    break;
+                break;
+
+            case DogState.Herd:
+                // Get the average position of all the sheep
+                Vector3 averagePosition = Vector3.zero;
+                foreach (EntitySheep sheep in GameManager.Instance.FishSheep)
+                {
+                    averagePosition += sheep.transform.position;
+                }
+                averagePosition /= GameManager.Instance.FishSheep.Count;
+                // Get the sheep thats furthest away from the average position
+                EntitySheep furthestSheep = GameManager.Instance.FishSheep.OrderBy(x => Vector3.Distance(x.transform.position, averagePosition)).First();
+
+                // Check if the sheep is too far away from the average position
+                if (Vector3.Distance(furthestSheep.transform.position, averagePosition) > StrayDistanceThreshold)
+                {
+                    Vector3 targetPosition = furthestSheep.transform.position + (furthestSheep.transform.position - averagePosition).normalized * HerdDistance;
+                    transform.forward = (targetPosition - transform.position).normalized;
+                    rb.velocity = transform.forward * Speed;
+                }
+                else
+                {
+                    Vector3 targetPosition = averagePosition - HerdDirection.normalized * HerdDistance;
+                    transform.forward = (targetPosition - transform.position).normalized;
+                    rb.velocity = transform.forward * Speed;
+                }
+
+                break;
         }
     }
 }

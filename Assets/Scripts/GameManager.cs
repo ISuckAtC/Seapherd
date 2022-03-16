@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     public int CurrentMission, TotalMissionCompletion;
     public bool OptionalObjectiveCompleted;
     public TextMeshProUGUI MissionObjectiveText;
-    public EntitySheep[] FishSheep;
+    public List<EntitySheep> FishSheep;
     public Transform Player;
     public TextMeshProUGUI ToolTipText;
     public TextMeshProUGUI RevealText;
@@ -77,8 +78,8 @@ public class GameManager : MonoBehaviour
 
         if (scene.buildIndex > 1)
         {
-            FishSheep = GameObject.FindObjectsOfType<EntitySheep>();
-            SheepCount = SheepTotal = FishSheep.Length;
+            FishSheep = GameObject.FindObjectsOfType<EntitySheep>().ToList();
+            SheepCount = SheepTotal = FishSheep.Count;
 
             InTavern = false;
             InMainMenu = false;

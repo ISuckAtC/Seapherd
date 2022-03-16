@@ -396,7 +396,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if (Input.GetButtonDown("B"))
+        /*if (Input.GetButtonDown("B"))
         {
             Vector3 averagePosition = Vector3.zero;
             foreach (EntitySheep fish in GameObject.FindObjectsOfType<EntitySheep>())
@@ -408,11 +408,20 @@ public class PlayerController : MonoBehaviour
             {
                 fish.ForceGroup(averagePosition);
             }
+        }*/
+
+        if (Input.GetButtonDown("B"))
+        {
+            Dog.GetComponent<EntityDog>().State = DogState.Follow;
         }
 
-        if (Input.GetButton("A"))
+        if (Input.GetButtonDown("A"))
         {
-            
+            // Command dog to herd sheep in direction
+            Vector3 direction = (HandControllerR.position - Camera.main.transform.position).normalized;
+
+            Dog.GetComponent<EntityDog>().State = DogState.Herd;
+            Dog.GetComponent<EntityDog>().HerdDirection = direction;
         }
 
         if (Input.GetButtonDown("Y"))
