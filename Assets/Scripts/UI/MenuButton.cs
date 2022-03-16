@@ -38,7 +38,7 @@ public class MenuButton : MonoBehaviour
     public void LoadScene()
     {
         Debug.Log("Loading Scene: " + SceneToLoadStr);
-        if (SceneToLoadStr != null) //(SceneToLoadStr.Length > 0)
+        if (SceneToLoadStr != null && SceneToLoadStr.Length > 0)
         {
             SceneManager.LoadScene(SceneToLoadStr);
         }

@@ -17,12 +17,12 @@ public class ReturnToTavern : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
 
-            GM.TotalMissionCompletion++;
+            //GM.TotalMissionCompletion++;
             SceneManager.LoadScene("TestTavern");
         }
     }
