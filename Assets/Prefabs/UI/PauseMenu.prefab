@@ -2297,7 +2297,7 @@ MonoBehaviour:
   PauseButton: 277
   PauseScreen: {fileID: 5700258261901679500}
   Player: {fileID: 0}
-  DistanceOffset: 30
+  DistanceOffset: 2
   IsPaused: 0
 --- !u!1 &5700258261734773378
 GameObject:
