@@ -11,7 +11,7 @@ public class PlayerSkills : MonoBehaviour
     [Header("Each Skill needs a unique ID that tells the GameManager which skills are unlocked.")]
     public string SkillID;
     [Space(10f)]
-    public int Value = 1;
+    public int PurchaseCost = 1;
 
     public int SkillLevel, SkillCap;
 
@@ -51,7 +51,7 @@ public class PlayerSkills : MonoBehaviour
     public void BuySkill()
     {
         if (TalentTree.GM.SkillPoints < 1 || SkillLevel >= SkillCap) return;
-        TalentTree.GM.SkillPoints -= Value;
+        TalentTree.GM.SkillPoints -= PurchaseCost;
         SkillLevel++;
         if (ConnectedSkills != null)
         {
@@ -63,7 +63,7 @@ public class PlayerSkills : MonoBehaviour
                 }
             }
         }
-        TalentTree.GM.UnlockSkill($"{SkillID}{SkillLevel}");
+        TalentTree.GM.UnlockSkill($"{SkillID}-{SkillLevel}");
 
         TalentTree.UpdateAllSkillUI();
     }

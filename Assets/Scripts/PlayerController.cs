@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject GripR, GripL;
 
+    public GameObject PauseScreen;
     public enum ControlType
     {
         KBM,
@@ -68,6 +69,11 @@ public class PlayerController : MonoBehaviour
             unfuckVrStart = true;
         })).Start();
         if (Control != ControlType.VR_Leading) ConfigText.text = "";
+
+        if (GameObject.FindGameObjectWithTag("PauseMenu") != null)
+        {
+            PauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
+        }
     }
 
 
@@ -354,6 +360,15 @@ public class PlayerController : MonoBehaviour
 
     void FaceButtonControls()
     {
+        if (Input.GetButtonDown("LStickPush"))
+        {
+            if (PauseScreen != null)
+            {
+                PauseScreen.GetComponent<PauseMenu>().TogglePause();
+            }
+        }
+
+
         if (Input.GetButtonDown("RStickPush"))
         {
             int index = (int)Control;

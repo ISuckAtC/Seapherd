@@ -9,6 +9,7 @@ TagManager:
   - Exit
   - GrazingZone
   - Quest
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
