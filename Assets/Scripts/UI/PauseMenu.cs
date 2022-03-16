@@ -23,9 +23,12 @@ public class PauseMenu : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(GameObject.FindGameObjectWithTag("Player") != null)
+        if (Player == null)
         {
-            Player = GameObject.FindGameObjectWithTag("Player");
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                Player = GameObject.FindGameObjectWithTag("Player");
+            }
         }
     }
 
