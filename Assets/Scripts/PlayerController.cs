@@ -392,7 +392,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if(hit.transform.tag == "Bear")
                 {
-                    Dog.GetComponent<EntityDog>().State = DogState.Chase;
+                   // Dog.GetComponent<EntityDog>().State = DogState.Chase;
                 }
             }
         }
