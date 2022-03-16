@@ -15,7 +15,7 @@ public class MissionStart : MonoBehaviour
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        GM.CurrentMission = CurrentMission;
+        //GM.CurrentMission = CurrentMission;
     }
 
     // Update is called once per frame

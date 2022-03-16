@@ -529,6 +529,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4be302211f455446a85c2aed9a28334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoardM1: {fileID: 1193107125325650560, guid: 4c00bfe31f57d6e4bb9f2a2579aae829, type: 3}
+  BoardM2: {fileID: 1193107125325650560, guid: 58368504acc04854d9766339b2d250f4, type: 3}
+  BoardM1Complete: {fileID: 1193107125325650560, guid: b4fe10fae98c8464abe7920dd7b8bbb9, type: 3}
+  BoardM2Complete: {fileID: 1193107125325650560, guid: 1b4835deee730d248a848b110ece2430, type: 3}
   Player: {fileID: 76446188}
   ExclamationMark: {fileID: 1751211261}
   MissionNumber: 1
