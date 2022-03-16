@@ -191,10 +191,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Q) && !speedUp)
-        {
-            SpeedMagic(5);
-        }
+        //if (Input.GetKeyDown(KeyCode.Q) && !speedUp) 
+        //{
+        //    SpeedMagic(5);
+        //}
+        //this didnt work
         if (Input.GetMouseButtonDown(1))
         {
             Vector3 averagePosition = Vector3.zero;
