@@ -11245,18 +11245,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5700258261714159288, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700258261714159288, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700258261714159288, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700258261714159288, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -11296,34 +11284,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5700258261714159288, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5700258261714159290, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5700258261714159290, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5700258261901679474, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
-      propertyPath: _GM
-      value: 
-      objectReference: {fileID: 1681256707}
-    - target: {fileID: 5700258261901679479, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 2024225432}
-    - target: {fileID: 6945726911406415278, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 925575913}
-    - target: {fileID: 8357941591931755093, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 925575913}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854a5798d008b354088db07ed85d9f41, type: 3}
 --- !u!1001 &8953185583322821705
