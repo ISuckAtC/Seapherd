@@ -52,7 +52,7 @@ public class EntityBear : MonoBehaviour
         }
         else
         {
-            if (GameManager.Instance.FishSheep.Length == 0) return;
+            if (GameManager.Instance.FishSheep.Count == 0) return;
             EntitySheep closestFish = GameManager.Instance.FishSheep.OrderBy(x => Vector3.Distance(x.transform.position, transform.position)).First();
             if (closestFish != null)
             {

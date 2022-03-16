@@ -198,6 +198,7 @@ public class EntitySheep : MonoBehaviour
     public void Kill()
     {
         GameManager.Instance.SheepCount--;
+        GameManager.Instance.FishSheep.Remove(this);
         Destroy(gameObject);
     }
 }
