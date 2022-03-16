@@ -602,12 +602,20 @@ MonoBehaviour:
       Data3: 1047194010
       Data4: -1071542846
     Path: event:/SFX/Player/PlayerBoost
+  whistleEvent:
+    Guid:
+      Data1: -1319256571
+      Data2: 1230451412
+      Data3: 1463249081
+      Data4: 900426828
+    Path: event:/SFX/Player/PlayerWhistle
   Speed: 10
   StoppingBoost: 8
   ThreatenRange: 50
   ThreatenAmount: 10
   InteractRange: 10
   Marker: {fileID: 0}
+  Dog: {fileID: 0}
   stopMarker: 0
   HandControllerR: {fileID: 4980133664077404076}
   HandControllerL: {fileID: 4980133662424445430}
@@ -621,8 +629,11 @@ MonoBehaviour:
   UnfuckValue: 37
   HandDragExponent: 1
   HandDragMultiplier: 10
+  StreamSpeedBoost: 0
+  SpeedUpTimer: 0
   GripR: {fileID: 0}
   GripL: {fileID: 0}
+  PauseScreen: {fileID: 0}
   Control: 0
 --- !u!114 &9052568057076425755
 MonoBehaviour:
