@@ -17479,14 +17479,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.85
       objectReference: {fileID: 0}
-    - target: {fileID: 9052568057076425755, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: m_CameraYOffset
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052568057076425755, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: m_CameraFloorOffsetObject
-      value: 
-      objectReference: {fileID: 9052568055982506369}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: Dog
       value: 
