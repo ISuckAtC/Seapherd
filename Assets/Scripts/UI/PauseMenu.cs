@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameManager GM;
 
     public KeyCode PauseButton = KeyCode.Escape; //ControllerPause = KeyCode.
 
@@ -30,11 +31,27 @@ public class PauseMenu : MonoBehaviour
                 Player = GameObject.FindGameObjectWithTag("Player");
             }
         }
+
+        if (GM == null)
+        {
+            if (GameObject.Find("GameManager") != null)
+            {
+                Player = GameObject.Find("GameManager");
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+            if (GM != null && GameManager._Settings.controlType == PlayerController.ControlType.KBM && IsPaused)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            if (GM != null && !IsPaused) // && GameManager._Settings.controlType == PlayerController.ControlType.KBM)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
     }
 
     public void TogglePause()

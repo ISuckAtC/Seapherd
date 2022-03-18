@@ -157,8 +157,9 @@ public class PlayerController : MonoBehaviour
     }
     void KBMControls()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && Input.GetKey(KeyCode.LeftShift))
         {
+
             UnityEngine.Debug.Log("Quit");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -166,6 +167,12 @@ public class PlayerController : MonoBehaviour
                     Application.Quit(0);
 #endif
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseScreen.GetComponent<PauseMenu>().TogglePause();
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
