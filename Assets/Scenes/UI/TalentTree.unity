@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: 
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: 
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -1968,7 +1968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: 
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: PlayerSpearThrow
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Spear Throw
@@ -2558,7 +2558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: 
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -2853,7 +2853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: 
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -3814,7 +3814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: 
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -3974,7 +3974,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8953185584541454046, guid: 0fdb83b35ac54414981b58b87f7bc610, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0fdb83b35ac54414981b58b87f7bc610, type: 3}
 --- !u!1 &1253285480
 GameObject:
@@ -4615,7 +4616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: PlayerSpeed
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -5114,7 +5115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: 
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -5317,7 +5318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: DogfishWaitCommand
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 1
   SkillName: Wait command
@@ -5816,7 +5817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: 
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 2
   SkillName: Speed Increase
@@ -6496,7 +6497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillID: DogfishHerdCommand
-  Value: 1
+  PurchaseCost: 1
   SkillLevel: 0
   SkillCap: 1
   SkillName: Herding
