@@ -6582,6 +6582,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1711813854295559472, guid: eb77bd4e97ca317408dc093b4bca3efb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ee2574c270223a45be89c5479e3d9f9, type: 2}
     - target: {fileID: 3549049011327260557, guid: eb77bd4e97ca317408dc093b4bca3efb, type: 3}
       propertyPath: m_Name
       value: Vibes
