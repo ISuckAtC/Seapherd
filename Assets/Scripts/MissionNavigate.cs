@@ -21,10 +21,12 @@ public class MissionNavigate : MonoBehaviour
     {
         if (next)
         {
+            if (GameManager.Instance.SheepCount > GameManager.Instance.SheepTotal / 2f)
+            {
+                GameManager.Instance.TotalMissionCompletion++;
+            }
             GameManager.Instance.alt = true;
             UnityEngine.SceneManagement.SceneManager.LoadScene("TestTavern");
-
-            GameManager.Instance.TotalMissionCompletion++;
         }
     }
 
@@ -32,11 +34,11 @@ public class MissionNavigate : MonoBehaviour
     {
         for (int i = 0; i < Waypoints.Length; i++)
         {
-            MissionWaypoint waypoint = Waypoints[i].GetComponent<MissionWaypoint>();;
+            MissionWaypoint waypoint = Waypoints[i].GetComponent<MissionWaypoint>(); ;
             waypoint.ParentNavigator = this;
             waypoint.Deactivate();
             waypoint.SelfIndex = i;
-            
+
         }
     }
 
@@ -53,13 +55,9 @@ public class MissionNavigate : MonoBehaviour
         else
         {
             GameManager.Instance.MissionObjectiveText.text = "COMPLETE!";
-            new System.Threading.Thread(() => 
+            new System.Threading.Thread(() =>
             {
                 System.Threading.Thread.Sleep(1000);
-                if (GameManager.Instance.SheepCount > GameManager.Instance.SheepTotal / 2f)
-                {
-                    GameManager.Instance.TotalMissionCompletion++;
-                }
                 next = true;
             }).Start();
         }

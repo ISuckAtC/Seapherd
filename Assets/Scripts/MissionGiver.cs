@@ -45,7 +45,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
                 {
                     SceneManager.LoadScene(3 + GameManager.Instance.CurrentMission);
                 }
-                if (GameManager.Instance.TotalMissionCompletion == 2)
+                if (GameManager.Instance.TotalMissionCompletion == 2 && GameManager.Instance.CurrentMission == 2)
                 {
                     GameManager.Instance.TotalMissionCompletion = 0;
                     GameManager.Instance.CurrentMission = 0;
