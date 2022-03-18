@@ -129,8 +129,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  Bear: {fileID: 0}
   Speed: 20
   FollowDistance: 5
   State: 1
+  HerdDirection: {x: 0, y: 0, z: 0}
+  StrayDistanceThreshold: 10
+  HerdDistance: 8
   GoLeeway: 0
   ToolTipText: Dogfish (cute)

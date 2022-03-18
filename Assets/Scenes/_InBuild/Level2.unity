@@ -11182,6 +11182,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
+--- !u!1 &1361363264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3316785320041730749, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
+  m_PrefabInstance: {fileID: 1361363263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1365563445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17487,6 +17492,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 793509217}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: Dog
+      value: 
+      objectReference: {fileID: 1361363264}
+    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: Control
       value: 3
       objectReference: {fileID: 0}
@@ -17508,7 +17517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandDragExponent
-      value: 1.38
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: StreamSpeedBoost
@@ -17516,7 +17525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandDragMultiplier
-      value: 17.96
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandControlMovement
