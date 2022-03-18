@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
             InMainMenu = true;
         }
 
-        if (scene.buildIndex > 1)
+        if (scene.buildIndex > 2)
         {
             FishSheep = GameObject.FindObjectsOfType<EntitySheep>().ToList();
             SheepCount = SheepTotal = FishSheep.Count;
@@ -84,17 +84,31 @@ public class GameManager : MonoBehaviour
             InTavern = false;
             InMainMenu = false;
         }
-        if (scene.buildIndex == 1)
+        if (scene.buildIndex == 2)
         {
             InTavern = true;
             InMainMenu = false;
         }
-      
-        MissionObjectiveText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
-        ToolTipText = GameObject.Find("Tooltip").GetComponent<TextMeshProUGUI>();
-        RevealText = GameObject.Find("RevealText").GetComponent<TextMeshProUGUI>();
-        MissionObjectiveText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
+        if (GameObject.Find("MissionObjectiveText"))
+        {
+            MissionObjectiveText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
+        }
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            Player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        if (GameObject.Find("ToolTipText"))
+        {
+            ToolTipText = GameObject.Find("ToolTipText").GetComponent<TextMeshProUGUI>();
+        }
+        if (GameObject.Find("RevealText"))
+        {
+            RevealText = GameObject.Find("RevealText").GetComponent<TextMeshProUGUI>();
+        }
+        if (GameObject.Find("MissionObjectiveText"))
+        {
+            MissionObjectiveText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
+        }
     }
 
     // Update is called once per frame

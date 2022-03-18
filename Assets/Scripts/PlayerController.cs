@@ -119,6 +119,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //Debug.Log(direction);
+        /*
         if (Physics.Raycast(transform.position + new Vector3(0.0f, 0.5f, 0.0f), transform.forward, out RaycastHit hit, InteractRange))
         {
             if (hit.transform.TryGetComponent<IToolTip>(out IToolTip toolTip))
@@ -134,6 +135,7 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.ToolTipText.text = "";
         }
+        */
 
         if (Control != ControlType.VR_Dragging)
         {
