@@ -390,6 +390,7 @@ public class PlayerController : MonoBehaviour
                     if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
                     {
                         GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
+                        GameManager.Instance.FoundArtifacts++;
                         GameManager.Instance.artifactGET = true;
 
                         var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);

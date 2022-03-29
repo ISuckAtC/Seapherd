@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     }
     public static Settings _Settings;
     public static GameManager Instance;
-
+    public int FoundArtifacts, ConspiracyHandedIn, FatherHandedIn;
     public int SheepCount, SheepTotal;
     public int CurrentMission, TotalMissionCompletion;
     public bool OptionalObjectiveCompleted;
