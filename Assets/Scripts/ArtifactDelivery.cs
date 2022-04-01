@@ -21,18 +21,24 @@ public class ArtifactDelivery : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(Input.GetAxisRaw("RShoulder") > 0.5f && GM.artifactGET == true)
+        
+        if(other.tag == "Player")
         {
-            if(Conspiracy == true)
+            transform.LookAt(other.transform);
+            if (Input.GetAxisRaw("RShoulder") > 0.5f && GM.artifactGET == true)
             {
-                GM.ConspiracyHandedIn++;
-                GM.artifactGET = false;
-            }
-            if(Conspiracy == false)
-            {
-                GM.FatherHandedIn++;
-                GM.artifactGET = false;
+                if (Conspiracy == true)
+                {
+                    GM.ConspiracyHandedIn++;
+                    GM.artifactGET = false;
+                }
+                if (Conspiracy == false)
+                {
+                    GM.FatherHandedIn++;
+                    GM.artifactGET = false;
+                }
             }
         }
+        
     }
 }
