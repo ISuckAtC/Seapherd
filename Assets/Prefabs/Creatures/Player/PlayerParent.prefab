@@ -628,7 +628,7 @@ MonoBehaviour:
   ExternalSpeedMod: 1
   UnfuckValue: 37
   HandDragExponent: 1.7
-  HandDragMultiplier: 22
+  HandDragMultiplier: 30
   StreamSpeedBoost: 0
   SpeedUpTimer: 0
   GripR: {fileID: 0}
