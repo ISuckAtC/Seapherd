@@ -56,6 +56,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestMission2.unity
     guid: b18f59e5b259cae4ea97cce3c64d22f9
+  - enabled: 1
+    path: Assets/Scenes/MultiTestInner.unity
+    guid: c02aca1a19174ce49bd18d1bdc5f564a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1596868a1dca014459e09533da20c11f, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: a719677b57edf1e4ab26971bd0103d37, type: 2}
