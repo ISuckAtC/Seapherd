@@ -12,6 +12,7 @@ TagManager:
   - PauseMenu
   - Board
   - TrailerCamera
+  - KillerFishSpawn
   layers:
   - Default
   - TransparentFX

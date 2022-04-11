@@ -6,6 +6,8 @@ public class ArtifactDelivery : MonoBehaviour
 {
     [Header("Conspiracy true means this is the Conspiracy Theorist")]
     public bool Conspiracy;
+    [Header("EasterEgg is used for alternate hidden handins for people, either purely for the joke or a reference")]
+    public bool EasterEgg;
     public GameManager GM;
     // Start is called before the first frame update
     void Start()
@@ -31,11 +33,29 @@ public class ArtifactDelivery : MonoBehaviour
                 {
                     GM.ConspiracyHandedIn++;
                     GM.artifactGET = false;
+                    if(GM.HDD == true)
+                    {
+                        GM.HDDConspiracy = true;
+                        GM.HDD = false;
+                        
+                    }
                 }
                 if (Conspiracy == false)
                 {
                     GM.FatherHandedIn++;
                     GM.artifactGET = false;
+                    if (GM.HDD == true)
+                    {
+                        GM.HDDFather = true;
+                        GM.HDD = false;
+                        
+                    }
+                }
+                if(EasterEgg == true)
+                {
+                    GM.artifactGET = false;
+                   
+                    GM.HDDEasterEgg = true;
                 }
             }
         }

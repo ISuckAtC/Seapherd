@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ToolTipText;
     public TextMeshProUGUI RevealText;
     public bool alt;
-    public bool artifactGET;
+    public bool artifactGET, HDD, HDDConspiracy, HDDFather, HDDEasterEgg;
     public int DebugSkill;
     public bool StartBugStop;
     public bool GotoPlayer, RunFromPlayer, GotoMarker, GoUp;
