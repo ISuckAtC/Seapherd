@@ -47,7 +47,8 @@ public class Joystick_KC : MonoBehaviour
                 if (Input.GetButtonDown("A")) step++;
                 break;
             case 10:
-                KC = true;
+                KC=!KC;
+                step = 0;
                 break;
         }
     }

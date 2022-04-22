@@ -20,5 +20,10 @@ public class FabriceEgg : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             Fabrice.SetActive(true);
         }
+        else
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            Fabrice.SetActive(false);
+        }
     }
 }
