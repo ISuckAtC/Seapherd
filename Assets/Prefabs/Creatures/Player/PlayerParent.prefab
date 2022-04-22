@@ -634,6 +634,7 @@ MonoBehaviour:
   GripR: {fileID: 0}
   GripL: {fileID: 0}
   PauseScreen: {fileID: 0}
+  DirectionArrowPrefab: {fileID: 1494307965788210724, guid: 569607ecdf3047f489f84e328a5c519e, type: 3}
   Control: 0
 --- !u!114 &9052568057076425755
 MonoBehaviour:

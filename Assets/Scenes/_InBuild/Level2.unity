@@ -13774,6 +13774,7 @@ MonoBehaviour:
   GripR: {fileID: 0}
   GripL: {fileID: 0}
   PauseScreen: {fileID: 0}
+  DirectionArrowPrefab: {fileID: 0}
   Control: 0
 --- !u!54 &1646736195
 Rigidbody:

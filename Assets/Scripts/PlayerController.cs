@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     public GameObject GripR, GripL;
 
     public GameObject PauseScreen;
+    public GameObject DirectionArrowPrefab;
+    private GameObject directionArrow;
     public enum ControlType
     {
         KBM,
@@ -61,6 +63,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!directionArrow)
+        {
+            directionArrow = Instantiate(DirectionArrowPrefab, Vector3.zero, Quaternion.identity);
+        }
+        directionArrow.SetActive(false);
         Control = GameManager._Settings.controlType;
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
@@ -398,12 +405,12 @@ public class PlayerController : MonoBehaviour
                         GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
                         GameManager.Instance.FoundArtifacts++;
                         GameManager.Instance.artifactGET = true;
-                        if(hit.transform.GetComponent<SpecificArtifact>().HDD == true)
+                        if (hit.transform.GetComponent<SpecificArtifact>().HDD == true)
                         {
                             GameManager.Instance.HDD = true;
                         }
 
-                            var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
+                        var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
                         ATTRIBUTES_3D attributes;
                         attributes.position = this.transform.position.ToFMODVector();
                         attributes.velocity = rb.velocity.ToFMODVector();
@@ -453,8 +460,28 @@ public class PlayerController : MonoBehaviour
             Dog.GetComponent<EntityDog>().State = DogState.Follow;
         }
 
-        if (Input.GetButtonDown("A"))
+        if (Input.GetButton("A"))
         {
+            if (!directionArrow.activeSelf)
+            {
+                directionArrow.SetActive(true);
+            }
+
+            Vector3 direction = (HandControllerR.position - Camera.main.transform.position).normalized;
+            Vector3 averagePosition = Vector3.zero;
+            foreach (EntitySheep sheep in GameManager.Instance.FishSheep)
+            {
+                averagePosition += sheep.transform.position;
+            }
+            averagePosition /= GameManager.Instance.FishSheep.Count;
+
+            directionArrow.transform.position = averagePosition;
+            directionArrow.transform.forward = direction;
+        }
+
+        if (Input.GetButtonUp("A"))
+        {
+            directionArrow.SetActive(false);
             // Command dog to herd sheep in direction
             Vector3 direction = (HandControllerR.position - Camera.main.transform.position).normalized;
 
@@ -471,6 +498,8 @@ public class PlayerController : MonoBehaviour
             whistleSound.start();
             whistleSound.release();
         }
+
+
 
         if (Input.GetButtonDown("X"))
         {
