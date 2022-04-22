@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     }
     public static Settings _Settings;
     public static GameManager Instance;
+    public Joystick_KC KC;
     public int FoundArtifacts, ConspiracyHandedIn, FatherHandedIn;
     public int SheepCount, SheepTotal;
     public int CurrentMission, TotalMissionCompletion;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
         _AM = Resources.Load<AudioMixer>("MasterVolume");
 
         _Settings.controlType = PlayerController.ControlType.VR_Dragging;
-
+        KC.enabled = false;
         #region Dictionary for all the skills
         SkillsUnlocked.Add("PlayerSpeed-1", false);
         SkillsUnlocked.Add("PlayerSpeed-2", false);
@@ -114,6 +115,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            SceneManager.LoadScene("TestTavern");
+        }
+        /*
         if (Input.GetKey(KeyCode.U))
         {
             switch (DebugSkill)
@@ -138,6 +144,10 @@ public class GameManager : MonoBehaviour
                     GoUp = false;
                     break;
             }
+        }*/
+        if(HDDConspiracy == true)
+        {
+            KC.enabled = true;
         }
     }
 

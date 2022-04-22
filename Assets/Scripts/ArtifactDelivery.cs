@@ -27,6 +27,37 @@ public class ArtifactDelivery : MonoBehaviour
         if(other.tag == "Player")
         {
             transform.LookAt(other.transform);
+            if (Input.GetKeyUp(KeyCode.E) && GM.artifactGET == true)
+            {
+                if (Conspiracy == true)
+                {
+                    GM.ConspiracyHandedIn++;
+                    GM.artifactGET = false;
+                    if (GM.HDD == true)
+                    {
+                        GM.HDDConspiracy = true;
+                        GM.HDD = false;
+
+                    }
+                }
+                if (Conspiracy == false)
+                {
+                    GM.FatherHandedIn++;
+                    GM.artifactGET = false;
+                    if (GM.HDD == true)
+                    {
+                        GM.HDDFather = true;
+                        GM.HDD = false;
+
+                    }
+                }
+                if (EasterEgg == true)
+                {
+                    GM.artifactGET = false;
+
+                    GM.HDDEasterEgg = true;
+                }
+            }
             if (Input.GetAxisRaw("RShoulder") > 0.5f && GM.artifactGET == true)
             {
                 if (Conspiracy == true)

@@ -182,8 +182,12 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.TryGetComponent<IPickup>(out IPickup pickup))
                 {
                     GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
+                    GameManager.Instance.FoundArtifacts++;
                     GameManager.Instance.artifactGET = true;
-
+                    if (hit.transform.GetComponent<SpecificArtifact>().HDD == true)
+                    {
+                        GameManager.Instance.HDD = true;
+                    }
                     var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
                     ATTRIBUTES_3D attributes;
                     attributes.position = this.transform.position.ToFMODVector();
@@ -394,8 +398,12 @@ public class PlayerController : MonoBehaviour
                         GameManager.Instance.SplashText("You picked up " + pickup.PickupName);
                         GameManager.Instance.FoundArtifacts++;
                         GameManager.Instance.artifactGET = true;
+                        if(hit.transform.GetComponent<SpecificArtifact>().HDD == true)
+                        {
+                            GameManager.Instance.HDD = true;
+                        }
 
-                        var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
+                            var pickupSound = FMODUnity.RuntimeManager.CreateInstance(pickupEvent);
                         ATTRIBUTES_3D attributes;
                         attributes.position = this.transform.position.ToFMODVector();
                         attributes.velocity = rb.velocity.ToFMODVector();
