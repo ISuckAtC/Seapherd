@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         _AM = Resources.Load<AudioMixer>("MasterVolume");
-
+       KC = gameObject.GetComponent<Joystick_KC>();
         _Settings.controlType = PlayerController.ControlType.VR_Dragging;
         KC.enabled = false;
         #region Dictionary for all the skills
