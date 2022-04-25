@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             System.Threading.Thread.Sleep(500);
             unfuckVrStart = true;
         })).Start();
-        if (Control != ControlType.VR_Leading) ConfigText.text = "";
+        //if (Control != ControlType.VR_Leading) ConfigText.text = "";
 
         if (GameObject.FindGameObjectWithTag("PauseMenu") != null)
         {
