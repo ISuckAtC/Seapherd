@@ -430,7 +430,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         else if (shoulderPressR) shoulderPressR = false;
-        if (Input.GetButtonDown("RStickPush"))
+        /*if (Input.GetButtonDown("RStickPush"))
         {
             int index = (int)Control;
             index++;
@@ -440,7 +440,7 @@ public class PlayerController : MonoBehaviour
             }
             Control = (ControlType)index;
             GameManager._Settings.controlType = Control;
-        }
+        }*/
         /*if (Input.GetButtonDown("B"))
         {
             Vector3 averagePosition = Vector3.zero;
