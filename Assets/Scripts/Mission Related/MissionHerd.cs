@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissionNavigate : Mission
+public class MissionHerd : Mission
 {
     public Transform[] Waypoints;
     public int currentIndex;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissionTutorial : Mission
+public class MissionWalk : Mission
 {
     public GameObject[] TutorialPoints;
     public string[] TutorialTexts;

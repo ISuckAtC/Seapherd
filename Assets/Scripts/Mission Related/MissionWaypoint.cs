@@ -11,7 +11,7 @@ public struct WaypointSpawn
 public class MissionWaypoint : MonoBehaviour
 {
 
-    public MissionNavigate ParentNavigator;
+    public MissionHerd ParentNavigator;
     BoxCollider triggerCollider;
     public bool Override;
     public int SelfIndex;
