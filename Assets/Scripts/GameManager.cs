@@ -14,6 +14,17 @@ public class GameManager : MonoBehaviour
         public PlayerController.ControlType controlType;
         
     }
+
+    public enum MissionStatus
+    {
+        Unavailable,
+        NotStarted,
+        InProgress,
+        Handin,
+        Completed,
+        Failed
+    }
+
     public static Settings _Settings;
     public static GameManager Instance;
     public Joystick_KC KC;
@@ -36,11 +47,12 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public int SkillPoints = 0;
     public Dictionary<string, bool> SkillsUnlocked = new Dictionary<string, bool>();
+    public Dictionary<string, MissionStatus> Missions = new Dictionary<string, MissionStatus>();
 
     void Awake()
     {
         _AM = Resources.Load<AudioMixer>("MasterVolume");
-       KC = gameObject.GetComponent<Joystick_KC>();
+        KC = gameObject.GetComponent<Joystick_KC>();
         _Settings.controlType = PlayerController.ControlType.VR_Dragging;
         KC.enabled = false;
         #region Dictionary for all the skills
@@ -77,7 +89,7 @@ public class GameManager : MonoBehaviour
             InMainMenu = true;
         }
 
-        if (scene.buildIndex > 2)
+        /*if (scene.buildIndex > 2)
         {
             FishSheep = GameObject.FindObjectsOfType<EntitySheep>().ToList();
             SheepCount = SheepTotal = FishSheep.Count;
@@ -89,7 +101,7 @@ public class GameManager : MonoBehaviour
         {
             InTavern = true;
             InMainMenu = false;
-        }
+        }*/
         if (GameObject.Find("MissionObjectiveText"))
         {
             MissionObjectiveText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
