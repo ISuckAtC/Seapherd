@@ -51,6 +51,12 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Missions.Add("Tutorial-p1", MissionStatus.NotStarted);
+        Missions.Add("Tutorial-p2", MissionStatus.Unavailable);
+
+        Missions["Tutorial-p1"] = MissionStatus.InProgress;
+
+
         _AM = Resources.Load<AudioMixer>("MasterVolume");
         KC = gameObject.GetComponent<Joystick_KC>();
         _Settings.controlType = PlayerController.ControlType.VR_Dragging;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissionNavigate : MonoBehaviour
+public class MissionNavigate : Mission
 {
     public Transform[] Waypoints;
     public int currentIndex;
@@ -14,20 +14,6 @@ public class MissionNavigate : MonoBehaviour
         SetPoints();
         Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
         GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (next)
-        {
-            if (GameManager.Instance.SheepCount > GameManager.Instance.SheepTotal / 2f)
-            {
-                GameManager.Instance.TotalMissionCompletion++;
-            }
-            GameManager.Instance.alt = true;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("TestTavern");
-        }
     }
 
     public void SetPoints()
@@ -42,24 +28,17 @@ public class MissionNavigate : MonoBehaviour
         }
     }
 
-    public void Acvivated()
+    public void Activated()
     {
         Debug.Log("Waypoint " + currentIndex + " activated");
         if (++currentIndex < Waypoints.Length)
         {
             Waypoints[currentIndex - 1].GetComponent<MissionWaypoint>().Deactivate();
             Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
-            if (currentIndex < 8) GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
-            else GameManager.Instance.MissionObjectiveText.text = "Herd your sheep back home! (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
         }
         else
         {
-            GameManager.Instance.MissionObjectiveText.text = "COMPLETE!";
-            new System.Threading.Thread(() =>
-            {
-                System.Threading.Thread.Sleep(1000);
-                next = true;
-            }).Start();
+            Continue();
         }
     }
 }

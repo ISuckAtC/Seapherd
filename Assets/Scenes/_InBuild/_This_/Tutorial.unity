@@ -1232,6 +1232,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5228034050760028506, guid: 18e0e28e7a898fa4e90777164a9d812d, type: 3}
   m_PrefabInstance: {fileID: 94713326}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &98489638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 98489640}
+  - component: {fileID: 98489639}
+  m_Layer: 0
+  m_Name: MissionWalkTut0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &98489639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98489638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034f36b77ae0f394c8a690c9e76a94c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MissionName: Tutorial-p1
+  NextMission: {fileID: 0}
+  TutorialPoints:
+  - {fileID: 560782614}
+  - {fileID: 810425298}
+  - {fileID: 1423918770}
+  TutorialTexts: []
+--- !u!4 &98489640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98489638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &101171310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21117,63 +21168,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3533757903530687695, guid: 52658b7f4e1e0f84eaea237f5589fa4a, type: 3}
   m_PrefabInstance: {fileID: 3927375727336301424}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5320448098424558226
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_RootOrder
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099563, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7739837247477099564, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
-      propertyPath: m_Name
-      value: MissionNavigateTut1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 295d903335f52b4489eb3a5988c1225d, type: 3}
 --- !u!1001 &6318817237172234769
 PrefabInstance:
   m_ObjectHideFlags: 0

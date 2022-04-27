@@ -4,7 +4,7 @@ using UnityEngine;
 using FMOD;
 using FMODUnity;
 
-public class MissionGraze : MonoBehaviour
+public class MissionGrazePoint : MonoBehaviour
 {
     public FMODUnity.EventReference startEvent, endEvent; 
     public bool optionalObjective;
@@ -63,7 +63,7 @@ public class MissionGraze : MonoBehaviour
         }
         if (GameManager.Instance.SheepCount == FinishedGrazingInt)
         {
-            waypoint.ParentNavigator.Acvivated();
+            waypoint.ParentNavigator.Activated();
 
             var grazeEnd = FMODUnity.RuntimeManager.CreateInstance(endEvent);
                 ATTRIBUTES_3D attributes;

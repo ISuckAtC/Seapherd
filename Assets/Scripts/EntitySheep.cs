@@ -22,7 +22,7 @@ public class EntitySheep : MonoBehaviour
     public GameObject Player, Marker;
     public GameManager GM;
     bool DoneOnce;
-    MissionGraze MissionController;
+    MissionGrazePoint MissionController;
     public float ForceGroupDuration;
     Vector3 ForceTarget;
     float forceGroupTimer;
@@ -36,7 +36,7 @@ public class EntitySheep : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         //Marker = GameObject.FindGameObjectWithTag("PlayerMarker");        COMMENTED OUT FOR NOW
-        MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MissionGraze>();
+        MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MissionGrazePoint>();
     }
 
     void Update()
