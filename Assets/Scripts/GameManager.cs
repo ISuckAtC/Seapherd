@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public bool StartBugStop;
     public bool GotoPlayer, RunFromPlayer, GotoMarker, GoUp;
     public bool InTavern, InMainMenu;
+    public string storedMissionName;
     public AudioMixer _AM;
     [Space(10)]
     public int SkillPoints = 0;
@@ -53,8 +54,16 @@ public class GameManager : MonoBehaviour
     {
         Missions.Add("Tutorial-p1", MissionStatus.NotStarted);
         Missions.Add("Tutorial-p2", MissionStatus.Unavailable);
+        Missions.Add("Mission-1", MissionStatus.Unavailable);
+        Missions.Add("Mission-2", MissionStatus.Unavailable);
+        Missions.Add("Mission-3", MissionStatus.Unavailable);
+        Missions.Add("Mission-4", MissionStatus.Unavailable);
+
+
 
         Missions["Tutorial-p1"] = MissionStatus.InProgress;
+
+
 
 
         _AM = Resources.Load<AudioMixer>("MasterVolume");
@@ -163,6 +172,22 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }*/
+        switch (CurrentMission)
+        {
+            case 1:
+                storedMissionName = "Mission-1";
+                return;
+            case 2:
+                storedMissionName = "Mission-2";
+                return;
+            case 3:
+                storedMissionName = "Mission-3";
+                return;
+            case 4:
+                storedMissionName = "Mission-4";
+                return;
+
+        }
         if(HDDConspiracy == true)
         {
             KC.enabled = true;

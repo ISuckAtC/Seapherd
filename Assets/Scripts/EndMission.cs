@@ -6,28 +6,38 @@ using TMPro;
 public class EndMission : MonoBehaviour
 {
     public GameManager GM;
-    public TextMeshProUGUI EndText, OptionalEndText;
-    public string ExternalMissionEndText, ExternalOptionalEndText;
-    // Start is called before the first frame update
+    public MissionGiver MissionGiving;
     void Start()
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-       /* switch (GM.CurrentMission)
+        MissionGiving = gameObject.GetComponent<MissionGiver>();
+        if(MissionGiving == null)
         {
-            case 1:
-                //Code Goes here, can pull specific strings from certain objects in this case for the text.
-            break;
-        }*/
-
+            Debug.LogError("Attach this to the MissionGiver, ");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        EndText.text = ExternalMissionEndText;
-        if(GM.OptionalObjectiveCompleted == true)
-        {//Filler Text right now, replace with better lines, or replace with External text strings. should be accessible from other scripts and gameobjects to fill in the blanks.
-            OptionalEndText.text = " I am proud of you for once";
+      
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        //HardCoded in the first one just to make sure it actually works honestly
+        if (Input.GetAxisRaw("RShoulder") > 0.5f || Input.GetKeyUp(KeyCode.Space))
+        {
+            if(MissionGiving.MissionGiverNumber == 0 && GM.Missions["tutorial-p1"] == GameManager.MissionStatus.Handin)
+            {
+                GM.Missions["tutorial-p1"] = GameManager.MissionStatus.Completed;
+                GM.Missions["tutorial-p2"] = GameManager.MissionStatus.NotStarted;
+            }
+              if (MissionGiving.MissionGiverNumber == 1  && GM.Missions[GM.storedMissionName] == GameManager.MissionStatus.Handin)
+            {
+                GM.Missions[GM.storedMissionName] = GameManager.MissionStatus.Completed;
+                GM.CurrentMission++;
+                GM.Missions[GM.storedMissionName] = GameManager.MissionStatus.NotStarted;
+            }
         }
     }
 }

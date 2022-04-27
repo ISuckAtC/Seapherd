@@ -7,9 +7,10 @@ public class MissionGiver : MonoBehaviour, IToolTip
     public GameObject BoardM1, BoardM2, BoardM1Complete, BoardM2Complete;
     public GameObject Player;
     public GameObject ExclamationMark;
-    [Header("Please put the number the mission is meant to be, from 1 and up.")]
-    [Tooltip("Change to send to different Mission number")]
-    public int MissionNumber;
+    [Header("Put What MissionGiver This is, we use this to specify what missions can be given by them, 0 is for the Tutorial,  1 is for Mission 1 to 4 will be possible, for MissionGiver 2 another version of Mission 3 or 4 is possible, Mission Giver 3 is tied to jokes, mainly unused")]
+    [Tooltip("Use anything from 0, 1, 2 or 3")]
+    public int MissionGiverNumber;
+    private int MissionNumber;
     public GameManager GM;
     public bool OptionalObjectiveCheck;
     public string ToolTipText;
@@ -84,6 +85,11 @@ public class MissionGiver : MonoBehaviour, IToolTip
         {
             if (Input.GetKey(KeyCode.Space))
             {
+                StartMission();
+            }
+            if (Input.GetAxisRaw("RShoulder") > 0.5f)
+            {
+
                 StartMission();
             }
         }

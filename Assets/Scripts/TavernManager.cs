@@ -47,7 +47,7 @@ public class TavernManager : MonoBehaviour
 
             // QuestGivers[CurrentMissionAvailible].gameObject.SetActive(true);
 
-            QuestGivers[CurrentMissionAvailible].GetComponent<MissionGiver>().MissionNumber++;
+            
             CurrentMissionAvailible++;
             
         }
