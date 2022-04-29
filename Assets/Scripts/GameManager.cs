@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
 
         Missions["Tutorial-p1"].SetStatus(MissionStatus.InProgress);
 
+        Missions["Mission-1"].SetExtras((5, 5));
+
 
 
 
