@@ -29,6 +29,9 @@ public class EntitySheep : MonoBehaviour
     bool captured;
     Vector3 scarePoint;
     bool scared;
+
+    public event System.Action Killed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -197,8 +200,7 @@ public class EntitySheep : MonoBehaviour
 
     public void Kill()
     {
-        GameManager.Instance.SheepCount--;
-        GameManager.Instance.FishSheep.Remove(this);
+        Killed.Invoke();
         Destroy(gameObject);
     }
 }

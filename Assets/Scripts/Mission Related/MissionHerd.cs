@@ -8,12 +8,20 @@ public class MissionHerd : Mission
     public int currentIndex;
     bool next;
 
+    public List<EntitySheep> Sheep;
+
     // Start is called before the first frame update
     void Start()
     {
+        foreach(EntitySheep sheep in Sheep) sheep.Killed += SheepKilled;
         SetPoints();
         Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
         GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
+    }
+
+    public void SheepKilled()
+    {
+        GameManager.Instance.Missions[MissionName].SetExtras((((((int, int))GameManager.Instance.Missions[MissionName].extras).Item1 - 1), (((int, int))GameManager.Instance.Missions[MissionName].extras).Item2));
     }
 
     public void SetPoints()
