@@ -48,20 +48,22 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public int SkillPoints = 0;
     public Dictionary<string, bool> SkillsUnlocked = new Dictionary<string, bool>();
-    public Dictionary<string, MissionStatus> Missions = new Dictionary<string, MissionStatus>();
+    public Dictionary<string, (MissionStatus status, object extras)> Missions = new Dictionary<string, (MissionStatus status, object extras)>();
+
+    
 
     void Awake()
     {
-        Missions.Add("Tutorial-p1", MissionStatus.NotStarted);
-        Missions.Add("Tutorial-p2", MissionStatus.Unavailable);
-        Missions.Add("Mission-1", MissionStatus.Unavailable);
-        Missions.Add("Mission-2", MissionStatus.Unavailable);
-        Missions.Add("Mission-3", MissionStatus.Unavailable);
-        Missions.Add("Mission-4", MissionStatus.Unavailable);
+        Missions.Add("Tutorial-p1", (MissionStatus.NotStarted, null));
+        Missions.Add("Tutorial-p2", (MissionStatus.Unavailable, null));
+        Missions.Add("Mission-1", (MissionStatus.Unavailable, null));
+        Missions.Add("Mission-2", (MissionStatus.Unavailable, null));
+        Missions.Add("Mission-3", (MissionStatus.Unavailable, null));
+        Missions.Add("Mission-4", (MissionStatus.Unavailable, null));
 
 
 
-        Missions["Tutorial-p1"] = MissionStatus.InProgress;
+        Missions["Tutorial-p1"].SetStatus(MissionStatus.InProgress);
 
 
 

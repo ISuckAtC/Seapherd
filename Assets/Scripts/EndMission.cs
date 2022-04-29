@@ -27,16 +27,16 @@ public class EndMission : MonoBehaviour
         //HardCoded in the first one just to make sure it actually works honestly
         if (Input.GetAxisRaw("RShoulder") > 0.5f || Input.GetKeyUp(KeyCode.Space))
         {
-            if(MissionGiving.MissionGiverNumber == 0 && GM.Missions["tutorial-p1"] == GameManager.MissionStatus.Handin)
+            if(MissionGiving.MissionGiverNumber == 0 && GM.Missions["tutorial-p1"].status == GameManager.MissionStatus.Handin)
             {
-                GM.Missions["tutorial-p1"] = GameManager.MissionStatus.Completed;
-                GM.Missions["tutorial-p2"] = GameManager.MissionStatus.NotStarted;
+                GM.Missions["tutorial-p1"].SetStatus(GameManager.MissionStatus.Completed);
+                GM.Missions["tutorial-p2"].SetStatus(GameManager.MissionStatus.NotStarted);
             }
-              if (MissionGiving.MissionGiverNumber == 1  && GM.Missions[GM.storedMissionName] == GameManager.MissionStatus.Handin)
+              if (MissionGiving.MissionGiverNumber == 1  && GM.Missions[GM.storedMissionName].status == GameManager.MissionStatus.Handin)
             {
-                GM.Missions[GM.storedMissionName] = GameManager.MissionStatus.Completed;
+                GM.Missions[GM.storedMissionName].SetStatus(GameManager.MissionStatus.Completed);
                 GM.CurrentMission++;
-                GM.Missions[GM.storedMissionName] = GameManager.MissionStatus.NotStarted;
+                GM.Missions[GM.storedMissionName].SetStatus(GameManager.MissionStatus.NotStarted);
             }
         }
     }
