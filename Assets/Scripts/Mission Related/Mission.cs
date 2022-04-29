@@ -15,7 +15,7 @@ public class Mission : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.Missions[MissionName] = GameManager.MissionStatus.Handin;
+            GameManager.Instance.Missions[MissionName].SetStatus(GameManager.MissionStatus.Handin);
         }
 
         Destroy(gameObject);
