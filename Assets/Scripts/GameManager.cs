@@ -54,6 +54,17 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        /*
+            HELLO. READ ME.
+
+            Regarding the extras for missions, its for stuff like total sheep to herd and such.
+            To load multiple variables just use a tuple, make sure to remember what you load in
+            so that you load the correct stuff when you access the tuple later on.
+
+
+        */
+
+
         Missions.Add("Tutorial-p1", (MissionStatus.NotStarted, null));
         Missions.Add("Tutorial-p2", (MissionStatus.Unavailable, null));
         Missions.Add("Mission-1", (MissionStatus.Unavailable, null));
