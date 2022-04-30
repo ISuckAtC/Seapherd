@@ -30,6 +30,8 @@ public class EntitySheep : MonoBehaviour
     Vector3 scarePoint;
     bool scared;
 
+    public List<string> PartOfMission;
+
     public event System.Action Killed;
 
     // Start is called before the first frame update

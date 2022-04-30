@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MissionHerd : Mission
@@ -13,6 +14,7 @@ public class MissionHerd : Mission
     // Start is called before the first frame update
     void Start()
     {
+        Sheep = FindObjectsOfType<EntitySheep>().Where(x => x.PartOfMission.Contains(MissionName)).ToList();
         foreach(EntitySheep sheep in Sheep) sheep.Killed += SheepKilled;
         SetPoints();
         Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
