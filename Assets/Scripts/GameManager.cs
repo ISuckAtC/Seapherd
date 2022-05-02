@@ -102,6 +102,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Debug.Log("Gamemanager awake finished");
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -111,7 +113,6 @@ public class GameManager : MonoBehaviour
             //SceneManager.LoadScene(1, LoadSceneMode.Single);
             return;
         }
-        Debug.Log("start");
 
         if (scene.buildIndex == 0)
         {
@@ -152,6 +153,8 @@ public class GameManager : MonoBehaviour
         {
             MissionObjectiveText = GameObject.Find("MissionObjectiveText").GetComponent<TextMeshProUGUI>();
         }
+
+        Debug.Log("Gamemanager onsceneloaded finished");
     }
 
     // Update is called once per frame
