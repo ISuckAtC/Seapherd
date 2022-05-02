@@ -34,5 +34,13 @@ public class KillerFish : MonoBehaviour
             gameObject.SetActive(false);
             
         }
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            
+        }
     }
 }
