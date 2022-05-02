@@ -12328,7 +12328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7141dee4d3fa37d429a2591bc9195ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadPoint: {fileID: 4687830919955183754}
+  LoadPoint: {fileID: 543450651635001652}
   SceneToLoad: TestTavern
 --- !u!1001 &1303741310
 PrefabInstance:
