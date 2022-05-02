@@ -8,10 +8,10 @@ public class PlayerHand : MonoBehaviour
     public float GrabRange;
     public void Grab()
     {
-        RaycastHit hit;
-        if (Physics.SphereCast(transform.position, GrabRange, transform.forward, out hit, 0f, 1 << LayerMask.NameToLayer("Pickup")))
+        Collider[] overlaps = Physics.OverlapSphere(transform.position, GrabRange, 1 << LayerMask.NameToLayer("Pickup"));
+        if (overlaps.Length > 0)
         {
-            IGrabbable grabbable = hit.collider.GetComponent<IGrabbable>();
+            IGrabbable grabbable = overlaps[0].GetComponent<IGrabbable>();
             if (grabbable != null)
             {
                 grabbable.Grab(this);
