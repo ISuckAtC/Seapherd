@@ -6,6 +6,8 @@ public class KillerFish : MonoBehaviour
 {
     public Transform Player, ReturnMarker;
     public bool Leave, ChasePlayer;
+
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +21,18 @@ public class KillerFish : MonoBehaviour
         if(ChasePlayer == true)
         {
             transform.LookAt(Player);
-            transform.position += transform.forward / 5;
+            transform.position += transform.forward / 5 *timer;
         }
         if(Leave == true)
         {
             transform.LookAt(ReturnMarker);
-            transform.position += transform.forward / 10;
+            transform.position += transform.forward * timer;
+        }
+        if(timer >10 && ChasePlayer == false)
+        {
+            timer = 0;
+            gameObject.SetActive(false);
+            
         }
     }
 }

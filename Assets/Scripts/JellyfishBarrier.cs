@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class JellyfishBarrier : MonoBehaviour
 {
-    private float timer, maxTimer;
+    public float timer, maxTimer;
     public GameObject KillerFish, Player;
-   
+    public bool SpawnOnce;
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.Find("PlayerParent");
         if(maxTimer == 0)
         {
             maxTimer = 10;
@@ -23,11 +24,23 @@ public class JellyfishBarrier : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        timer += Time.deltaTime;
+        if(other.tag == "Player")
+        {
+            timer += Time.deltaTime;
+        }
+        
 
         if (timer > maxTimer)
         {
-            KillerFish.SetActive(true);
+            if (!SpawnOnce)
+            {
+                Instantiate(KillerFish);
+                SpawnOnce = true;
+            }
+            if (SpawnOnce)
+            {
+                KillerFish.SetActive(true);
+            }
             KillerFish.GetComponent<KillerFish>().ChasePlayer = true;
             KillerFish.GetComponent<KillerFish>().Leave = false;
         }
