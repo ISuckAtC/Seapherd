@@ -23,6 +23,7 @@ public class ObjectArtifact : MonoBehaviour, IToolTip, IPickup, IGrabbable
         hand.currentlyGrabbed = this;
         gameObject.layer = LayerMask.NameToLayer("PickupHeld");
         transform.parent = hand.transform;
+        transform.position = hand.transform.position;
         rb.useGravity = false;
         rb.isKinematic = false;
     }

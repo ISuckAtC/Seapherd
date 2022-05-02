@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86f9e3e53405ce4e95790de12e380cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrabRange: 5
+  GrabRange: 0.5
 --- !u!1 &4980133664077404077
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86f9e3e53405ce4e95790de12e380cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrabRange: 5
+  GrabRange: 0.5
 --- !u!1 &7925117379514509405
 GameObject:
   m_ObjectHideFlags: 0
