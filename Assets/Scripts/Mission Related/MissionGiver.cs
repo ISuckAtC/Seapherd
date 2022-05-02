@@ -76,12 +76,12 @@ public class MissionGiver : MonoBehaviour, IToolTip
     private void OnTriggerEnter(Collider other)
     {
         return;
-        ExclamationMark.SetActive(false);
+        //ExclamationMark.SetActive(false);
     }
     private void OnTriggerStay(Collider other)
     {
         return;
-        if (other.tag == "Player")
+        /*if (other.tag == "Player")
         {
             if (Input.GetKey(KeyCode.Space))
             {
@@ -92,7 +92,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
 
                 StartMission();
             }
-        }
+        }*/
     }
 
     public void StartMission()
@@ -143,9 +143,9 @@ public class MissionGiver : MonoBehaviour, IToolTip
     private void OnTriggerExit(Collider other)
     {
         return;
-        if (MissionNumber > GM.TotalMissionCompletion)
+        /*if (MissionNumber > GM.TotalMissionCompletion)
         {
             ExclamationMark.SetActive(true);
-        }
+        }*/
     }
 }
