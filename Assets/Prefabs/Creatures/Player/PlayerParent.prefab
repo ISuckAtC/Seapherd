@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86f9e3e53405ce4e95790de12e380cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrabRange: 5
 --- !u!1 &4980133664077404077
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86f9e3e53405ce4e95790de12e380cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrabRange: 5
 --- !u!1 &7925117379514509405
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,9 +659,9 @@ MonoBehaviour:
   HandDragMultiplier: 30
   StreamSpeedBoost: 0
   SpeedUpTimer: 0
-  GripR: {fileID: 0}
-  GripL: {fileID: 0}
-  PauseScreen: {fileID: 0}
+  HandR: {fileID: 5977958533931735806}
+  HandL: {fileID: 0}
+  PauseScreen: {fileID: 4980133662424445431}
   DirectionArrowPrefab: {fileID: 1494307965788210724, guid: 569607ecdf3047f489f84e328a5c519e, type: 3}
   Control: 0
 --- !u!114 &9052568057076425755
