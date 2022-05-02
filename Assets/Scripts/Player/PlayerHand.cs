@@ -8,6 +8,7 @@ public class PlayerHand : MonoBehaviour
     public float GrabRange;
     public void Grab()
     {
+        Debug.Log("Grabbing");
         Collider[] overlaps = Physics.OverlapSphere(transform.position, GrabRange, 1 << LayerMask.NameToLayer("Pickup"));
         if (overlaps.Length > 0)
         {
