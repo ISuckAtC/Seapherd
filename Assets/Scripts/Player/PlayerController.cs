@@ -45,8 +45,9 @@ public class PlayerController : MonoBehaviour
     private bool speedUp;
     private bool unfuckVrStart;
     private Vector3 lastRHandPos, lastLHandPos, lastBodyPos;
+    private bool lastRHandGrab, lastLHandGrab;
 
-    public GameObject GripR, GripL;
+    public PlayerHand HandR, HandL;
 
     public GameObject PauseScreen;
     public GameObject DirectionArrowPrefab;
@@ -370,6 +371,20 @@ public class PlayerController : MonoBehaviour
             Vector3 drag = (lastLHandPos - (lastBodyPos - transform.position)) - HandControllerL.position;
             drag *= HandDragMultiplier;
             rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
+
+            if (!lastLHandGrab) // GRABBED THIS FRAME
+            {
+                HandL.Grab();
+            }
+            lastLHandGrab = true;
+        }
+        else
+        {
+            if (lastLHandGrab) // RELEASED THIS FRAME
+            {
+                HandL.Release();
+            }
+            lastLHandGrab = false;
         }
         if (Input.GetAxisRaw("RGrip") > 0.5f)// && !GripR) // TODO: Add a button to hold to drag yourself
         {
@@ -377,6 +392,20 @@ public class PlayerController : MonoBehaviour
             drag *= HandDragMultiplier;
             //Debug.Log(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent));
             rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
+
+            if (!lastRHandGrab) // GRABBED THIS FRAME
+            {
+                HandR.Grab();
+            }
+            lastRHandGrab = true;
+        }
+        else
+        {
+            if (lastRHandGrab) // RELEASED THIS FRAME
+            {
+                HandR.Release();
+            }
+            lastRHandGrab = false;
         }
 
         lastLHandPos = HandControllerL.position;
