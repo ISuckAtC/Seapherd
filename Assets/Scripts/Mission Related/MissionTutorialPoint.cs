@@ -9,7 +9,7 @@ public class MissionTutorialPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,6 +22,7 @@ public class MissionTutorialPoint : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            Debug.Log("Index: " + Index);
             PointReachedCallback.Invoke(Index);
         }
     }

@@ -11,9 +11,15 @@ public class DynamicLoader : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadSceneAsync(SceneToLoad, LoadSceneMode.Additive);
-            SceneManager.GetSceneByName(SceneToLoad).GetRootGameObjects()[0].transform.position = LoadPoint.position;
+            SceneManager.LoadSceneAsync(SceneToLoad, LoadSceneMode.Additive).completed += OnSceneLoadComplete;
         }
+    }
+    public void OnSceneLoadComplete(AsyncOperation a)
+    {
+        GameObject sceneParent = SceneManager.GetSceneByName(SceneToLoad).GetRootGameObjects()[0];
+        sceneParent.transform.position = LoadPoint.position;
+        sceneParent.transform.rotation = LoadPoint.rotation;
+        sceneParent.transform.localScale = LoadPoint.localScale;
     }
     void OnTriggerExit(Collider other)
     {
