@@ -63,7 +63,7 @@ public class MissionGrazePoint : MonoBehaviour
         }
         if (GameManager.Instance.SheepCount == FinishedGrazingInt)
         {
-            waypoint.ParentNavigator.Activated();
+            waypoint.ParentNavigator.Activated(waypoint.SelfIndex);
 
             var grazeEnd = FMODUnity.RuntimeManager.CreateInstance(endEvent);
                 ATTRIBUTES_3D attributes;

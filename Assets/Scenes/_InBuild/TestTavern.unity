@@ -793,6 +793,7 @@ MonoBehaviour:
   OptionalObjectiveCheck: 0
   ToolTipText: 
   ToolTipTextAlt: 
+  Missions: []
 --- !u!1001 &652367335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1196,6 +1197,7 @@ MonoBehaviour:
     And if you find any artfiacts, please bring them back to me. (Press E to accept
     mission)
   ToolTipTextAlt: Complete Mission (Press E)
+  Missions: []
 --- !u!65 &958689703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1488,6 +1490,9 @@ MonoBehaviour:
   OptionalObjectiveCheck: 0
   ToolTipText: 
   ToolTipTextAlt: 
+  Missions:
+  - Tutorial-p1
+  - Tutorial-p2
 --- !u!1 &1017056611
 GameObject:
   m_ObjectHideFlags: 0

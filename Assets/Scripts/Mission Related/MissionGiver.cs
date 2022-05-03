@@ -27,6 +27,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
 
     bool talking;
     GameObject currentTalk;
+    public string[] Missions;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +37,8 @@ public class MissionGiver : MonoBehaviour, IToolTip
 
     // Update is called once per frame
     void Update()
-    {if(MissionGiverNumber == 0 && GM.Missions["tutorial-p2"].status == GameManager.MissionStatus.Completed)
+    {
+        if (MissionGiverNumber == 0 && GM.Missions["Tutorial-p2"].Status == GameManager.MissionStatus.Completed)
         {
             this.MissionGiverNumber = 1;
         }
@@ -62,7 +64,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
         {
             //GameManager.Instance.alt = false;
             //GameManager.Instance.artifactGET = false;
-            SceneManager.LoadScene(MissionNumber+1);
+            SceneManager.LoadScene(MissionNumber + 1);
         }
         if (GM.TotalMissionCompletion >= MissionNumber)
         {
@@ -76,6 +78,50 @@ public class MissionGiver : MonoBehaviour, IToolTip
         }
 
     }
+
+
+    public void Interact()
+    {
+        Debug.Log("Interacted with " + gameObject.name);
+        foreach (string mission in Missions)
+        {
+            Debug.Log("Mission: " + mission + " | Status: " + GM.Missions[mission].Status.ToString());
+            if (GM.Missions[mission].Status == GameManager.MissionStatus.Handin)
+            {
+                GM.Missions[mission].Status = GameManager.MissionStatus.Completed;
+                CompleteMission(mission);
+                return;
+            }
+            if (GM.Missions[mission].Status == GameManager.MissionStatus.NotStarted)
+            {
+                Instantiate(GM.MissionPrefabs[mission]);
+                GM.Missions[mission].Status = GameManager.MissionStatus.InProgress;
+                return;
+            }
+            if (GM.Missions[mission].Status == GameManager.MissionStatus.InProgress)
+            {
+                return;
+            }
+        }
+    }
+
+    public virtual void CompleteMission(string mission)
+    {
+        switch (mission)
+        {
+            case "Tutorial-p1":
+                {
+                    GM.Missions["Tutorial-p2"].Status = GameManager.MissionStatus.NotStarted;
+                    break;
+                }
+            case "Tutorial-p2":
+                {
+
+                    break;
+                }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         return;
@@ -101,7 +147,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
     public void StartMission()
     {
         Debug.Log("Start Mission call");
-        if (talking) 
+        if (talking)
         {
             currentTalk.transform.GetChild(1).GetComponent<Dialogue>().Skip();
             return;
@@ -122,7 +168,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
                 currentTalk.transform.GetChild(2).GetComponent<Dialogue>().DialogueText = "You managed to herd " + GameManager.Instance.SheepCount + " out of " + GameManager.Instance.SheepTotal + " sheep.";
                 currentTalk.transform.GetChild(3).GetComponent<Dialogue>().DialogueText = GameManager.Instance.TotalMissionCompletion >= GameManager.Instance.CurrentMission ? "The Game will now end." : "Please try again.";
             }
-            
+
             currentTalk.transform.parent = transform;
             talking = true;
         }

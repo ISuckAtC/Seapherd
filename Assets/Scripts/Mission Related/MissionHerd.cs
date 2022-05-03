@@ -6,7 +6,6 @@ using UnityEngine;
 public class MissionHerd : Mission
 {
     public Transform[] Waypoints;
-    public int currentIndex;
     bool next;
 
     public List<EntitySheep> Sheep;
@@ -15,15 +14,16 @@ public class MissionHerd : Mission
     void Start()
     {
         Sheep = FindObjectsOfType<EntitySheep>().Where(x => x.PartOfMission.Contains(MissionName)).ToList();
+        GameManager.Instance.Missions[MissionName].Extras = (Sheep.Count, Sheep.Count);
         foreach(EntitySheep sheep in Sheep) sheep.Killed += SheepKilled;
         SetPoints();
-        Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
+        Waypoints[0].GetComponent<MissionWaypoint>().Activate();
         //GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
     }
 
     public void SheepKilled()
     {
-        GameManager.Instance.Missions[MissionName].SetExtras((((((int, int))GameManager.Instance.Missions[MissionName].extras).Item1 - 1), (((int, int))GameManager.Instance.Missions[MissionName].extras).Item2));
+        GameManager.Instance.Missions[MissionName].Extras = ((((((int, int))GameManager.Instance.Missions[MissionName].Extras).Item1 - 1), (((int, int))GameManager.Instance.Missions[MissionName].Extras).Item2));
     }
 
     public void SetPoints()
@@ -38,13 +38,13 @@ public class MissionHerd : Mission
         }
     }
 
-    public void Activated()
+    public void Activated(int index)
     {
-        Debug.Log("Waypoint " + currentIndex + " activated");
-        if (++currentIndex < Waypoints.Length)
+        Debug.Log("Waypoint " + index + " activated");
+        Waypoints[index].GetComponent<MissionWaypoint>().Deactivate();
+        if (index + 1 < Waypoints.Length)
         {
-            Waypoints[currentIndex - 1].GetComponent<MissionWaypoint>().Deactivate();
-            Waypoints[currentIndex].GetComponent<MissionWaypoint>().Activate();
+            Waypoints[index + 1].GetComponent<MissionWaypoint>().Activate();
         }
         else
         {
