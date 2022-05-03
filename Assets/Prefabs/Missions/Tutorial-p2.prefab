@@ -57,7 +57,25 @@ MonoBehaviour:
   - {fileID: 5813539614833813307}
   - {fileID: 5813539613493708809}
   - {fileID: 5813539614719384750}
-  currentIndex: 0
+  VoiceLines:
+  - Guid:
+      Data1: -85283862
+      Data2: 1105041077
+      Data3: 1027829919
+      Data4: 1715379360
+    Path: event:/VO/Tutorial/Tutorial_4
+  - Guid:
+      Data1: 1608736761
+      Data2: 1258729896
+      Data3: -1488268635
+      Data4: -1200224031
+    Path: event:/VO/Tutorial/Tutorial_5
+  - Guid:
+      Data1: -830425636
+      Data2: 1163106366
+      Data3: -683182711
+      Data4: 787237461
+    Path: event:/VO/Tutorial/Tutorial_6
   Sheep: []
 --- !u!1001 &2065461795136178689
 PrefabInstance:

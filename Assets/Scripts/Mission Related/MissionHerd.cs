@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using FMODUnity;
+using FMOD;
 
 public class MissionHerd : Mission
 {
     public Transform[] Waypoints;
+    public FMODUnity.EventReference[] VoiceLines;
     bool next;
 
     public List<EntitySheep> Sheep;
@@ -40,7 +43,7 @@ public class MissionHerd : Mission
 
     public void Activated(int index)
     {
-        Debug.Log("Waypoint " + index + " activated");
+        UnityEngine.Debug.Log("Waypoint " + index + " activated");
         Waypoints[index].GetComponent<MissionWaypoint>().Deactivate();
         if (index + 1 < Waypoints.Length)
         {
@@ -49,6 +52,20 @@ public class MissionHerd : Mission
         else
         {
             Continue();
+        }
+
+        if (index < VoiceLines.Length && !VoiceLines[index].IsNull)
+        {
+            var voiceLine = FMODUnity.RuntimeManager.CreateInstance(VoiceLines[index]);
+            ATTRIBUTES_3D attributes;
+            attributes.position = transform.position.ToFMODVector();
+            attributes.velocity = Vector3.zero.ToFMODVector();
+            attributes.forward = transform.forward.ToFMODVector();
+            attributes.up = transform.up.ToFMODVector();
+            voiceLine.set3DAttributes(attributes);
+            UnityEngine.Debug.Log("played voice line" + index);
+            voiceLine.start();
+            voiceLine.release();
         }
     }
 }
