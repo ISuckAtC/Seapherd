@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e68299a349b78488017c96e8c5f8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KC: {fileID: 0}
   FoundArtifacts: 0
   ConspiracyHandedIn: 0
   FatherHandedIn: 0
@@ -72,8 +73,13 @@ MonoBehaviour:
   GoUp: 0
   InTavern: 0
   InMainMenu: 0
+  storedMissionName: 
   _AM: {fileID: 0}
   SkillPoints: 0
+  missionPrefabLoad:
+  - {fileID: 8975845951396930429, guid: 4c9189954e1cd88469ee27ff2ace8f1d, type: 3}
+  - {fileID: 4473927297789347896, guid: ab5b596743a60fb43b8d99120fa8bbab, type: 3}
+  - {fileID: 6975512486210069566, guid: 4da2d34cc9a1fdd4bba15a9bb903f881, type: 3}
 --- !u!114 &5765766480805687791
 MonoBehaviour:
   m_ObjectHideFlags: 0

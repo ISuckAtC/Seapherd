@@ -453,7 +453,7 @@ public class PlayerController : MonoBehaviour
                     }
                     if (hit.transform.tag == "Quest")
                     {
-                        hit.transform.GetComponent<MissionGiver>().StartMission();
+                        //hit.transform.GetComponent<MissionGiver>().StartMission();
                     }
                 }
             }

@@ -660,7 +660,7 @@ MonoBehaviour:
   StreamSpeedBoost: 0
   SpeedUpTimer: 0
   HandR: {fileID: 5977958533931735806}
-  HandL: {fileID: 0}
+  HandL: {fileID: 1815825984176764197}
   PauseScreen: {fileID: 4980133662424445431}
   DirectionArrowPrefab: {fileID: 1494307965788210724, guid: 569607ecdf3047f489f84e328a5c519e, type: 3}
   Control: 0

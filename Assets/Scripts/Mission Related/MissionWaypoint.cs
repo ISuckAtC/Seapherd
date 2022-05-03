@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -40,11 +41,16 @@ public class MissionWaypoint : MonoBehaviour
     public void FixedUpdate()
     {
         if (activated || Override) return;
-        RaycastHit[] hits = Physics.BoxCastAll(transform.position, Vector3.Scale(triggerCollider.size, transform.localScale) / 2f, Vector3.forward, transform.rotation, 0f, (1 << LayerMask.NameToLayer("Sheep")));
-        if (hits.Length >= (((int, int))GameManager.Instance.Missions[ParentNavigator.MissionName].extras).Item1)
+        Collider[] hits = Physics.OverlapBox(transform.position, Vector3.Scale(triggerCollider.size, transform.localScale) / 2f, transform.rotation, (1 << LayerMask.NameToLayer("Sheep")));
+        if (hits.Length > 0)
         {
-            ParentNavigator.Activated();
-            activated = true;
+            Debug.Log("Hit " + hits.Length + " sheep");
+            List<EntitySheep> sheep = hits.Select(x => x.transform.GetComponent<EntitySheep>()).Where(x => x.PartOfMission.Contains(ParentNavigator.MissionName)).ToList();
+            if (sheep.Count >= (((int, int))GameManager.Instance.Missions[ParentNavigator.MissionName].Extras).Item1)
+            {
+                ParentNavigator.Activated(SelfIndex);
+                activated = true;
+            }
         }
     }
 }

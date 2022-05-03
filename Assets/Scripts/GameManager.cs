@@ -15,6 +15,17 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public class MissionInfo
+    {
+        public MissionStatus Status;
+        public object Extras;
+        public MissionInfo(MissionStatus status, object extras)
+        {
+            Status = status;
+            Extras = extras;
+        }
+    }
+
     public enum MissionStatus
     {
         Unavailable,
@@ -48,8 +59,11 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public int SkillPoints = 0;
     public Dictionary<string, bool> SkillsUnlocked = new Dictionary<string, bool>();
-    public Dictionary<string, (MissionStatus status, object extras)> Missions = new Dictionary<string, (MissionStatus status, object extras)>();
+    public Dictionary<string, MissionInfo> Missions = new Dictionary<string, MissionInfo>();
+    [SerializeField]
+    private List<GameObject> missionPrefabLoad = new List<GameObject>();
 
+    public Dictionary<string, GameObject> MissionPrefabs = new Dictionary<string, GameObject>();
     
 
     void Awake()
@@ -65,20 +79,27 @@ public class GameManager : MonoBehaviour
         */
 
 
-        Missions.Add("Tutorial-p1", (MissionStatus.NotStarted, null));
-        Missions.Add("Tutorial-p2", (MissionStatus.Unavailable, null));
-        Missions.Add("Mission-1", (MissionStatus.Unavailable, null));
-        Missions.Add("Mission-2", (MissionStatus.Unavailable, null));
-        Missions.Add("Mission-3", (MissionStatus.Unavailable, null));
-        Missions.Add("Mission-4", (MissionStatus.Unavailable, null));
+        Missions.Add("Tutorial-p1", new MissionInfo(MissionStatus.NotStarted, null));
+        Missions.Add("Tutorial-p2", new MissionInfo(MissionStatus.Unavailable, null));
+        Missions.Add("Mission-1", new MissionInfo(MissionStatus.Unavailable, null));
+        Missions.Add("Mission-2", new MissionInfo(MissionStatus.Unavailable, null));
+        Missions.Add("Mission-3", new MissionInfo(MissionStatus.Unavailable, null));
+        Missions.Add("Mission-4", new MissionInfo(MissionStatus.Unavailable, null));
 
 
 
-        Missions["Tutorial-p1"].SetStatus(MissionStatus.InProgress);
+        Missions["Tutorial-p1"].Status = MissionStatus.InProgress;
 
-        Missions["Mission-1"].SetExtras((2, 2));
+        Debug.Log("IJDHBFIUKHJSDF | " + Missions["Tutorial-p1"].Status.ToString());
 
 
+        for (int i = 0; i < Missions.Count; ++i)
+        {
+            if (i < missionPrefabLoad.Count && missionPrefabLoad[i] != null)
+            {
+                MissionPrefabs.Add(Missions.ElementAt(i).Key, missionPrefabLoad[i]);
+            }
+        }
 
 
         _AM = Resources.Load<AudioMixer>("MasterVolume");
@@ -160,6 +181,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Mission status for tut 1 is " + Missions["Tutorial-p1"].status);
         if (Input.GetKeyDown(KeyCode.U))
         {
             SceneManager.LoadScene("TestTavern");
