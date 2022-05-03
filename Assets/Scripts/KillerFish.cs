@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KillerFish : MonoBehaviour
 {
-    public Transform Player, ReturnMarker;
+    public Transform Player, ReturnMarker, InBoundsSpawn;
     public bool Leave, ChasePlayer;
 
     private float timer;
@@ -40,7 +40,7 @@ public class KillerFish : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            
+            Player.transform.position = InBoundsSpawn.position;
         }
     }
 }

@@ -9,7 +9,7 @@ public class EndMission : MonoBehaviour
     public MissionGiver MissionGiving;
     void Start()
     {
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        GM = GameManager.Instance;
         MissionGiving = gameObject.GetComponent<MissionGiver>();
         if(MissionGiving == null)
         {

@@ -623,6 +623,8 @@ GameObject:
   - component: {fileID: 589097701}
   - component: {fileID: 589097700}
   - component: {fileID: 589097706}
+  - component: {fileID: 589097708}
+  - component: {fileID: 589097707}
   m_Layer: 10
   m_Name: Conspiracy Artifact Handin
   m_TagString: Quest
@@ -754,6 +756,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   Fabrice: {fileID: 1823917860}
+--- !u!114 &589097707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589097699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6916fcdcf6f01498402e84af7aa0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 0}
+  MissionGiving: {fileID: 0}
+--- !u!114 &589097708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589097699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4be302211f455446a85c2aed9a28334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoardM1: {fileID: 0}
+  BoardM2: {fileID: 0}
+  BoardM1Complete: {fileID: 0}
+  BoardM2Complete: {fileID: 0}
+  Player: {fileID: 0}
+  ExclamationMark: {fileID: 0}
+  MissionGiverNumber: 2
+  GM: {fileID: 0}
+  OptionalObjectiveCheck: 0
+  ToolTipText: 
+  ToolTipTextAlt: 
 --- !u!1001 &652367335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1280,6 +1319,8 @@ GameObject:
   - component: {fileID: 988846531}
   - component: {fileID: 988846530}
   - component: {fileID: 988846536}
+  - component: {fileID: 988846538}
+  - component: {fileID: 988846537}
   m_Layer: 10
   m_Name: Regular Artifact Handin
   m_TagString: Quest
@@ -1410,6 +1451,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   Fabrice: {fileID: 911173017}
+--- !u!114 &988846537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988846529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6916fcdcf6f01498402e84af7aa0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 0}
+  MissionGiving: {fileID: 0}
+--- !u!114 &988846538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988846529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4be302211f455446a85c2aed9a28334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoardM1: {fileID: 0}
+  BoardM2: {fileID: 0}
+  BoardM1Complete: {fileID: 0}
+  BoardM2Complete: {fileID: 0}
+  Player: {fileID: 0}
+  ExclamationMark: {fileID: 0}
+  MissionGiverNumber: 0
+  GM: {fileID: 0}
+  OptionalObjectiveCheck: 0
+  ToolTipText: 
+  ToolTipTextAlt: 
 --- !u!1 &1017056611
 GameObject:
   m_ObjectHideFlags: 0

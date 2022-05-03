@@ -30,13 +30,16 @@ public class MissionGiver : MonoBehaviour, IToolTip
     // Start is called before the first frame update
     void Start()
     {
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        GM = GameManager.Instance;
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {if(MissionGiverNumber == 0 && GM.Missions["tutorial-p2"].status == GameManager.MissionStatus.Completed)
+        {
+            this.MissionGiverNumber = 1;
+        }
         if (talking)
         {
             if (!currentTalk)
