@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissionTutorialPoint : MonoBehaviour
+public class MissionWalkPoint : MonoBehaviour
 {
     public event System.Action<int> PointReachedCallback;
     public int Index;

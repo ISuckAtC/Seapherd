@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class MissionWalk : Mission
 {
-    public GameObject[] TutorialPoints;
-    public string[] TutorialTexts;
-    public FMOD.Studio.EventInstance[] TutorialSounds;
+    public GameObject[] WalkPoints;
+    public string[] PointTexts;
+    public FMOD.Studio.EventInstance[] PointSounds;
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < TutorialPoints.Length; ++i)
+        for (int i = 0; i < WalkPoints.Length; ++i)
         {
-            MissionTutorialPoint point = TutorialPoints[i].GetComponent<MissionTutorialPoint>();
+            MissionWalkPoint point = WalkPoints[i].GetComponent<MissionWalkPoint>();
             point.PointReachedCallback += PointReachedCallback;
             point.Index = i;
             //TutorialPoints[i].SetActive(false);
         }
-        if (TutorialPoints.Length > 0)
+        if (WalkPoints.Length > 0)
         {
             //TutorialPoints[0].SetActive(true);
         }
@@ -32,8 +32,8 @@ public class MissionWalk : Mission
 
     public void PointReachedCallback(int index)
     {
-        TutorialPoints[index].SetActive(false);
-        if (index + 1 >= TutorialPoints.Length)
+        WalkPoints[index].SetActive(false);
+        if (index + 1 >= WalkPoints.Length)
         {
             Continue();
         }
