@@ -58,6 +58,7 @@ MonoBehaviour:
   - {fileID: 5813539613493708809}
   - {fileID: 5813539614719384750}
   currentIndex: 0
+  Sheep: []
 --- !u!1001 &2065461795136178689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,18 +143,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1495178672
+      Data2: 1333325174
+      Data3: 1226133664
+      Data4: 2020052512
+    Path: event:/SFX/Animals/SheepGrazeStart
   endEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -400022067
+      Data2: 1262669863
+      Data3: 225756837
+      Data4: 2107121069
+    Path: event:/SFX/Animals/SheepGrazeEnd
   optionalObjective: 0
   OptionalObjective: {fileID: 0}
   ExitOn: 0

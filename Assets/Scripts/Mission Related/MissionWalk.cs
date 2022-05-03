@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD;
 
 public class MissionWalk : Mission
 {
+    public FMODUnity.EventReference[] VoiceLines;
     public GameObject[] WalkPoints;
     public string[] PointTexts;
-    public FMOD.Studio.EventInstance[] PointSounds;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,7 @@ public class MissionWalk : Mission
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PointReachedCallback(int index)
@@ -42,8 +44,21 @@ public class MissionWalk : Mission
             //TutorialPoints[index + 1].SetActive(true);
         }
         // Show the text for that index
-        
+
         // Play the sound for that index
         
+        if (index < VoiceLines.Length && !VoiceLines[index].IsNull)
+        {
+            var voiceLine = FMODUnity.RuntimeManager.CreateInstance(VoiceLines[index]);
+            ATTRIBUTES_3D attributes;
+            attributes.position = transform.position.ToFMODVector();
+            attributes.velocity = Vector3.zero.ToFMODVector();
+            attributes.forward = transform.forward.ToFMODVector();
+            attributes.up = transform.up.ToFMODVector();
+            voiceLine.set3DAttributes(attributes);
+
+            voiceLine.start();
+            voiceLine.release();
+        }
     }
 }
