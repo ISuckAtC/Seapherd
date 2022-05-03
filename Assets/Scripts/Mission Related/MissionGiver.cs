@@ -28,6 +28,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
     bool talking;
     GameObject currentTalk;
     public string[] Missions;
+    public GameObject MissionCompleteSparkle;
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +91,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
             {
                 GM.Missions[mission].Status = GameManager.MissionStatus.Completed;
                 CompleteMission(mission);
+                ParticleSystem ps = Instantiate(MissionCompleteSparkle, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
                 return;
             }
             if (GM.Missions[mission].Status == GameManager.MissionStatus.NotStarted)

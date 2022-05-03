@@ -794,6 +794,7 @@ MonoBehaviour:
   ToolTipText: 
   ToolTipTextAlt: 
   Missions: []
+  MissionCompleteSparkle: {fileID: 0}
 --- !u!1001 &652367335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1198,6 +1199,7 @@ MonoBehaviour:
     mission)
   ToolTipTextAlt: Complete Mission (Press E)
   Missions: []
+  MissionCompleteSparkle: {fileID: 0}
 --- !u!65 &958689703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1493,6 +1495,7 @@ MonoBehaviour:
   Missions:
   - Tutorial-p1
   - Tutorial-p2
+  MissionCompleteSparkle: {fileID: 3891866955724769205, guid: 561a2a184545b2d4d9b357efd7e398cb, type: 3}
 --- !u!1 &1017056611
 GameObject:
   m_ObjectHideFlags: 0

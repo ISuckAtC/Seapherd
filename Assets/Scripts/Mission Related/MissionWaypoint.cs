@@ -18,6 +18,7 @@ public class MissionWaypoint : MonoBehaviour
     public int SelfIndex;
     public WaypointSpawn[] Spawns;
     bool activated;
+    bool active;
 
     public void Start()
     {
@@ -25,6 +26,7 @@ public class MissionWaypoint : MonoBehaviour
     }
     public void Activate()
     {
+        active = true;
         GetComponent<Collider>().enabled = true;
         GetComponent<MeshRenderer>().enabled = true;
         foreach (WaypointSpawn spawn in Spawns)
@@ -34,13 +36,14 @@ public class MissionWaypoint : MonoBehaviour
     }
     public void Deactivate()
     {
+        active = false;
         GetComponent<Collider>().enabled = false;
         GetComponent<MeshRenderer>().enabled = false;
     }
 
     public void FixedUpdate()
     {
-        if (activated || Override) return;
+        if ((!active) || activated || Override) return;
         Collider[] hits = Physics.OverlapBox(transform.position, Vector3.Scale(triggerCollider.size, transform.localScale) / 2f, transform.rotation, (1 << LayerMask.NameToLayer("Sheep")));
         if (hits.Length > 0)
         {

@@ -51,14 +51,16 @@ public class MissionWalk : Mission
         {
             var voiceLine = FMODUnity.RuntimeManager.CreateInstance(VoiceLines[index]);
             ATTRIBUTES_3D attributes;
-            attributes.position = transform.position.ToFMODVector();
+            attributes.position = GameManager.Instance.Player.transform.position.ToFMODVector();
             attributes.velocity = Vector3.zero.ToFMODVector();
             attributes.forward = transform.forward.ToFMODVector();
             attributes.up = transform.up.ToFMODVector();
             voiceLine.set3DAttributes(attributes);
 
+            UnityEngine.Debug.Log("Playing voice line " + index);
+            
             voiceLine.start();
-            voiceLine.release();
+            //voiceLine.release();
         }
     }
 }
