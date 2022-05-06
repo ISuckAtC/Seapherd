@@ -31,6 +31,18 @@ public class EntitySheep : MonoBehaviour
     bool scared;
 
     public List<string> PartOfMission;
+    public GameObject[] Shells;
+
+    public int ShellsActive {get {return Shells.Where(x => x.activeSelf).Count();} set 
+    {
+        GameObject[] inactive = (from shell in Shells where !shell.activeSelf select shell).ToArray();
+        while (Shells.Length - inactive.Length < value)
+        {
+            int index = Random.Range(0, inactive.Length);
+            inactive[index].SetActive(true);
+            inactive = inactive.Where((a, b) => b != index).ToArray();
+        }
+    }}
 
     public event System.Action Killed;
 

@@ -54,10 +54,20 @@ public class MissionGrazePoint : MonoBehaviour
                 grazeStart.start();
                 grazeStart.release();
             }
-            other.GetComponent<EntitySheep>().GrazingTime += Time.deltaTime;
-            if (other.GetComponent<EntitySheep>().GrazingTime > MissionGrazingTime)
+
+            EntitySheep sheep = other.GetComponent<EntitySheep>();
+
+            sheep.GrazingTime += Time.deltaTime;
+
+            float shellRatio = MissionGrazingTime / sheep.Shells.Length;
+
+            int shellAmount = (int)(sheep.GrazingTime / shellRatio);
+            
+            sheep.ShellsActive = shellAmount;
+
+            if (sheep.GrazingTime > MissionGrazingTime)
             {
-                other.GetComponent<EntitySheep>().DoneGrazing = true;
+                sheep.DoneGrazing = true;
 
             }
         }
