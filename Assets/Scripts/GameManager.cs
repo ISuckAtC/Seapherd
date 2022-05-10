@@ -7,12 +7,13 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
+
 public class GameManager : MonoBehaviour
 {
     public struct Settings
     {
         public PlayerController.ControlType controlType;
-        
+
     }
 
     public class MissionInfo
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> missionPrefabLoad = new List<GameObject>();
 
     public Dictionary<string, GameObject> MissionPrefabs = new Dictionary<string, GameObject>();
-    
+
 
     void Awake()
     {
@@ -129,8 +130,9 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        
-        if (scene.buildIndex == 0) {
+
+        if (scene.buildIndex == 0)
+        {
             //SceneManager.LoadScene(1, LoadSceneMode.Single);
             return;
         }
@@ -228,7 +230,7 @@ public class GameManager : MonoBehaviour
                 return;
 
         }
-        if(HDDConspiracy == true)
+        if (HDDConspiracy == true)
         {
             KC.enabled = true;
         }
@@ -279,9 +281,25 @@ public class GameManager : MonoBehaviour
         if (SkillsUnlocked.ContainsKey(unlockedSkill))
         {
             SkillsUnlocked[unlockedSkill] = true;
-        } else
+        }
+        else
         {
             Debug.LogError(unlockedSkill + " is not recognised.");
         }
+    }
+
+    public static void FMODPlayOnce(FMODUnity.EventReference eventReference, Vector3 postition, Vector3 velocity)
+    {
+        var eventPlay = FMODUnity.RuntimeManager.CreateInstance(eventReference);
+        FMOD.ATTRIBUTES_3D attributes;
+
+        attributes.position = FMODUnity.RuntimeUtils.ToFMODVector(postition);
+        attributes.velocity = FMODUnity.RuntimeUtils.ToFMODVector(velocity);
+        attributes.forward = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.forward);
+        attributes.up = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.up);
+        eventPlay.set3DAttributes(attributes);
+
+        eventPlay.start();
+        eventPlay.release();
     }
 }

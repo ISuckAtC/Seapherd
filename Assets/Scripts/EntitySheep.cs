@@ -53,6 +53,11 @@ public class EntitySheep : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         //Marker = GameObject.FindGameObjectWithTag("PlayerMarker");        COMMENTED OUT FOR NOW
+        
+    }
+
+    public void RecieveGrazeController()
+    {
         MissionController = GameObject.FindGameObjectWithTag("GrazingZone").GetComponent<MissionGrazePoint>();
     }
 

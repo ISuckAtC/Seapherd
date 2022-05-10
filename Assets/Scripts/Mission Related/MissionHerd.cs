@@ -18,7 +18,11 @@ public class MissionHerd : Mission
     {
         Sheep = FindObjectsOfType<EntitySheep>().Where(x => x.PartOfMission.Contains(MissionName)).ToList();
         GameManager.Instance.Missions[MissionName].Extras = (Sheep.Count, Sheep.Count);
-        foreach(EntitySheep sheep in Sheep) sheep.Killed += SheepKilled;
+        foreach(EntitySheep sheep in Sheep) 
+        {
+            sheep.Killed += SheepKilled;
+            sheep.RecieveGrazeController();
+        }
         SetPoints();
         Waypoints[0].GetComponent<MissionWaypoint>().Activate();
         //GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";

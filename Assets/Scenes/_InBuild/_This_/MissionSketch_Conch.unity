@@ -1825,6 +1825,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bearfish
       objectReference: {fileID: 0}
+    - target: {fileID: 4867042258905506285, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
 --- !u!4 &103972258 stripped
@@ -33234,7 +33238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1472427643192868417, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 114.9
+      value: 97.9
       objectReference: {fileID: 0}
     - target: {fileID: 1472427643192868417, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33273,8 +33277,16 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1472427643192868419, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472427643192868419, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472427643192868419, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1786003790293761427, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
@@ -33299,6 +33311,14 @@ PrefabInstance:
     - target: {fileID: 7087230481625648817, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7166744146431856289, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
+      propertyPath: Direction.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7166744146431856289, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}
+      propertyPath: Direction.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9431bcca8747ad04098f800e06a8afa6, type: 3}

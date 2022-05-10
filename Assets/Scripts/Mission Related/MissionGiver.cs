@@ -31,6 +31,9 @@ public class MissionGiver : MonoBehaviour, IToolTip
     GameObject currentTalk;
     public string[] Missions;
     public GameObject MissionCompleteSparkle;
+
+    public FMODUnity.EventReference MissionStart;
+    public FMODUnity.EventReference MissionComplete;
     // Start is called before the first frame update
     void Start()
     {
@@ -93,9 +96,11 @@ public class MissionGiver : MonoBehaviour, IToolTip
             {
                 // Complete mission when handed in
 
+
                 GM.Missions[mission].Status = GameManager.MissionStatus.Completed;
                 CompleteMission(mission);
                 ParticleSystem ps = Instantiate(MissionCompleteSparkle, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+                GameManager.FMODPlayOnce(MissionComplete, transform.position, Vector3.zero);
                 return;
             }
             if (GM.Missions[mission].Status == GameManager.MissionStatus.NotStarted)
@@ -105,6 +110,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
                 Instantiate(GM.MissionPrefabs[mission]);
                 GM.Missions[mission].Status = GameManager.MissionStatus.InProgress;
                 StartMission(mission);
+                GameManager.FMODPlayOnce(MissionStart, transform.position, Vector3.zero);
                 return;
             }
             if (GM.Missions[mission].Status == GameManager.MissionStatus.InProgress)

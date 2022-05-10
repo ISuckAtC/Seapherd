@@ -28,7 +28,7 @@ public class MissionWaypoint : MonoBehaviour
     {
         active = true;
         GetComponent<Collider>().enabled = true;
-        GetComponent<MeshRenderer>().enabled = true;
+        //GetComponent<MeshRenderer>().enabled = true;
         foreach (WaypointSpawn spawn in Spawns)
         {
             Instantiate(spawn.SpawnObject, spawn.SpawnPosition.position, spawn.SpawnPosition.rotation);

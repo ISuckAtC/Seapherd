@@ -41,7 +41,7 @@ public class MissionGrazePoint : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().material = GoalMarker;
                 entered = true;
-                GameManager.Instance.MissionObjectiveText.text = "Let the sheep graze (" + (waypoint.SelfIndex + 1) + "/" + waypoint.ParentNavigator.Waypoints.Length + ")";
+                //GameManager.Instance.MissionObjectiveText.text = "Let the sheep graze (" + (waypoint.SelfIndex + 1) + "/" + waypoint.ParentNavigator.Waypoints.Length + ")";
                 
                 var grazeStart = FMODUnity.RuntimeManager.CreateInstance(startEvent);
                 ATTRIBUTES_3D attributes;
@@ -71,7 +71,7 @@ public class MissionGrazePoint : MonoBehaviour
 
             }
         }
-        if (GameManager.Instance.SheepCount == FinishedGrazingInt)
+        if ((((int,int))GameManager.Instance.Missions[waypoint.ParentNavigator.MissionName].Extras).Item1 <= FinishedGrazingInt)
         {
             waypoint.ParentNavigator.Activated(waypoint.SelfIndex);
 

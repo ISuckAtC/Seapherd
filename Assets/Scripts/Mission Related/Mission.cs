@@ -6,7 +6,7 @@ public class Mission : MonoBehaviour
 {
     public string MissionName;
     public GameObject NextMission;
-
+    public FMODUnity.EventReference MissionReturn;
     public void Continue()
     {
         if (NextMission != null)
@@ -17,6 +17,7 @@ public class Mission : MonoBehaviour
         {
             Debug.Log(MissionName + " completed!");
             GameManager.Instance.Missions[MissionName].Status = GameManager.MissionStatus.Handin;
+            GameManager.FMODPlayOnce(MissionReturn, transform.position, Vector3.zero);
         }
 
         Destroy(gameObject);
