@@ -81,7 +81,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
     }
 
 
-    public void Interact()
+    public void Interact() // Mission giver standard operations
     {
         Debug.Log("Interacted with " + gameObject.name);
         foreach (string mission in Missions)
@@ -89,6 +89,8 @@ public class MissionGiver : MonoBehaviour, IToolTip
             Debug.Log("Mission: " + mission + " | Status: " + GM.Missions[mission].Status.ToString());
             if (GM.Missions[mission].Status == GameManager.MissionStatus.Handin)
             {
+                // Complete mission when handed in
+
                 GM.Missions[mission].Status = GameManager.MissionStatus.Completed;
                 CompleteMission(mission);
                 ParticleSystem ps = Instantiate(MissionCompleteSparkle, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
@@ -96,15 +98,31 @@ public class MissionGiver : MonoBehaviour, IToolTip
             }
             if (GM.Missions[mission].Status == GameManager.MissionStatus.NotStarted)
             {
+                // Start mission when not started
+
                 Instantiate(GM.MissionPrefabs[mission]);
                 GM.Missions[mission].Status = GameManager.MissionStatus.InProgress;
+                StartMission(mission);
                 return;
             }
             if (GM.Missions[mission].Status == GameManager.MissionStatus.InProgress)
             {
+                // Remind player when in progress
+
+                RemindMission(mission);
                 return;
             }
         }
+    }
+
+    public virtual void StartMission(string mission)
+    {
+
+    }
+
+    public virtual void RemindMission(string mission)
+    {
+
     }
 
     public virtual void CompleteMission(string mission)
