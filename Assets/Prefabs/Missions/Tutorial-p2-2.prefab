@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4473927297789347903}
   - component: {fileID: 4473927297789347902}
   m_Layer: 0
-  m_Name: Tutorial-p2
+  m_Name: Tutorial-p2-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,12 +59,6 @@ MonoBehaviour:
   - {fileID: 5813539614719384750}
   VoiceLines:
   - Guid:
-      Data1: -85283862
-      Data2: 1105041077
-      Data3: 1027829919
-      Data4: 1715379360
-    Path: event:/VO/Tutorial/Tutorial_4
-  - Guid:
       Data1: 1608736761
       Data2: 1258729896
       Data3: -1488268635
@@ -76,6 +70,24 @@ MonoBehaviour:
       Data3: -683182711
       Data4: 787237461
     Path: event:/VO/Tutorial/Tutorial_6
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   Sheep: []
 --- !u!1001 &2065461795136178689
 PrefabInstance:

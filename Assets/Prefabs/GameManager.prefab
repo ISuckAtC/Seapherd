@@ -78,7 +78,7 @@ MonoBehaviour:
   SkillPoints: 0
   missionPrefabLoad:
   - {fileID: 8975845951396930429, guid: 4c9189954e1cd88469ee27ff2ace8f1d, type: 3}
-  - {fileID: 4473927297789347896, guid: ab5b596743a60fb43b8d99120fa8bbab, type: 3}
+  - {fileID: 8975845951396930429, guid: f63e4637256a8ca4e8c92d2092663297, type: 3}
   - {fileID: 6975512486210069566, guid: 4da2d34cc9a1fdd4bba15a9bb903f881, type: 3}
 --- !u!114 &5765766480805687791
 MonoBehaviour:
