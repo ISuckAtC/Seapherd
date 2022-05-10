@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MissionGiver : MonoBehaviour, IToolTip
 {
+    [HideInInspector]
     public GameObject BoardM1, BoardM2, BoardM1Complete, BoardM2Complete;
+    [HideInInspector]
     public GameObject Player;
     public GameObject ExclamationMark;
     [Header("Put What MissionGiver This is, we use this to specify what missions can be given by them, 0 is for the Tutorial,  1 is for Mission 1 to 4 will be possible, for MissionGiver 2 another version of Mission 3 or 4 is possible, Mission Giver 3 is tied to jokes, mainly unused")]
@@ -164,7 +166,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
         }*/
     }
 
-    public void StartMission()
+    public void StartMissionLegacy()
     {
         Debug.Log("Start Mission call");
         if (talking)
