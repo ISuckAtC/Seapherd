@@ -53,11 +53,11 @@ MonoBehaviour:
   NextMission: {fileID: 0}
   MissionReturn:
     Guid:
-      Data1: -400022067
-      Data2: 1262669863
-      Data3: 225756837
-      Data4: 2107121069
-    Path: event:/SFX/Animals/SheepGrazeEnd
+      Data1: 389442219
+      Data2: 1134000954
+      Data3: -462993530
+      Data4: -565759939
+    Path: event:/SFX/Missions/MissionComplete
   Waypoints:
   - {fileID: 5813539613272630020}
   - {fileID: 5813539614669242976}

@@ -6,11 +6,12 @@ public class Mission : MonoBehaviour
 {
     public string MissionName;
     public GameObject NextMission;
-    public FMODUnity.EventReference MissionReturn;
+    public FMODUnity.EventReference MissionReturn, MissionAdvance;
     public void Continue()
     {
         if (NextMission != null)
         {
+            GameManager.FMODPlayOnce(MissionAdvance, transform.position, Vector3.zero);
             Instantiate(NextMission);
         }
         else

@@ -50,11 +50,11 @@ MonoBehaviour:
   NextMission: {fileID: 4473927297789347896, guid: ab5b596743a60fb43b8d99120fa8bbab, type: 3}
   MissionReturn:
     Guid:
-      Data1: -400022067
-      Data2: 1262669863
-      Data3: 225756837
-      Data4: 2107121069
-    Path: event:/SFX/Animals/SheepGrazeEnd
+      Data1: 389442219
+      Data2: 1134000954
+      Data3: -462993530
+      Data4: -565759939
+    Path: event:/SFX/Missions/MissionComplete
   VoiceLines:
   - Guid:
       Data1: 0
