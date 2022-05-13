@@ -48175,6 +48175,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Force: 10
   Direction: {x: 0, y: 0, z: 1}
+  upBoxSound:
+    Guid:
+      Data1: -1711650351
+      Data2: 1286883712
+      Data3: 43821222
+      Data4: 1955846588
+    Path: event:/SFX/Environment/UpBox
 --- !u!1 &3131248905466742291
 GameObject:
   m_ObjectHideFlags: 0

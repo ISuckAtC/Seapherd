@@ -58,6 +58,13 @@ MonoBehaviour:
       Data3: -462993530
       Data4: -565759939
     Path: event:/SFX/Missions/MissionComplete
+  MissionAdvance:
+    Guid:
+      Data1: 579715622
+      Data2: 1098125005
+      Data3: 1880941243
+      Data4: -2077073252
+    Path: event:/SFX/Missions/MissionAdvance
   Waypoints:
   - {fileID: 5813539613272630020}
   - {fileID: 5813539614669242976}

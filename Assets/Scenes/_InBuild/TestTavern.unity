@@ -1134,18 +1134,18 @@ MonoBehaviour:
   MissionCompleteSparkle: {fileID: 3891866955724769205, guid: 561a2a184545b2d4d9b357efd7e398cb, type: 3}
   MissionStart:
     Guid:
-      Data1: -400022067
-      Data2: 1262669863
-      Data3: 225756837
-      Data4: 2107121069
-    Path: event:/SFX/Animals/SheepGrazeEnd
+      Data1: 1900284480
+      Data2: 1270066745
+      Data3: 453899399
+      Data4: -1669397159
+    Path: event:/SFX/Missions/MissionReceive
   MissionComplete:
     Guid:
-      Data1: -400022067
-      Data2: 1262669863
-      Data3: 225756837
-      Data4: 2107121069
-    Path: event:/SFX/Animals/SheepGrazeEnd
+      Data1: 389442219
+      Data2: 1134000954
+      Data3: -462993530
+      Data4: -565759939
+    Path: event:/SFX/Missions/MissionComplete
 --- !u!1 &1017056611
 GameObject:
   m_ObjectHideFlags: 0
