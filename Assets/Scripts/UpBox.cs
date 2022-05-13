@@ -25,4 +25,11 @@ public class UpBox : MonoBehaviour
             other.attachedRigidbody.AddForce(Direction * Force, ForceMode.Force);
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if ((other.gameObject.layer & (LayerMask.NameToLayer("Player") | LayerMask.NameToLayer("Sheep"))) > 0)
+        {
+            //Play sound
+        }
+    }
 }
