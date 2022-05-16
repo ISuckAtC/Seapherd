@@ -28,7 +28,7 @@ TagManager:
   - Artifact
   - Pickup
   - PickupHeld
-  - 
+  - BoidObstacle
   - 
   - 
   - 
