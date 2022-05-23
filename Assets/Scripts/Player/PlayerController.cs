@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public float HandDragMultiplier;
     public float HandRotateMultiplier;
     public float HandRotateExponent;
+    public float HandRotateDeadzone;
     public float StreamSpeedBoost;
     public float SpeedUpTimer;
     private bool speedUp;
@@ -374,17 +375,30 @@ public class PlayerController : MonoBehaviour
             drag *= HandDragMultiplier;
             rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
 
+
             float distanceFromBody = Vector3.Distance(transform.position, HandControllerL.position);
 
             Vector3 lastArmRelative = (lastLHandPos - (lastBodyPos - transform.position)) - transform.position;
 
+            Vector2 lastArmRelative2D = new Vector2(lastArmRelative.x, lastArmRelative.z);
+
             Vector3 currentArmRelative = HandControllerL.position - transform.position;
 
-            float angle = Vector2.SignedAngle(new Vector2(lastArmRelative.x, lastArmRelative.z), new Vector2(currentArmRelative.x, currentArmRelative.z));
+            Vector2 currentArmRelative2D = new Vector2(currentArmRelative.x, currentArmRelative.z);
 
+
+            Vector2 handToBodyOffset = currentArmRelative2D.normalized;
+
+
+            Vector2 movement = currentArmRelative2D - lastArmRelative2D;
+
+            movement = Vector2.Lerp(movement, new Vector2(movement.x * handToBodyOffset.y, movement.y * handToBodyOffset.x), HandRotateDeadzone);
+
+
+            float angle = Vector2.SignedAngle(Vector2.zero, movement);
             UnityEngine.Debug.Log(angle + " | " + HandRotateExponent + "|" + distanceFromBody + "|" + HandRotateMultiplier);
 
-            rb.angularVelocity += new Vector3(0,Mathf.Pow(angle, HandRotateExponent) * distanceFromBody * HandRotateMultiplier,0);
+            rb.angularVelocity += new Vector3(0,Mathf.Pow(angle * distanceFromBody, HandRotateExponent) * HandRotateMultiplier,0);
 
             if (!lastLHandGrab) // GRABBED THIS FRAME
             {
@@ -411,13 +425,24 @@ public class PlayerController : MonoBehaviour
 
             Vector3 lastArmRelative = (lastRHandPos - (lastBodyPos - transform.position)) - transform.position;
 
+            Vector2 lastArmRelative2D = new Vector2(lastArmRelative.x, lastArmRelative.z);
+
             Vector3 currentArmRelative = HandControllerR.position - transform.position;
 
-            float angle = Vector2.SignedAngle(new Vector2(lastArmRelative.x, lastArmRelative.z), new Vector2(currentArmRelative.x, currentArmRelative.z));
+            Vector2 currentArmRelative2D = new Vector2(currentArmRelative.x, currentArmRelative.z);
 
-            
 
-            rb.angularVelocity += new Vector3(0,Mathf.Pow(angle, HandRotateExponent) * distanceFromBody * HandRotateMultiplier,0);
+            Vector2 handToBodyOffset = currentArmRelative2D.normalized;
+
+
+            Vector2 movement = currentArmRelative2D - lastArmRelative2D;
+
+            movement = Vector2.Lerp(movement, new Vector2(movement.x * handToBodyOffset.y, movement.y * handToBodyOffset.x), HandRotateDeadzone);
+
+
+            float angle = Vector2.SignedAngle(Vector2.zero, movement);
+
+            rb.angularVelocity += new Vector3(0,Mathf.Pow(angle * distanceFromBody, HandRotateExponent) * HandRotateMultiplier,0);
 
             if (!lastRHandGrab) // GRABBED THIS FRAME
             {
