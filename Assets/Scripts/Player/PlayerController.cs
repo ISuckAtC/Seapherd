@@ -389,6 +389,7 @@ public class PlayerController : MonoBehaviour
 
 
             Vector2 handToBodyOffset = currentArmRelative2D.normalized;
+            UnityEngine.Debug.Log(handToBodyOffset);
             handToBodyOffset = new Vector2(Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent));
 
 
