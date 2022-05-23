@@ -384,7 +384,7 @@ public class PlayerController : MonoBehaviour
 
             
 
-            rb.angularVelocity = new Vector3(0,Mathf.Pow(angle, HandRotateExponent) * distanceFromBody * HandRotateMultiplier,0);
+            rb.angularVelocity += new Vector3(0,Mathf.Pow(angle, HandRotateExponent) * distanceFromBody * HandRotateMultiplier,0);
 
             if (!lastLHandGrab) // GRABBED THIS FRAME
             {
@@ -417,7 +417,7 @@ public class PlayerController : MonoBehaviour
 
             
 
-            rb.angularVelocity = new Vector3(0,Mathf.Pow(angle, HandRotateExponent) * distanceFromBody * HandRotateMultiplier,0);
+            rb.angularVelocity += new Vector3(0,Mathf.Pow(angle, HandRotateExponent) * distanceFromBody * HandRotateMultiplier,0);
 
             if (!lastRHandGrab) // GRABBED THIS FRAME
             {
