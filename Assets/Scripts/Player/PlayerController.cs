@@ -402,7 +402,7 @@ public class PlayerController : MonoBehaviour
 
             angle = Mathf.Lerp(angle, 0, 1 - movement.magnitude);
 
-            UnityEngine.Debug.Log(angle + " | " + HandRotateExponent + "|" + distanceFromBody + "|" + HandRotateMultiplier);
+            UnityEngine.Debug.Log(angle + " | " + HandRotateExponent + "|" + distanceFromBody + "|" + HandRotateMultiplier + "|" + handToBodyOffset);
 
             rb.angularVelocity += new Vector3(0,Mathf.Pow(angle * distanceFromBody, HandRotateExponent) * HandRotateMultiplier,0);
 
