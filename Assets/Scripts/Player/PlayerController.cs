@@ -380,7 +380,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 currentArmRelative = HandControllerL.position - transform.position;
 
-            float angle = Vector2.Angle(new Vector2(lastArmRelative.x, lastArmRelative.z), new Vector2(currentArmRelative.x, currentArmRelative.z));
+            float angle = Vector2.SignedAngle(new Vector2(lastArmRelative.x, lastArmRelative.z), new Vector2(currentArmRelative.x, currentArmRelative.z));
 
             UnityEngine.Debug.Log(angle + " | " + HandRotateExponent + "|" + distanceFromBody + "|" + HandRotateMultiplier);
 
@@ -413,7 +413,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 currentArmRelative = HandControllerR.position - transform.position;
 
-            float angle = Vector2.Angle(new Vector2(lastArmRelative.x, lastArmRelative.z), new Vector2(currentArmRelative.x, currentArmRelative.z));
+            float angle = Vector2.SignedAngle(new Vector2(lastArmRelative.x, lastArmRelative.z), new Vector2(currentArmRelative.x, currentArmRelative.z));
 
             
 
