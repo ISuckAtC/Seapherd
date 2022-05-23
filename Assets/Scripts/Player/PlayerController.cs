@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public float HandRotateMultiplier;
     public float HandRotateExponent;
     public float HandRotateDeadzone;
+    public float HandRotateDeadExponent;
     public float StreamSpeedBoost;
     public float SpeedUpTimer;
     private bool speedUp;
@@ -388,6 +389,7 @@ public class PlayerController : MonoBehaviour
 
 
             Vector2 handToBodyOffset = currentArmRelative2D.normalized;
+            handToBodyOffset = new Vector2(Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent));
 
 
             Vector2 movement = currentArmRelative2D - lastArmRelative2D;
@@ -437,6 +439,7 @@ public class PlayerController : MonoBehaviour
 
 
             Vector2 handToBodyOffset = currentArmRelative2D.normalized;
+            handToBodyOffset = new Vector2(Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent));
 
 
             Vector2 movement = currentArmRelative2D - lastArmRelative2D;
