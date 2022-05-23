@@ -390,7 +390,11 @@ public class PlayerController : MonoBehaviour
 
             Vector2 handToBodyOffset = currentArmRelative2D.normalized;
             UnityEngine.Debug.Log(handToBodyOffset);
-            handToBodyOffset = new Vector2(Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent));
+
+            handToBodyOffset = new Vector2(
+                handToBodyOffset.x < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.x), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), 
+                handToBodyOffset.y < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.y), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent)
+            );
 
 
             Vector2 movement = currentArmRelative2D - lastArmRelative2D;
@@ -405,7 +409,15 @@ public class PlayerController : MonoBehaviour
 
             UnityEngine.Debug.Log(angle + " | " + HandRotateExponent + "|" + distanceFromBody + "|" + HandRotateMultiplier + "|" + handToBodyOffset);
 
-            rb.angularVelocity += new Vector3(0,Mathf.Pow(angle * distanceFromBody, HandRotateExponent) * HandRotateMultiplier,0);
+            rb.angularVelocity += new Vector3(
+                0,
+                (
+                    angle < 0 ? 
+                        -Mathf.Pow(Mathf.Abs(angle) * distanceFromBody, HandRotateExponent) : 
+                        Mathf.Pow(angle * distanceFromBody, HandRotateExponent)
+                ) * HandRotateMultiplier,
+                0
+            );
 
             if (!lastLHandGrab) // GRABBED THIS FRAME
             {
