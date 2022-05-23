@@ -30,7 +30,6 @@ public class UpBox : MonoBehaviour
     {
         if ((other.gameObject.layer & (LayerMask.NameToLayer("Player") | LayerMask.NameToLayer("Sheep"))) > 0)
         {
-            //Play sound
             GameManager.FMODPlayOnce(upBoxSound, transform.position, Direction);
         }
     }

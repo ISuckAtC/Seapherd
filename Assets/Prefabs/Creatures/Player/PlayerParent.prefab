@@ -611,11 +611,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupEvent:
     Guid:
-      Data1: 2083831873
-      Data2: 1333911200
-      Data3: -508099935
-      Data4: -939283599
-    Path: event:/SFX/Player/PlayerPickup
+      Data1: -1122023210
+      Data2: 1242469299
+      Data3: -1650565244
+      Data4: 1014443320
+    Path: event:/SFX/Player/ItemPickup
   magicEvent:
     Guid:
       Data1: -838450046

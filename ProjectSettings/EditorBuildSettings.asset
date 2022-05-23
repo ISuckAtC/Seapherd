@@ -30,19 +30,19 @@ EditorBuildSettings:
     path: Assets/Scenes/_InBuild/Dadlantean_Intro.unity
     guid: 5bf45b3a90bd01945bc1d0c13d7e2787
   - enabled: 0
-    path: Assets/Scenes/Prototype 4_Erik.unity
+    path: Assets/Scenes/Prototypes/Prototype 4_Erik.unity
     guid: 0594c22dafcb23f4db44633f07b5ec68
   - enabled: 0
     path: Assets/Scenes/TavernTesting H.unity
     guid: 2b37da38659c6a34ab679d1c0833e00b
   - enabled: 0
-    path: Assets/Scenes/Prototype 3.unity
+    path: Assets/Scenes/Prototypes/Prototype 3.unity
     guid: cb93b24572d247748bc27c2a995c5914
   - enabled: 0
     path: Assets/Scenes/David/VR_Testing.unity
     guid: 00c7a793865220d4bb1631b27a7471d5
   - enabled: 0
-    path: Assets/Scenes/Prototype1 H.unity
+    path: Assets/Scenes/Prototypes/Prototype1 H.unity
     guid: b0fda384bea467548b6d772ea2d92d49
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
@@ -51,7 +51,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TavernTesting.unity
     guid: 2973d7ae7faa3e64cb3a5c99abe6d733
   - enabled: 0
-    path: Assets/Scenes/Prototype1.unity
+    path: Assets/Scenes/Prototypes/Prototype1.unity
     guid: fd09e2985ee6ff940a2e5d21ade817f9
   - enabled: 0
     path: Assets/Scenes/TestMission1.unity
