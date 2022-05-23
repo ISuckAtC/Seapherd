@@ -452,7 +452,10 @@ public class PlayerController : MonoBehaviour
 
 
             Vector2 handToBodyOffset = currentArmRelative2D.normalized;
-            handToBodyOffset = new Vector2(Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent));
+            handToBodyOffset = new Vector2(
+                handToBodyOffset.x < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.x), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), 
+                handToBodyOffset.y < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.y), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent)
+            );
 
 
             Vector2 movement = currentArmRelative2D - lastArmRelative2D;
@@ -465,7 +468,15 @@ public class PlayerController : MonoBehaviour
 
             angle = Mathf.Lerp(angle, 0, 1 - movement.magnitude);
 
-            rb.angularVelocity += new Vector3(0,Mathf.Pow(angle * distanceFromBody, HandRotateExponent) * HandRotateMultiplier,0);
+            rb.angularVelocity += new Vector3(
+                0,
+                (
+                    angle < 0 ? 
+                        -Mathf.Pow(Mathf.Abs(angle) * distanceFromBody, HandRotateExponent) : 
+                        Mathf.Pow(angle * distanceFromBody, HandRotateExponent)
+                ) * HandRotateMultiplier,
+                0
+            );
 
             if (!lastRHandGrab) // GRABBED THIS FRAME
             {
