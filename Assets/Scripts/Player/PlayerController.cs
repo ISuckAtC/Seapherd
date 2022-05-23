@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     public float UnfuckValue;
     public float HandDragExponent;
     public float HandDragMultiplier;
+    public float HandRotateMultiplier;
+    public float HandRotateExponent;
     public float StreamSpeedBoost;
     public float SpeedUpTimer;
     private bool speedUp;
@@ -372,6 +374,18 @@ public class PlayerController : MonoBehaviour
             drag *= HandDragMultiplier;
             rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
 
+            float distanceFromBody = Vector3.Distance(transform.position, HandControllerL.position);
+
+            Vector3 lastArmRelative = (lastLHandPos - (lastBodyPos - transform.position)) - transform.position;
+
+            Vector3 currentArmRelative = HandControllerL.position - transform.position;
+
+            float angle = Vector2.Angle(new Vector2(lastArmRelative.x, lastArmRelative.z), new Vector2(currentArmRelative.x, currentArmRelative.z));
+
+            
+
+            rb.angularVelocity = new Vector3(0,Mathf.Pow(angle, HandRotateExponent) * distanceFromBody * HandRotateMultiplier,0);
+
             if (!lastLHandGrab) // GRABBED THIS FRAME
             {
                 HandL.Grab();
@@ -392,6 +406,18 @@ public class PlayerController : MonoBehaviour
             drag *= HandDragMultiplier;
             //Debug.Log(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent));
             rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
+
+            float distanceFromBody = Vector3.Distance(transform.position, HandControllerR.position);
+
+            Vector3 lastArmRelative = (lastRHandPos - (lastBodyPos - transform.position)) - transform.position;
+
+            Vector3 currentArmRelative = HandControllerR.position - transform.position;
+
+            float angle = Vector2.Angle(new Vector2(lastArmRelative.x, lastArmRelative.z), new Vector2(currentArmRelative.x, currentArmRelative.z));
+
+            
+
+            rb.angularVelocity = new Vector3(0,Mathf.Pow(angle, HandRotateExponent) * distanceFromBody * HandRotateMultiplier,0);
 
             if (!lastRHandGrab) // GRABBED THIS FRAME
             {

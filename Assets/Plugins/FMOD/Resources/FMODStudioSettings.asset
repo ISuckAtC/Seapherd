@@ -345,7 +345,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: FMODAssets/Desktop
+  sourceBankPath: FMODAssets
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -368,12 +368,12 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Master
+  - Desktop/Master
   Banks:
-  - AMBX
-  - MUS
-  - SFX
-  - VO
+  - Desktop/AMBX
+  - Desktop/MUS
+  - Desktop/SFX
+  - Desktop/VO
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
