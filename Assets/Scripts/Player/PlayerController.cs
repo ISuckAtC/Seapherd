@@ -392,11 +392,14 @@ public class PlayerController : MonoBehaviour
 
             Vector2 movement = currentArmRelative2D - lastArmRelative2D;
 
+            movement = movement.normalized;
+
             movement = Vector2.Lerp(movement, new Vector2(movement.x * handToBodyOffset.y, movement.y * handToBodyOffset.x), HandRotateDeadzone);
 
-            Vector2 forward = new Vector2(transform.forward.x, transform.forward.z);
+            float angle = Vector2.SignedAngle(lastArmRelative2D, currentArmRelative2D);
 
-            float angle = Vector2.SignedAngle(forward, movement);
+            angle = Mathf.Lerp(angle, 0, 1 - movement.magnitude);
+
             UnityEngine.Debug.Log(angle + " | " + HandRotateExponent + "|" + distanceFromBody + "|" + HandRotateMultiplier);
 
             rb.angularVelocity += new Vector3(0,Mathf.Pow(angle * distanceFromBody, HandRotateExponent) * HandRotateMultiplier,0);
@@ -438,11 +441,13 @@ public class PlayerController : MonoBehaviour
 
             Vector2 movement = currentArmRelative2D - lastArmRelative2D;
 
+            movement = movement.normalized;
+
             movement = Vector2.Lerp(movement, new Vector2(movement.x * handToBodyOffset.y, movement.y * handToBodyOffset.x), HandRotateDeadzone);
 
-            Vector2 forward = new Vector2(transform.forward.x, transform.forward.z);
+            float angle = Vector2.SignedAngle(lastArmRelative2D, currentArmRelative2D);
 
-            float angle = Vector2.SignedAngle(forward, movement);
+            angle = Mathf.Lerp(angle, 0, 1 - movement.magnitude);
 
             rb.angularVelocity += new Vector3(0,Mathf.Pow(angle * distanceFromBody, HandRotateExponent) * HandRotateMultiplier,0);
 
