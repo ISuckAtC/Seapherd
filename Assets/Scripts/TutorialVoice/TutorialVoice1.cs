@@ -35,7 +35,7 @@ public class TutorialVoice1 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))  //&& if the player is carrying an artifact, on the second version
         {
             Debug.Log("");
             GameManager.FMODPlayOnce(mainVoice, dadPosition, Vector3.up);
