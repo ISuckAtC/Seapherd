@@ -18,6 +18,8 @@ public class MissionGiver : MonoBehaviour, IToolTip
     public string ToolTipText;
     public string ToolTipTextAlt;
     public string ToolTip
+
+    public FMODUnity.EventReference SeapherdEnters, MissionBrief, MissionAccepted, MissionCompleted;
     {
         get
         {
