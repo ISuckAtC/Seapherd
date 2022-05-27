@@ -131,15 +131,15 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Metallic: 0.191
+    - _Metallic: 0.075
     - _Mode: 0
-    - _NormalStrengh: -0.7
+    - _NormalStrengh: 0.52
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.648
+    - _Smoothness: 0.049
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
