@@ -138,10 +138,10 @@ public class MissionGiver : MonoBehaviour, IToolTip
                     Vector3 position = transform.position;
                     Vector3 velocity = Vector3.zero;
 
-                    GameManager.FMODPlayAudioThen(MissionBrief, position, velocity, () => {
+                    StartCoroutine(GameManager.FMODPlayAudioThen(MissionBrief, position, velocity, () => {
                         Instantiate(GM.MissionPrefabs[mission]);
                         GameManager.FMODPlayOnceEvent(MissionAccepted, position, velocity);
-                    });
+                    }));
                     break;
                 }
         }
@@ -172,10 +172,10 @@ public class MissionGiver : MonoBehaviour, IToolTip
                 {
                     Vector3 position = transform.position;
                     Vector3 velocity = Vector3.zero;
-                    GameManager.FMODPlayAudioThen(SeapherdEnters, position, velocity, () => {
+                    StartCoroutine(GameManager.FMODPlayAudioThen(SeapherdEnters, position, velocity, () => {
                         GM.Missions["Tutorial-p2"].Status = GameManager.MissionStatus.NotStarted;
                         Interact();
-                    });
+                    }));
                     break;
                 }
             case "Tutorial-p2":
