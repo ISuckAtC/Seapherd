@@ -293,14 +293,16 @@ public class GameManager : MonoBehaviour
         FMOD.Studio.EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(eventRef);
         
         FMOD.Studio.EventDescription desc;
-        instance.getDescription(out desc);
+        FMOD.RESULT result = instance.getDescription(out desc);
+
+        Debug.Log(result);
 
         int duration;
-        desc.getLength(out duration);
+        result = desc.getLength(out duration);
 
         FMODPlayOnceInstance(instance, position, velocity);
 
-        Debug.Log("Playing " + eventRef.Path + " (duration: " + duration + ")");
+        Debug.Log("Playing " + eventRef.Path + " (duration: " + duration + " | result " + result + ")");
 
         yield return new WaitForSeconds(((float)duration) / 1000f);
 
