@@ -100,7 +100,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
                 GM.Missions[mission].Status = GameManager.MissionStatus.Completed;
                 CompleteMission(mission);
                 ParticleSystem ps = Instantiate(MissionCompleteSparkle, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
-                GameManager.FMODPlayOnce(MissionComplete, transform.position, Vector3.zero);
+                //GameManager.FMODPlayOnce(MissionComplete, transform.position, Vector3.zero);
                 return;
             }
             if (GM.Missions[mission].Status == GameManager.MissionStatus.NotStarted)
@@ -125,12 +125,36 @@ public class MissionGiver : MonoBehaviour, IToolTip
 
     public virtual void StartMission(string mission)
     {
+        switch (mission)
+        {
+            case "Tutorial-p1":
+                {
+                    break;
+                }
 
+
+            case "Tutorial-p2":
+                {
+                    break;
+                }
+        }
     }
 
     public virtual void RemindMission(string mission)
     {
+        switch (mission)
+        {
+            case "Tutorial-p1":
+                {
+                    break;
+                }
 
+
+            case "Tutorial-p2":
+                {
+                    break;
+                }
+        }
     }
 
     public virtual void CompleteMission(string mission)
@@ -140,6 +164,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
             case "Tutorial-p1":
                 {
                     GM.Missions["Tutorial-p2"].Status = GameManager.MissionStatus.NotStarted;
+                    Interact();
                     break;
                 }
             case "Tutorial-p2":
