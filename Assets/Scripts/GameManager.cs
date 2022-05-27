@@ -306,6 +306,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(((float)duration) / 1000f);
 
+        Debug.Log("Finished playing " + eventRef.Path);
+
         action();
     }
 
