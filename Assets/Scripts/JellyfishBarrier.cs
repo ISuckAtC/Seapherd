@@ -5,7 +5,7 @@ using UnityEngine;
 public class JellyfishBarrier : MonoBehaviour
 {
     public float timer, maxTimer;
-    public GameObject KillerFish, Player;
+    public GameObject KillerFish, Player, Sheepfish;
     public bool SpawnOnce;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,11 @@ public class JellyfishBarrier : MonoBehaviour
             timer += Time.deltaTime;
         }
         
-
+        if(other.tag == "Sheep")
+        {
+            timer += Time.deltaTime;
+            Sheepfish = other.gameObject;
+        }
         if (timer > maxTimer)
         {
             if (!SpawnOnce)
@@ -40,6 +44,11 @@ public class JellyfishBarrier : MonoBehaviour
             if (SpawnOnce)
             {
                 KillerFish.SetActive(true);
+            }
+            if(other.tag == "sheep")
+            {
+                KillerFish.GetComponent<KillerFish>().Sheepfish = Sheepfish.transform;
+                KillerFish.GetComponent<KillerFish>().ChaseSheep = true;
             }
             KillerFish.GetComponent<KillerFish>().ChasePlayer = true;
             KillerFish.GetComponent<KillerFish>().Leave = false;

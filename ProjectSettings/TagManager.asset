@@ -13,6 +13,8 @@ TagManager:
   - Board
   - TrailerCamera
   - KillerFishSpawn
+  - PlayerRespawn
+  - StayOut
   layers:
   - Default
   - TransparentFX

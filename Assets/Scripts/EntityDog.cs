@@ -9,11 +9,12 @@ public enum DogState
     Follow,
     Go,
     Chase,
-    Herd
+    Herd,
+    Outside
 }
 public class EntityDog : MonoBehaviour, IToolTip
 {
-    public Transform Player, Bear;
+    public Transform Player, Bear, OutsideTavern;
     public float Speed;
     public float FollowDistance;
     Rigidbody rb;
@@ -29,6 +30,7 @@ public class EntityDog : MonoBehaviour, IToolTip
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        OutsideTavern = GameObject.FindGameObjectWithTag("StayOut").transform;
     }
 
     // Update is called once per frame
@@ -107,6 +109,9 @@ public class EntityDog : MonoBehaviour, IToolTip
                     rb.velocity = transform.forward * Speed;
                 }
 
+                break;
+            case DogState.Outside:
+                
                 break;
         }
     }
