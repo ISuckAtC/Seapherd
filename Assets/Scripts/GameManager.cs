@@ -288,18 +288,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void FMODPlayOnce(FMODUnity.EventReference eventReference, Vector3 postition, Vector3 velocity)
+    public static IEnumerator FMODPlayAudioThen(FMODUnity.EventReference eventRef, Vector3 position, Vector3 velocity, System.Action action)
+    {
+        FMOD.Studio.EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(eventRef);
+        
+        FMOD.Studio.EventDescription desc;
+        instance.getDescription(out desc);
+
+        int duration;
+        desc.getLength(out duration);
+
+        FMODPlayOnceInstance(instance, position, velocity);
+
+        yield return new WaitForSeconds(((float)duration) / 1000f);
+
+        action();
+    }
+
+    public static void FMODPlayOnceEvent(FMODUnity.EventReference eventReference, Vector3 postition, Vector3 velocity)
     {
         var eventPlay = FMODUnity.RuntimeManager.CreateInstance(eventReference);
+        FMODPlayOnceInstance(eventPlay, postition, velocity);
+    }
+
+    public static void FMODPlayOnceInstance(FMOD.Studio.EventInstance instance, Vector3 postition, Vector3 velocity)
+    {
         FMOD.ATTRIBUTES_3D attributes;
 
         attributes.position = FMODUnity.RuntimeUtils.ToFMODVector(postition);
         attributes.velocity = FMODUnity.RuntimeUtils.ToFMODVector(velocity);
         attributes.forward = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.forward);
         attributes.up = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.up);
-        eventPlay.set3DAttributes(attributes);
+        instance.set3DAttributes(attributes);
 
-        eventPlay.start();
-        eventPlay.release();
+        instance.start();
+        instance.release();
     }
 }

@@ -27,7 +27,7 @@ public class TutorialVoice4 : MonoBehaviour
         if (helperTimer >= whenToSpawnBear && !onceBear)
         {
             onceBear = true;
-            GameManager.FMODPlayOnce(voice51, dadPosition, Vector3.up);
+            GameManager.FMODPlayOnceEvent(voice51, dadPosition, Vector3.up);
 
             GameObject bearSpawned = Instantiate(bear, bearSpawn.position, Quaternion.identity);
             //helperTimer = 0f;
@@ -43,7 +43,7 @@ public class TutorialVoice4 : MonoBehaviour
             if (sheepCount == 6 && !once)
             {
                 once = true;
-                GameManager.FMODPlayOnce(mainVoice5, dadPosition, Vector3.up);
+                GameManager.FMODPlayOnceEvent(mainVoice5, dadPosition, Vector3.up);
             }
         }
     }

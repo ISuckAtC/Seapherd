@@ -35,7 +35,7 @@ public class TutorialVoice3 : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Sheep") && !once)  
         {
             once = true;
-            GameManager.FMODPlayOnce(mainVoice4, dadPosition, Vector3.up);
+            GameManager.FMODPlayOnceEvent(mainVoice4, dadPosition, Vector3.up);
             Instantiate(dog, dogSpawn.position, Quaternion.identity);
 
             for (int i = 0; i > sheep.Length; i++)

@@ -35,7 +35,7 @@ public class TutorialVoice2 : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !once && gm.FoundArtifacts == 1) 
         {
             once=true;
-            GameManager.FMODPlayOnce(mainVoice3, dadPosition, Vector3.up);
+            GameManager.FMODPlayOnceEvent(mainVoice3, dadPosition, Vector3.up);
             GameObject sheep0 = Instantiate(sheep, sheepSpawn.position, Quaternion.identity);
         }
     }

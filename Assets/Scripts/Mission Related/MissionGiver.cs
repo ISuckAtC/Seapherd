@@ -18,8 +18,6 @@ public class MissionGiver : MonoBehaviour, IToolTip
     public string ToolTipText;
     public string ToolTipTextAlt;
     public string ToolTip
-
-    public FMODUnity.EventReference SeapherdEnters, MissionBrief, MissionAccepted, MissionCompleted;
     {
         get
         {
@@ -36,6 +34,8 @@ public class MissionGiver : MonoBehaviour, IToolTip
 
     public FMODUnity.EventReference MissionStart;
     public FMODUnity.EventReference MissionComplete;
+
+    public FMODUnity.EventReference SeapherdEnters, MissionBrief, MissionAccepted, MissionCompleted;
     // Start is called before the first frame update
     void Start()
     {
@@ -102,17 +102,15 @@ public class MissionGiver : MonoBehaviour, IToolTip
                 GM.Missions[mission].Status = GameManager.MissionStatus.Completed;
                 CompleteMission(mission);
                 ParticleSystem ps = Instantiate(MissionCompleteSparkle, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
-                //GameManager.FMODPlayOnce(MissionComplete, transform.position, Vector3.zero);
+                //GameManager.FMODPlayOnceEvent(MissionComplete, transform.position, Vector3.zero);
                 return;
             }
             if (GM.Missions[mission].Status == GameManager.MissionStatus.NotStarted)
             {
                 // Start mission when not started
-
-                Instantiate(GM.MissionPrefabs[mission]);
                 GM.Missions[mission].Status = GameManager.MissionStatus.InProgress;
                 StartMission(mission);
-                GameManager.FMODPlayOnce(MissionStart, transform.position, Vector3.zero);
+                GameManager.FMODPlayOnceEvent(MissionStart, transform.position, Vector3.zero);
                 return;
             }
             if (GM.Missions[mission].Status == GameManager.MissionStatus.InProgress)
@@ -137,6 +135,13 @@ public class MissionGiver : MonoBehaviour, IToolTip
 
             case "Tutorial-p2":
                 {
+                    Vector3 position = transform.position;
+                    Vector3 velocity = Vector3.zero;
+
+                    GameManager.FMODPlayAudioThen(MissionBrief, position, velocity, () => {
+                        Instantiate(GM.MissionPrefabs[mission]);
+                        GameManager.FMODPlayOnceEvent(MissionAccepted, position, velocity);
+                    });
                     break;
                 }
         }
@@ -165,13 +170,17 @@ public class MissionGiver : MonoBehaviour, IToolTip
         {
             case "Tutorial-p1":
                 {
-                    GM.Missions["Tutorial-p2"].Status = GameManager.MissionStatus.NotStarted;
-                    Interact();
+                    Vector3 position = transform.position;
+                    Vector3 velocity = Vector3.zero;
+                    GameManager.FMODPlayAudioThen(SeapherdEnters, position, velocity, () => {
+                        GM.Missions["Tutorial-p2"].Status = GameManager.MissionStatus.NotStarted;
+                        Interact();
+                    });
                     break;
                 }
             case "Tutorial-p2":
                 {
-
+                    GameManager.FMODPlayOnceEvent(MissionCompleted, transform.position, Vector3.zero);
                     break;
                 }
         }

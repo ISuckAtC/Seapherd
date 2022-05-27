@@ -11,14 +11,14 @@ public class Mission : MonoBehaviour
     {
         if (NextMission != null)
         {
-            GameManager.FMODPlayOnce(MissionAdvance, transform.position, Vector3.zero);
+            GameManager.FMODPlayOnceEvent(MissionAdvance, transform.position, Vector3.zero);
             Instantiate(NextMission);
         }
         else
         {
             Debug.Log(MissionName + " completed!");
             GameManager.Instance.Missions[MissionName].Status = GameManager.MissionStatus.Handin;
-            GameManager.FMODPlayOnce(MissionReturn, transform.position, Vector3.zero);
+            GameManager.FMODPlayOnceEvent(MissionReturn, transform.position, Vector3.zero);
         }
 
         Destroy(gameObject);

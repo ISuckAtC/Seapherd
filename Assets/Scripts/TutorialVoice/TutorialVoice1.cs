@@ -18,7 +18,7 @@ public class TutorialVoice1 : MonoBehaviour
 
     void Start()
     {
-        GameManager.FMODPlayOnce(mainVoice1, dadPosition, Vector3.up);
+        GameManager.FMODPlayOnceEvent(mainVoice1, dadPosition, Vector3.up);
         Debug.Log("Plays M1");
     }
     /*
@@ -39,7 +39,7 @@ public class TutorialVoice1 : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !once) 
         {
             once = true;
-            GameManager.FMODPlayOnce(mainVoice2, dadPosition, Vector3.up);
+            GameManager.FMODPlayOnceEvent(mainVoice2, dadPosition, Vector3.up);
             Instantiate(artifact, artifactSpawn.position, Quaternion.identity);
             Debug.Log("Plays M2");
         }

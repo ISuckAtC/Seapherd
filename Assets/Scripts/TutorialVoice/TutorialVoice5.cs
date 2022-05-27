@@ -20,7 +20,7 @@ public class TutorialVoice5 : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Bear") && !once)  
         {
             once = true;
-            GameManager.FMODPlayOnce(mainVoice6, dadPosition, Vector3.up);
+            GameManager.FMODPlayOnceEvent(mainVoice6, dadPosition, Vector3.up);
         }
     }
 }
