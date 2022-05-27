@@ -300,9 +300,9 @@ public class PlayerController : MonoBehaviour
 
         FaceButtonControls();
 
-        Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
+        //Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
 
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
+        //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
 
         /*if (Input.GetButtonDown("B"))
         {
@@ -366,9 +366,9 @@ public class PlayerController : MonoBehaviour
 
         FaceButtonControls();
 
-        Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
+        //Vector2 joyAxis = new Vector2(Input.GetAxisRaw("RHorizontal"), Input.GetAxisRaw("RVertical"));
 
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
+        //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
 
         if (Input.GetAxisRaw("LGrip") > 0.5f)// && !GripL) // TODO: Add a button to hold to drag yourself
         {
