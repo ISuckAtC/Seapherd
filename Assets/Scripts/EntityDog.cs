@@ -111,7 +111,7 @@ public class EntityDog : MonoBehaviour, IToolTip
 
                 break;
             case DogState.Outside:
-                
+                transform.forward = (OutsideTavern.position - transform.position).normalized;
                 break;
         }
     }
