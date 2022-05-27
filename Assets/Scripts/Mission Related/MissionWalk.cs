@@ -13,6 +13,7 @@ public class MissionWalk : Mission
     // Start is called before the first frame update
     void Start()
     {
+        UnityEngine.Debug.Log("MissionWalk Start (Mission Name: " + MissionName + ")");
         for (int i = 0; i < WalkPoints.Length; ++i)
         {
             MissionWalkPoint point = WalkPoints[i].GetComponent<MissionWalkPoint>();

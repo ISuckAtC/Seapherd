@@ -16,6 +16,7 @@ public class MissionHerd : Mission
     // Start is called before the first frame update
     void Start()
     {
+        UnityEngine.Debug.Log("MissionHerd Start (Mission Name: " + MissionName + ")");
         Sheep = FindObjectsOfType<EntitySheep>().Where(x => x.PartOfMission.Contains(MissionName)).ToList();
         GameManager.Instance.Missions[MissionName].Extras = (Sheep.Count, Sheep.Count);
         foreach(EntitySheep sheep in Sheep) 
