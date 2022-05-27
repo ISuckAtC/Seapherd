@@ -15,6 +15,7 @@ public class FabriceEgg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        return;
         if(GM.KC.KC== true)
         {
             gameObject.GetComponent<MeshRenderer>().enabled = false;

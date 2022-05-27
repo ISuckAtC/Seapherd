@@ -76,7 +76,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
         }
         if (GM.TotalMissionCompletion >= MissionNumber)
         {
-            ExclamationMark.SetActive(false);
+            //ExclamationMark.SetActive(false);
             // gameObject.GetComponent<BoxCollider>().enabled = false;
         }
         gameObject.transform.LookAt(Player.transform.position);
