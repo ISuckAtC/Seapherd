@@ -139,6 +139,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
                     Vector3 velocity = Vector3.zero;
 
                     StartCoroutine(GameManager.FMODPlayAudioThen(MissionBrief, position, velocity, () => {
+                        Debug.Log("Tut2 instantiate");
                         Instantiate(GM.MissionPrefabs[mission]);
                         GameManager.FMODPlayOnceEvent(MissionAccepted, position, velocity);
                     }));
