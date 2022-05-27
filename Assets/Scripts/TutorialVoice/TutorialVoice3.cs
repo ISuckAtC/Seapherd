@@ -1,26 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
 
-public class TutorialVoice1 : MonoBehaviour
+public class TutorialVoice3 : MonoBehaviour
 {
-    public FMODUnity.EventReference mainVoice1, mainVoice2, helperVoice;
+    public FMODUnity.EventReference mainVoice4, helperVoice;
 
     public GameObject dadlantean;
     Vector3 dadPosition;
     public float helperTimer;
     public float whenToActivateHelper;
 
-    public GameObject artifact;
-    public Transform artifactSpawn;
+    public GameObject dog;
+    public GameObject[] sheep;
+    public Transform dogSpawn;
+
     bool once;
 
-    void Start()
-    {
-        GameManager.FMODPlayOnce(mainVoice1, dadPosition, Vector3.up);
-        Debug.Log("Plays M1");
-    }
     /*
     void FixedUpdate()
     {
@@ -36,12 +32,16 @@ public class TutorialVoice1 : MonoBehaviour
     */
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !once) 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Sheep") && !once)  
         {
             once = true;
-            GameManager.FMODPlayOnce(mainVoice2, dadPosition, Vector3.up);
-            Instantiate(artifact, artifactSpawn.position, Quaternion.identity);
-            Debug.Log("Plays M2");
+            GameManager.FMODPlayOnce(mainVoice4, dadPosition, Vector3.up);
+            Instantiate(dog, dogSpawn.position, Quaternion.identity);
+
+            for (int i = 0; i > sheep.Length; i++)
+            {
+                sheep[i].SetActive(true);
+            }
         }
     }
 }
