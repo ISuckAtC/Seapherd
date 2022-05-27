@@ -300,6 +300,8 @@ public class GameManager : MonoBehaviour
 
         FMODPlayOnceInstance(instance, position, velocity);
 
+        Debug.Log("Playing " + eventRef.Path + " (duration: " + duration + ")");
+
         yield return new WaitForSeconds(((float)duration) / 1000f);
 
         action();
