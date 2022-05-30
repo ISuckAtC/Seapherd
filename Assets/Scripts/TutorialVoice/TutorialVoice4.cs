@@ -13,19 +13,20 @@ public class TutorialVoice4 : MonoBehaviour
     public GameObject bear;
     bool once;
     bool onceBear;
+    bool startBearTimer;
     int sheepCount;
+
 
     
     void FixedUpdate()
     {
         dadPosition = dadlantean.transform.position;
 
-        helperTimer += Time.deltaTime;
+        if (startBearTimer) helperTimer += Time.deltaTime;
         if (helperTimer >= whenToSpawnBear && !onceBear)
         {
             onceBear = true;
             GameManager.FMODPlayOnceEvent(voice51, dadPosition, Vector3.up);
-
             bear.SetActive(true);
         }
     }
@@ -40,6 +41,7 @@ public class TutorialVoice4 : MonoBehaviour
             {
                 once = true;
                 GameManager.FMODPlayOnceEvent(mainVoice5, dadPosition, Vector3.up);
+                startBearTimer = true;
             }
         }
     }

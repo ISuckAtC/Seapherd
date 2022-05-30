@@ -472,7 +472,7 @@ MonoBehaviour:
       Data3: 764069249
       Data4: -368827128
     Path: event:/VO/Dadlantean/Dadlantean_Tutorial/Helpers/Help2
-  gm: {fileID: 0}
+  gm: {fileID: 499912769}
   dadlantean: {fileID: 289000884}
   helperTimer: 0
   whenToActivateHelper: 5
@@ -640,8 +640,19 @@ MonoBehaviour:
     Path: event:/VO/Dadlantean/Dadlantean_Tutorial/Main/Main5-1
   dadlantean: {fileID: 289000884}
   helperTimer: 0
-  whenToSpawnBear: 100
+  whenToSpawnBear: 17
   bear: {fileID: 1620211106}
+--- !u!114 &499912769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3969709838699231347, guid: 7139006e2a250774eb2ff85fbae10b6e, type: 3}
+  m_PrefabInstance: {fileID: 1227641427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e68299a349b78488017c96e8c5f8b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &749465528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1391,7 @@ GameObject:
   - component: {fileID: 1048180234}
   - component: {fileID: 1048180233}
   m_Layer: 0
-  m_Name: missionhere
+  m_Name: TutorialArtifactHandin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1402,18 +1413,20 @@ MonoBehaviour:
   NextMission: {fileID: 0}
   MissionReturn:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1900284480
+      Data2: 1270066745
+      Data3: 453899399
+      Data4: -1669397159
+    Path: event:/SFX/Missions/MissionReceive
   MissionAdvance:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1900284480
+      Data2: 1270066745
+      Data3: 453899399
+      Data4: -1669397159
+    Path: event:/SFX/Missions/MissionReceive
+  Pickups:
+  - {fileID: 919132148518050073}
 --- !u!4 &1048180234
 Transform:
   m_ObjectHideFlags: 0
@@ -2178,6 +2191,10 @@ PrefabInstance:
     - target: {fileID: 4867042258905506274, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867042258905506275, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
+      propertyPath: EscapeThreshold
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 4867042258905506285, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
       propertyPath: m_Name

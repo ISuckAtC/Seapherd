@@ -19,19 +19,10 @@ public class EntityBear : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.SplashText("A bear has appeared!\nTo chase it away, get close and spam left mouse", 18);
+        //GameManager.Instance.SplashText("A bear has appeared!\nTo chase it away, get close and spam left mouse", 18);
         rb = GetComponent<Rigidbody>();
 
-        var bearSpawn = FMODUnity.RuntimeManager.CreateInstance(spawnEvent);
-        ATTRIBUTES_3D attributes;
-        attributes.position = this.transform.position.ToFMODVector();
-        attributes.velocity = rb.velocity.ToFMODVector();
-        attributes.forward = this.transform.forward.ToFMODVector();
-        attributes.up = this.transform.up.ToFMODVector();
-        bearSpawn.set3DAttributes(attributes);
-
-        bearSpawn.start();
-        bearSpawn.release();
+        GameManager.FMODPlayOnceEvent(spawnEvent, transform.position, rb.velocity);
     }
 
     // Update is called once per frame
@@ -80,16 +71,7 @@ public class EntityBear : MonoBehaviour
             capturedFish = null;
             escaping = true;
 
-            var bearRelease = FMODUnity.RuntimeManager.CreateInstance(releaseEvent);
-            ATTRIBUTES_3D attributes;
-            attributes.position = this.transform.position.ToFMODVector();
-            attributes.velocity = rb.velocity.ToFMODVector();
-            attributes.forward = this.transform.forward.ToFMODVector();
-            attributes.up = this.transform.up.ToFMODVector();
-            bearRelease.set3DAttributes(attributes);
-
-            bearRelease.start();
-            bearRelease.release();
+            GameManager.FMODPlayOnceEvent(releaseEvent, transform.position, rb.velocity);
         }
     }
 
@@ -101,16 +83,7 @@ public class EntityBear : MonoBehaviour
             capturedFish = other.gameObject.GetComponent<EntitySheep>();
             capturedFish.Capture(transform);
 
-            var bearGrab = FMODUnity.RuntimeManager.CreateInstance(grabEvent);
-            ATTRIBUTES_3D attributes;
-            attributes.position = this.transform.position.ToFMODVector();
-            attributes.velocity = rb.velocity.ToFMODVector();
-            attributes.forward = this.transform.forward.ToFMODVector();
-            attributes.up = this.transform.up.ToFMODVector();
-            bearGrab.set3DAttributes(attributes);
-
-            bearGrab.start();
-            bearGrab.release();
+            GameManager.FMODPlayOnceEvent(grabEvent, transform.position, rb.velocity);
         }
     }
 }
