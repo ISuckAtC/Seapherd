@@ -13,35 +13,28 @@ public class TutorialVoice3 : MonoBehaviour
 
     public GameObject dog;
     public GameObject[] sheep;
-    public Transform dogSpawn;
 
     bool once;
 
-    /*
-    void FixedUpdate()
-    {
-        dadPosition = dadlantean.transform.position;
-
-        helperTimer += Time.deltaTime;
-        if (helperTimer <= whenToActivateHelper)
-        {
-            GameManager.FMODPlayOnce(helperVoice, dadPosition, Vector3.up);
-            //helperTimer = 0f;
-        }
-    }
-    */
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Sheep") && !once)  
         {
             once = true;
             GameManager.FMODPlayOnceEvent(mainVoice4, dadPosition, Vector3.up);
-            Instantiate(dog, dogSpawn.position, Quaternion.identity);
+            dog.SetActive(true);
+        }
+    }
 
-            for (int i = 0; i > sheep.Length; i++)
+    void Update()
+    {
+        if (Input.GetButton("B") && once == true)
+        {
+            foreach (GameObject fish in sheep)
             {
-                sheep[i].SetActive(true);
+                fish.SetActive(true);
             }
         }
+
     }
 }

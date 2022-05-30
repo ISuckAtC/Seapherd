@@ -13,7 +13,6 @@ public class TutorialVoice2 : MonoBehaviour
     public float whenToActivateHelper;
 
     public GameObject sheep;
-    public Transform sheepSpawn;
 
     bool once = false;
 
@@ -32,11 +31,11 @@ public class TutorialVoice2 : MonoBehaviour
     */
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !once && gm.FoundArtifacts == 1) 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !once && gm.Missions["TutorialArtifactHandin"].Status == GameManager.MissionStatus.Handin) 
         {
             once=true;
             GameManager.FMODPlayOnceEvent(mainVoice3, dadPosition, Vector3.up);
-            GameObject sheep0 = Instantiate(sheep, sheepSpawn.position, Quaternion.identity);
+            sheep.SetActive(true);
         }
     }
 }

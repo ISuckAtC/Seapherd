@@ -10,10 +10,7 @@ public class TutorialVoice4 : MonoBehaviour
     Vector3 dadPosition;
     public float helperTimer;
     public float whenToSpawnBear;
-
     public GameObject bear;
-    public Transform bearSpawn;
-
     bool once;
     bool onceBear;
     int sheepCount;
@@ -29,8 +26,7 @@ public class TutorialVoice4 : MonoBehaviour
             onceBear = true;
             GameManager.FMODPlayOnceEvent(voice51, dadPosition, Vector3.up);
 
-            GameObject bearSpawned = Instantiate(bear, bearSpawn.position, Quaternion.identity);
-            //helperTimer = 0f;
+            bear.SetActive(true);
         }
     }
     

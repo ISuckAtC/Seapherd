@@ -712,6 +712,34 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  SeapherdEnters:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  MissionBrief:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  MissionAccepted:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  MissionCompleted:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &652367335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1146,6 +1174,34 @@ MonoBehaviour:
       Data3: -462993530
       Data4: -565759939
     Path: event:/SFX/Missions/MissionComplete
+  SeapherdEnters:
+    Guid:
+      Data1: -315629741
+      Data2: 1269284989
+      Data3: -789352043
+      Data4: -372269162
+    Path: event:/VO/Slavos/SeapherdEnters
+  MissionBrief:
+    Guid:
+      Data1: -965175278
+      Data2: 1120587583
+      Data3: -130536561
+      Data4: -456188134
+    Path: event:/VO/Slavos/MissionBrief
+  MissionAccepted:
+    Guid:
+      Data1: -642114391
+      Data2: 1128395687
+      Data3: 1084123011
+      Data4: -1465627280
+    Path: event:/VO/Slavos/MissionAccepted
+  MissionCompleted:
+    Guid:
+      Data1: 1667617030
+      Data2: 1332697129
+      Data3: 1831868047
+      Data4: -1706132640
+    Path: event:/VO/Slavos/MissionCompleted
 --- !u!1 &1017056611
 GameObject:
   m_ObjectHideFlags: 0

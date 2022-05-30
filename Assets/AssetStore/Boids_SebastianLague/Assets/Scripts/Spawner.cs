@@ -13,12 +13,13 @@ public class Spawner : MonoBehaviour {
     public GizmoType showSpawnRegion;
 
     void Awake () {
+        GameObject boidParent = GameObject.Find("BoidPappa");
         for (int i = 0; i < spawnCount; i++) {
             Vector3 pos = transform.position + Random.insideUnitSphere * spawnRadius;
-            Boid boid = Instantiate (prefab);
+            Boid boid = Instantiate(prefab);
             boid.transform.position = pos;
+            boid.transform.parent = boidParent.transform;
             boid.transform.forward = Random.insideUnitSphere;
-
             boid.SetColour (colour);
         }
     }

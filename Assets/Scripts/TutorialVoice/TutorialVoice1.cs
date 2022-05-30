@@ -12,14 +12,27 @@ public class TutorialVoice1 : MonoBehaviour
     public float helperTimer;
     public float whenToActivateHelper;
 
+    public GameObject[] sheep;
     public GameObject artifact;
-    public Transform artifactSpawn;
+    public GameObject dogFish;
+    public GameObject bearFish;
     bool once;
 
     void Start()
     {
         GameManager.FMODPlayOnceEvent(mainVoice1, dadPosition, Vector3.up);
         Debug.Log("Plays M1");
+        //Setactive all sheep
+        //Dogfish
+        //Artifact
+        artifact.SetActive(false);
+        dogFish.SetActive(false);
+        bearFish.SetActive(false);
+        foreach (GameObject fish in sheep)
+        {
+            fish.SetActive(false);
+        }
+
     }
     /*
     void FixedUpdate()
@@ -40,7 +53,7 @@ public class TutorialVoice1 : MonoBehaviour
         {
             once = true;
             GameManager.FMODPlayOnceEvent(mainVoice2, dadPosition, Vector3.up);
-            Instantiate(artifact, artifactSpawn.position, Quaternion.identity);
+            artifact.SetActive(true);
             Debug.Log("Plays M2");
         }
     }

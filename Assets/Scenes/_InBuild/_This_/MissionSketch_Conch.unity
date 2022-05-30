@@ -920,11 +920,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandRotateMultiplier
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandRotateDeadExponent
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
@@ -8045,6 +8045,37 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!1 &416516043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 416516044}
+  m_Layer: 0
+  m_Name: BoidPappa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &416516044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416516043}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1099637632}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &417798335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23527,6 +23558,7 @@ Transform:
   - {fileID: 6318817237172234770}
   - {fileID: 3927375727336301425}
   - {fileID: 984155899}
+  - {fileID: 416516044}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
