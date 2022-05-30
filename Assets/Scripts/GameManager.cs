@@ -331,7 +331,11 @@ public class GameManager : MonoBehaviour
 
         if (stopCurrent)
         {
-            foreach (var ins in GameManager.Instance.currentPlaying) ins.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            foreach (var ins in GameManager.Instance.currentPlaying) 
+            {
+                UnityEngine.Debug.Log("Stopping sound");
+                ins.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            }
             GameManager.Instance.currentPlaying.Clear();
         }
 
