@@ -512,7 +512,7 @@ public class PlayerController : MonoBehaviour
             if (!shoulderPressR)
             {
                 UnityEngine.Debug.Log("Picking up");
-                Collider[] overlaps = Physics.OverlapSphere(transform.position, HandR.GrabRange, 1 << LayerMask.NameToLayer("Pickup"));
+                Collider[] overlaps = Physics.OverlapSphere(HandR.transform.position, HandR.GrabRange, 1 << LayerMask.NameToLayer("Pickup"));
                 if (overlaps.Length > 0)
                 {
                     IPickup pickable = overlaps[0].GetComponent<IPickup>();
