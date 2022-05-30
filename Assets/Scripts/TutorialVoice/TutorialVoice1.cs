@@ -17,10 +17,12 @@ public class TutorialVoice1 : MonoBehaviour
     public GameObject dogFish;
     public GameObject bearFish;
     bool once;
+    FMOD.Studio.EventInstance currentPlaying;
 
     void Start()
     {
-        GameManager.FMODPlayOnceEvent(mainVoice1, dadPosition, Vector3.up);
+        currentPlaying = FMODUnity.RuntimeManager.CreateInstance(mainVoice1);
+        GameManager.FMODPlayOnceInstance(ref currentPlaying, dadPosition, Vector3.up);
         Debug.Log("Plays M1");
         //Setactive all sheep
         //Dogfish
@@ -33,6 +35,10 @@ public class TutorialVoice1 : MonoBehaviour
             fish.SetActive(false);
         }
 
+
+
+
+        currentPlaying.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
     /*
     void FixedUpdate()

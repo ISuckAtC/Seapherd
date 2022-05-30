@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<string, GameObject> MissionPrefabs = new Dictionary<string, GameObject>();
 
+    private List<FMOD.Studio.EventInstance> currentPlaying;
 
     void Awake()
     {
@@ -289,10 +290,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static IEnumerator FMODPlayAudioThen(FMODUnity.EventReference eventRef, Vector3 position, Vector3 velocity, System.Action action)
+    public static IEnumerator FMODPlayAudioThen(FMODUnity.EventReference eventRef, Vector3 position, Vector3 velocity, System.Action action, bool registerToStop = false, bool stopCurrent = false)
     {
         FMOD.Studio.EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(eventRef);
-        
+
         FMOD.Studio.EventDescription desc;
         FMOD.RESULT result = instance.getDescription(out desc);
 
@@ -301,7 +302,7 @@ public class GameManager : MonoBehaviour
         int duration;
         result = desc.getLength(out duration);
 
-        FMODPlayOnceInstance(ref instance, position, velocity);
+        FMODPlayOnceInstance(ref instance, position, velocity, registerToStop, stopCurrent);
 
         Debug.Log("Playing " + eventRef.Path + " (duration: " + duration + " | result " + result + ")");
 
@@ -312,13 +313,13 @@ public class GameManager : MonoBehaviour
         action();
     }
 
-    public static void FMODPlayOnceEvent(FMODUnity.EventReference eventReference, Vector3 postition, Vector3 velocity)
+    public static void FMODPlayOnceEvent(FMODUnity.EventReference eventReference, Vector3 postition, Vector3 velocity, bool registerToStop = false, bool stopCurrent = false)
     {
         var eventPlay = FMODUnity.RuntimeManager.CreateInstance(eventReference);
-        FMODPlayOnceInstance(ref eventPlay, postition, velocity);
+        FMODPlayOnceInstance(ref eventPlay, postition, velocity, registerToStop, stopCurrent);
     }
 
-    public static void FMODPlayOnceInstance(ref FMOD.Studio.EventInstance instance, Vector3 postition, Vector3 velocity)
+    public static void FMODPlayOnceInstance(ref FMOD.Studio.EventInstance instance, Vector3 postition, Vector3 velocity, bool registerToStop = false, bool stopCurrent = false)
     {
         FMOD.ATTRIBUTES_3D attributes;
 
@@ -328,7 +329,33 @@ public class GameManager : MonoBehaviour
         attributes.up = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.up);
         instance.set3DAttributes(attributes);
 
+        if (stopCurrent)
+        {
+            foreach (var ins in GameManager.Instance.currentPlaying) ins.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            GameManager.Instance.currentPlaying.Clear();
+        }
+
         instance.start();
         instance.release();
+
+        if (registerToStop)
+        {
+
+            FMOD.Studio.EventDescription desc;
+            FMOD.RESULT result = instance.getDescription(out desc);
+
+            int duration;
+            result = desc.getLength(out duration);
+
+            GameManager.Instance.currentPlaying.Add(instance);
+
+            IEnumerator updateList(FMOD.Studio.EventInstance ins)
+            {
+                yield return new WaitForSeconds(((float)duration) / 1000f);
+                if (GameManager.Instance.currentPlaying.Contains(ins)) GameManager.Instance.currentPlaying.Remove(ins);
+            }
+
+            GameManager.Instance.StartCoroutine(updateList(instance));
+        }
     }
 }
