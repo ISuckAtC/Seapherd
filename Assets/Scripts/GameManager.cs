@@ -301,7 +301,7 @@ public class GameManager : MonoBehaviour
         int duration;
         result = desc.getLength(out duration);
 
-        FMODPlayOnceInstance(instance, position, velocity);
+        FMODPlayOnceInstance(ref instance, position, velocity);
 
         Debug.Log("Playing " + eventRef.Path + " (duration: " + duration + " | result " + result + ")");
 
@@ -315,10 +315,10 @@ public class GameManager : MonoBehaviour
     public static void FMODPlayOnceEvent(FMODUnity.EventReference eventReference, Vector3 postition, Vector3 velocity)
     {
         var eventPlay = FMODUnity.RuntimeManager.CreateInstance(eventReference);
-        FMODPlayOnceInstance(eventPlay, postition, velocity);
+        FMODPlayOnceInstance(ref eventPlay, postition, velocity);
     }
 
-    public static void FMODPlayOnceInstance(FMOD.Studio.EventInstance instance, Vector3 postition, Vector3 velocity)
+    public static void FMODPlayOnceInstance(ref FMOD.Studio.EventInstance instance, Vector3 postition, Vector3 velocity)
     {
         FMOD.ATTRIBUTES_3D attributes;
 
