@@ -11,8 +11,9 @@ public class MissionWalk : Mission
     public string[] PointTexts;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         UnityEngine.Debug.Log("MissionWalk Start (Mission Name: " + MissionName + ")");
         for (int i = 0; i < WalkPoints.Length; ++i)
         {

@@ -10,8 +10,9 @@ public class MissionCollect : Mission
     private int totalPickups;
     private int currentPickups;
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         try
         {
             pickups = Pickups.Select(x => x.GetComponent<IPickup>()).ToList();
