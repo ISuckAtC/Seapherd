@@ -331,6 +331,7 @@ public class GameManager : MonoBehaviour
 
         if (stopCurrent)
         {
+            Debug.Log("Stopping current sounds, sounds to stop: " + GameManager.Instance.currentPlaying.Count);
             foreach (var ins in GameManager.Instance.currentPlaying) 
             {
                 UnityEngine.Debug.Log("Stopping sound");
