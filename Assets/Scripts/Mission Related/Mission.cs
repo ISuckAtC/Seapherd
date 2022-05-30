@@ -7,6 +7,15 @@ public class Mission : MonoBehaviour
     public string MissionName;
     public GameObject NextMission;
     public FMODUnity.EventReference MissionReturn, MissionAdvance;
+
+    public virtual void Start()
+    {
+        if (GameManager.Instance.Missions[MissionName].Status == GameManager.MissionStatus.Unavailable || GameManager.Instance.Missions[MissionName].Status == GameManager.MissionStatus.NotStarted)
+        {
+            GameManager.Instance.Missions[MissionName].Status = GameManager.MissionStatus.InProgress;
+        }
+    }
+
     public void Continue()
     {
         if (NextMission != null)

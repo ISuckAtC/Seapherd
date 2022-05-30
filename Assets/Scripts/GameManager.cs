@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         Missions.Add("Mission-2", new MissionInfo(MissionStatus.Unavailable, null));
         Missions.Add("Mission-3", new MissionInfo(MissionStatus.Unavailable, null));
         Missions.Add("Mission-4", new MissionInfo(MissionStatus.Unavailable, null));
+        Missions.Add("TutorialArtifactHandin", new MissionInfo(MissionStatus.InProgress, null));
 
 
 
