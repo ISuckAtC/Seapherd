@@ -392,7 +392,7 @@ public class PlayerController : MonoBehaviour
             //UnityEngine.Debug.Log(handToBodyOffset);
 
             handToBodyOffset = new Vector2(
-                handToBodyOffset.x < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.x), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), 
+                handToBodyOffset.x < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.x), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent),
                 handToBodyOffset.y < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.y), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent)
             );
 
@@ -412,8 +412,8 @@ public class PlayerController : MonoBehaviour
             rb.angularVelocity += new Vector3(
                 0,
                 (
-                    angle < 0 ? 
-                        -Mathf.Pow(Mathf.Abs(angle) * distanceFromBody, HandRotateExponent) : 
+                    angle < 0 ?
+                        -Mathf.Pow(Mathf.Abs(angle) * distanceFromBody, HandRotateExponent) :
                         Mathf.Pow(angle * distanceFromBody, HandRotateExponent)
                 ) * HandRotateMultiplier,
                 0
@@ -453,7 +453,7 @@ public class PlayerController : MonoBehaviour
 
             Vector2 handToBodyOffset = currentArmRelative2D.normalized;
             handToBodyOffset = new Vector2(
-                handToBodyOffset.x < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.x), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent), 
+                handToBodyOffset.x < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.x), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.x, HandRotateDeadExponent),
                 handToBodyOffset.y < 0 ? -Mathf.Pow(Mathf.Abs(handToBodyOffset.y), HandRotateDeadExponent) : Mathf.Pow(handToBodyOffset.y, HandRotateDeadExponent)
             );
 
@@ -471,8 +471,8 @@ public class PlayerController : MonoBehaviour
             rb.angularVelocity += new Vector3(
                 0,
                 (
-                    angle < 0 ? 
-                        -Mathf.Pow(Mathf.Abs(angle) * distanceFromBody, HandRotateExponent) : 
+                    angle < 0 ?
+                        -Mathf.Pow(Mathf.Abs(angle) * distanceFromBody, HandRotateExponent) :
                         Mathf.Pow(angle * distanceFromBody, HandRotateExponent)
                 ) * HandRotateMultiplier,
                 0
@@ -511,6 +511,18 @@ public class PlayerController : MonoBehaviour
         {
             if (!shoulderPressR)
             {
+                UnityEngine.Debug.Log("Picking up");
+                Collider[] overlaps = Physics.OverlapSphere(transform.position, HandR.GrabRange, 1 << LayerMask.NameToLayer("Pickup"));
+                if (overlaps.Length > 0)
+                {
+                    IPickup pickable = overlaps[0].GetComponent<IPickup>();
+                    if (pickable != null)
+                    {
+                        pickable.Pocket(gameObject);
+                    }
+                }
+
+
                 shoulderPressR = true;
                 if (Physics.Raycast(Camera.main.transform.position, (HandControllerR.transform.position - Camera.main.transform.position).normalized, out RaycastHit hit, InteractRange, 1 << LayerMask.NameToLayer("Artifact") | 1 << LayerMask.NameToLayer("NPC")))
                 {
