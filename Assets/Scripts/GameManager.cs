@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<string, GameObject> MissionPrefabs = new Dictionary<string, GameObject>();
 
-    private List<FMOD.Studio.EventInstance> currentPlaying;
+    private List<FMOD.Studio.EventInstance> currentPlaying = new List<FMOD.Studio.EventInstance>();
 
     void Awake()
     {
