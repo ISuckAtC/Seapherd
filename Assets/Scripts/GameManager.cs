@@ -357,6 +357,7 @@ public class GameManager : MonoBehaviour
             IEnumerator updateList(FMOD.Studio.EventInstance ins)
             {
                 yield return new WaitForSeconds(((float)duration) / 1000f);
+                Debug.Log("Removing sound (duration ended)");
                 if (GameManager.Instance.currentPlaying.Contains(ins)) GameManager.Instance.currentPlaying.Remove(ins);
             }
 
