@@ -18,12 +18,22 @@ public class TutorialVoice5 : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Bearfish barrier entered");
         if (other.gameObject.layer == LayerMask.NameToLayer("Bear") && !once)  
         {
+            Debug.Log("bear actually entered the barrier");
             once = true;
-            GameManager.FMODPlayAudioThen(mainVoice6, dadPosition, Vector3.up, () => {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MissionSketch_Conch", UnityEngine.SceneManagement.LoadSceneMode.Single);
-            }, true, true);
+
+            StartCoroutine(GameManager.FMODPlayAudioThen(mainVoice6, dadPosition, Vector3.up, () => {
+                try
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("MissionSketch_Conch", UnityEngine.SceneManagement.LoadSceneMode.Single);
+                } 
+                catch(System.Exception e)
+                {
+                    Debug.Log(e);
+                }
+            }, true, true));
         }
     }
 }

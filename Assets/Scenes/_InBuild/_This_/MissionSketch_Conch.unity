@@ -911,20 +911,8 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: HandRotateDeadzone
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: HandRotateExponent
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
-      propertyPath: HandRotateMultiplier
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: HandRotateDeadExponent
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57a665f359364994bbe6abb1941598ed, type: 3}

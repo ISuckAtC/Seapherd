@@ -657,6 +657,10 @@ MonoBehaviour:
   UnfuckValue: 37
   HandDragExponent: 1.7
   HandDragMultiplier: 30
+  HandRotateMultiplier: 0.05
+  HandRotateExponent: 1.5
+  HandRotateDeadzone: 1
+  HandRotateDeadExponent: 5
   StreamSpeedBoost: 0
   SpeedUpTimer: 0
   HandR: {fileID: 5977958533931735806}

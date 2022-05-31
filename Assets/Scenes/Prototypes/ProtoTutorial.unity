@@ -475,7 +475,7 @@ MonoBehaviour:
   gm: {fileID: 499912769}
   dadlantean: {fileID: 289000884}
   helperTimer: 0
-  whenToActivateHelper: 5
+  whenToActivateHelper: 10
   sheep: {fileID: 1843378932}
 --- !u!1 &323665583
 GameObject:
@@ -1272,7 +1272,7 @@ MonoBehaviour:
     Path: event:/VO/Dadlantean/Dadlantean_Tutorial/Helpers/Help1
   dadlantean: {fileID: 289000884}
   helperTimer: 0
-  whenToActivateHelper: 5
+  whenToActivateHelper: 10
   sheep:
   - {fileID: 1843378932}
   - {fileID: 1457857663}
@@ -2006,6 +2006,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 15732874875024341, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
+      propertyPath: Bear
+      value: 
+      objectReference: {fileID: 1620211109}
+    - target: {fileID: 15732874875024341, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 204083813}
@@ -2207,6 +2211,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4867042258905506285, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
   m_PrefabInstance: {fileID: 1620211105}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1620211109 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4867042258905506274, guid: 49b66845ccc2e8345888eefbbb673a8a, type: 3}
+  m_PrefabInstance: {fileID: 1620211105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1622970932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2269,6 +2278,10 @@ PrefabInstance:
     - target: {fileID: 9052568057076425753, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052568057076425754, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
       propertyPath: Dog
@@ -2580,7 +2593,7 @@ MonoBehaviour:
     Path: event:/VO/Dadlantean/Dadlantean_Tutorial/Helpers/Help3
   dadlantean: {fileID: 289000884}
   helperTimer: 0
-  whenToActivateHelper: 5
+  whenToActivateHelper: 10
   dog: {fileID: 1492807970}
   sheep:
   - {fileID: 1457857663}

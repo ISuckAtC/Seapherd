@@ -52,7 +52,8 @@ public class TutorialVoice1 : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !once) 
         {
             once = true;
-            GameManager.FMODPlayAudioThen(mainVoice2, dadPosition, Vector3.up, () => {helperActive = true;}, true, true);
+            Debug.Log("playing main 2");
+            StartCoroutine(GameManager.FMODPlayAudioThen(mainVoice2, dadPosition, Vector3.up, () => {helperActive = true;}, true, true));
             artifact.SetActive(true);
             Debug.Log("Plays M2");
         }
