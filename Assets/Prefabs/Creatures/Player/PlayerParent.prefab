@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 7925117380362977398}
   - component: {fileID: 7925117380362977397}
   - component: {fileID: 7925117380362977396}
-  - component: {fileID: 7925117380362977387}
+  - component: {fileID: 3355770505904875427}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -544,8 +544,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7925117380362977387
-BoxCollider:
+--- !u!136 &3355770505904875427
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -554,9 +554,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.50000006
+  m_Height: 0.99999994
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.0000009536743, z: 0}
 --- !u!1 &9052568057076425752
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +661,7 @@ MonoBehaviour:
   HandRotateMultiplier: 0.05
   HandRotateExponent: 1.5
   HandRotateDeadzone: 1
-  HandRotateDeadExponent: 5
+  HandRotateDeadExponent: 10
   StreamSpeedBoost: 0
   SpeedUpTimer: 0
   HandR: {fileID: 5977958533931735806}
@@ -695,11 +696,11 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1.5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1664679862344039721
 MonoBehaviour:

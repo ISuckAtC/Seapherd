@@ -2291,6 +2291,10 @@ PrefabInstance:
       propertyPath: UnfuckValue
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 9052568057076425756, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
+      propertyPath: HandRotateDeadExponent
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57a665f359364994bbe6abb1941598ed, type: 3}
 --- !u!1 &1835018868
