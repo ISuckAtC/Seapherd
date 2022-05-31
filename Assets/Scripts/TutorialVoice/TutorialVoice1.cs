@@ -11,18 +11,16 @@ public class TutorialVoice1 : MonoBehaviour
     Vector3 dadPosition;
     public float helperTimer;
     public float whenToActivateHelper;
-
     public GameObject[] sheep;
     public GameObject artifact;
     public GameObject dogFish;
     public GameObject bearFish;
     bool once;
-    FMOD.Studio.EventInstance currentPlaying;
+    bool helperActive;
 
     void Start()
     {
-        currentPlaying = FMODUnity.RuntimeManager.CreateInstance(mainVoice1);
-        GameManager.FMODPlayOnceInstance(ref currentPlaying, dadPosition, Vector3.up);
+        GameManager.FMODPlayOnceEvent(mainVoice1, dadPosition, Vector3.up, true);
         Debug.Log("Plays M1");
         //Setactive all sheep
         //Dogfish
@@ -34,31 +32,27 @@ public class TutorialVoice1 : MonoBehaviour
         {
             fish.SetActive(false);
         }
-
-
-
-
-        currentPlaying.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
-    /*
+    
     void FixedUpdate()
     {
         dadPosition = dadlantean.transform.position;
 
-        helperTimer += Time.deltaTime;
+        if(helperActive == true) helperTimer += Time.deltaTime;
         if (helperTimer <= whenToActivateHelper)
         {
-            GameManager.FMODPlayOnce(helperVoice, dadPosition, Vector3.up);
-            //helperTimer = 0f;
+            helperTimer = 0;
+            helperActive = false;
+            GameManager.FMODPlayAudioThen(helperVoice, dadPosition, Vector3.up, () => {helperActive = true;}, true, true);
         }
     }
-    */
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !once) 
         {
             once = true;
-            GameManager.FMODPlayOnceEvent(mainVoice2, dadPosition, Vector3.up);
+            GameManager.FMODPlayAudioThen(mainVoice2, dadPosition, Vector3.up, () => {helperActive = true;}, true, true);
             artifact.SetActive(true);
             Debug.Log("Plays M2");
         }

@@ -26,7 +26,7 @@ public class TutorialVoice4 : MonoBehaviour
         if (helperTimer >= whenToSpawnBear && !onceBear)
         {
             onceBear = true;
-            GameManager.FMODPlayOnceEvent(voice51, dadPosition, Vector3.up);
+            GameManager.FMODPlayOnceEvent(voice51, dadPosition, Vector3.up, true, true);
             bear.SetActive(true);
         }
     }
@@ -40,7 +40,7 @@ public class TutorialVoice4 : MonoBehaviour
             if (sheepCount == 6 && !once)
             {
                 once = true;
-                GameManager.FMODPlayOnceEvent(mainVoice5, dadPosition, Vector3.up);
+                GameManager.FMODPlayOnceEvent(mainVoice5, dadPosition, Vector3.up, true, true);
                 startBearTimer = true;
             }
         }

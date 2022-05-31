@@ -15,12 +15,15 @@ public class TutorialVoice5 : MonoBehaviour
     {
         dadPosition = dadlantean.transform.position;
     }
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Bear") && !once)  
         {
             once = true;
-            GameManager.FMODPlayOnceEvent(mainVoice6, dadPosition, Vector3.up);
+            GameManager.FMODPlayAudioThen(mainVoice6, dadPosition, Vector3.up, () => {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MissionSketch_Conch", UnityEngine.SceneManagement.LoadSceneMode.Single);
+            }, true, true);
         }
     }
 }

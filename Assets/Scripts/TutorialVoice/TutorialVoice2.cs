@@ -15,26 +15,26 @@ public class TutorialVoice2 : MonoBehaviour
     public GameObject sheep;
 
     bool once = false;
+    bool helperActive;
 
-    /*
     void FixedUpdate()
     {
         dadPosition = dadlantean.transform.position;
 
-        helperTimer += Time.deltaTime;
+        if(helperActive == true) helperTimer += Time.deltaTime;
         if (helperTimer <= whenToActivateHelper)
         {
-            GameManager.FMODPlayOnce(helperVoice, dadPosition, Vector3.up);
-            //helperTimer = 0f;
+            helperTimer = 0;
+            helperActive = false;
+            GameManager.FMODPlayAudioThen(helperVoice, dadPosition, Vector3.up, () => {helperActive = true;}, true, true);
         }
     }
-    */
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !once && gm.Missions["TutorialArtifactHandin"].Status == GameManager.MissionStatus.Handin) 
         {
             once=true;
-            GameManager.FMODPlayOnceEvent(mainVoice3, dadPosition, Vector3.up);
+            GameManager.FMODPlayOnceEvent(mainVoice3, dadPosition, Vector3.up, true, true);
             sheep.SetActive(true);
         }
     }

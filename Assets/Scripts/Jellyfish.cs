@@ -6,17 +6,22 @@ public class Jellyfish : MonoBehaviour
 {
     Transform jellyfish;
     float speed;
-    public float minSpeed;
-    public float maxSpeed;
+    float bobSpeed;
+    public float minBobSpeed;
+    public float maxBobSpeed;
+    public float minSpinSpeed;
+    public float maxSpinSpeed;
     
     void Start()
     {
         jellyfish = gameObject.transform;
-        speed = Random.Range(minSpeed, maxSpeed);
+        speed = Random.Range(minSpinSpeed, maxSpinSpeed);
+        bobSpeed = Random.Range(minBobSpeed, maxBobSpeed);
     }
 
     void FixedUpdate()
     {
         jellyfish.Rotate(new Vector3(0f, speed, 0f), Space.Self);
+        transform.localPosition += new Vector3(0, Mathf.Sin(Time.time) * bobSpeed, 0);
     }
 }

@@ -304,11 +304,11 @@ public class GameManager : MonoBehaviour
 
         FMODPlayOnceInstance(ref instance, position, velocity, registerToStop, stopCurrent);
 
-        Debug.Log("Playing " + eventRef.Path + " (duration: " + duration + " | result " + result + ")");
+        //Debug.Log("Playing " + eventRef.Path + " (duration: " + duration + " | result " + result + ")");
 
         yield return new WaitForSeconds(((float)duration) / 1000f);
 
-        Debug.Log("Finished playing " + eventRef.Path);
+        //Debug.Log("Finished playing " + eventRef.Path);
 
         action();
     }
