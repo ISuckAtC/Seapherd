@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BackTex:
-        m_Texture: {fileID: 8600000, guid: 5fd39fab30eccac4085d0b7062935bd5, type: 2}
+        m_Texture: {fileID: 8600000, guid: 4164d344690e82a4e800afff84373027, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 8600000, guid: 5fd39fab30eccac4085d0b7062935bd5, type: 2}
+        m_Texture: {fileID: 8600000, guid: 4e4761b604d02db4cb84eff84df6f102, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -52,11 +52,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
-        m_Texture: {fileID: 8600000, guid: 5fd39fab30eccac4085d0b7062935bd5, type: 2}
+        m_Texture: {fileID: 8600000, guid: 4164d344690e82a4e800afff84373027, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeftTex:
-        m_Texture: {fileID: 8600000, guid: 5fd39fab30eccac4085d0b7062935bd5, type: 2}
+        m_Texture: {fileID: 8600000, guid: 88db3264649932f4d8ed9a6d0648c80c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -76,7 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTex:
-        m_Texture: {fileID: 8600000, guid: 5fd39fab30eccac4085d0b7062935bd5, type: 2}
+        m_Texture: {fileID: 8600000, guid: 88db3264649932f4d8ed9a6d0648c80c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -148,7 +148,7 @@ Material:
     - _GroundColor: {r: 0, g: 0.054901965, b: 0.14117648, a: 1}
     - _SkyTint: {r: 0, g: 0.10980393, b: 0.2392157, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tint: {r: 0.116011046, g: 0.12723574, b: 0.31132078, a: 0}
+    - _Tint: {r: 0.116011016, g: 0.12723571, b: 0.31132075, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &773923122944674756
 MonoBehaviour:
