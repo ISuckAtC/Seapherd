@@ -1553,6 +1553,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5669665582268439892, guid: 0432d961b2a7d884fb2d614e3cdd4376, type: 3}
+      propertyPath: m_AspectRatio
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669665582268439892, guid: 0432d961b2a7d884fb2d614e3cdd4376, type: 3}
       propertyPath: m_PlaybackSpeed
       value: 0.25
       objectReference: {fileID: 0}
