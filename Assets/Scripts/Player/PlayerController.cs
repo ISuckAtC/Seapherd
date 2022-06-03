@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public float ThreatenRange;
     public float ThreatenAmount;
+    public float HandwaveMultiplier;
     public float InteractRange;
     public GameObject Marker, Dog;
     private Rigidbody rb;
@@ -370,9 +371,14 @@ public class PlayerController : MonoBehaviour
 
         //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, joyAxis.x, 0));
 
+        float handWaves = 0;
+
+        Vector3 dragR = (lastRHandPos - (lastBodyPos - transform.position)) - HandControllerR.position;
+        Vector3 dragL = (lastLHandPos - (lastBodyPos - transform.position)) - HandControllerL.position;
+
         if (Input.GetAxisRaw("LGrip") > 0.5f)// && !GripL) // TODO: Add a button to hold to drag yourself
         {
-            Vector3 drag = (lastLHandPos - (lastBodyPos - transform.position)) - HandControllerL.position;
+            Vector3 drag = dragL;
             drag *= HandDragMultiplier;
             rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
 
@@ -435,7 +441,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetAxisRaw("RGrip") > 0.5f)// && !GripR) // TODO: Add a button to hold to drag yourself
         {
-            Vector3 drag = (lastRHandPos - (lastBodyPos - transform.position)) - HandControllerR.position;
+            Vector3 drag = dragR;
             drag *= HandDragMultiplier;
             //Debug.Log(drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent));
             rb.velocity += drag.normalized * Mathf.Pow(drag.magnitude, HandDragExponent);
@@ -492,6 +498,27 @@ public class PlayerController : MonoBehaviour
             }
             lastRHandGrab = false;
         }
+
+
+        dragL = Quaternion.Euler(0, -transform.rotation.eulerAngles.y, 0) * dragL;
+        dragR = Quaternion.Euler(0, -transform.rotation.eulerAngles.y, 0) * dragR;
+
+        handWaves = (new Vector2(dragL.x, dragL.y)).magnitude + (new Vector2(dragR.x, dragR.y)).magnitude;
+
+        handWaves *= HandwaveMultiplier;
+
+        Collider[] col = Physics.OverlapSphere(transform.position, ThreatenRange, (1 << LayerMask.NameToLayer("Bear")));
+
+        if (col.Length > 0)
+        {
+            foreach (Collider c in col)
+            {
+                UnityEngine.Debug.Log(c.gameObject.name + " scared by amount " + handWaves);
+                c.GetComponentInParent<EntityBear>().Scare(handWaves);
+            }
+        }
+
+
 
         lastLHandPos = HandControllerL.position;
         lastRHandPos = HandControllerR.position;
@@ -624,8 +651,6 @@ public class PlayerController : MonoBehaviour
             whistleSound.start();
             whistleSound.release();
         }
-
-
 
         if (Input.GetButtonDown("X"))
         {
