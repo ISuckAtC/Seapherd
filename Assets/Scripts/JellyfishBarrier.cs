@@ -38,11 +38,11 @@ public class JellyfishBarrier : MonoBehaviour
         }
         if (timer > maxTimer)
         {
-            if (SpawnOnce == false)
-            {
+           
+            
                KillerFish.SetActive(true);
-                SpawnOnce = true;
-            }
+                
+            
            
             if(other.tag == "sheep")
             {
