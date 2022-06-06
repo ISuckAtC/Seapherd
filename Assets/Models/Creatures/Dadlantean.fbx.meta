@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: 927dfb876457177448573e5b3aed72ec
+guid: 9979f574091669842bed0cfc1ad7d217
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Fur.001
-    second: {fileID: 2100000, guid: 2aa8d6c9681df6c44bd8cc438bddb242, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Teeth.001
-    second: {fileID: 2100000, guid: aac0d0bc151ffec4f8ce052e01c700d8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: cornea.001
-    second: {fileID: 2100000, guid: 213e6f1b3c0b090448198aef5da3a497, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: human_eyes.001
-    second: {fileID: 2100000, guid: 213e6f1b3c0b090448198aef5da3a497, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: human_skin.001
-    second: {fileID: 2100000, guid: 26223138965ff904c9009d29d1a95ead, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -12,6 +12,7 @@ public class MissionHerd : Mission
     bool next;
 
     public List<EntitySheep> Sheep;
+    public GameObject dadLanteanFace;
 
     // Start is called before the first frame update
     public override void Start()
@@ -28,6 +29,7 @@ public class MissionHerd : Mission
         SetPoints();
         Waypoints[0].GetComponent<MissionWaypoint>().Activate();
         //GameManager.Instance.MissionObjectiveText.text = "Navigate the sheep through the blue boxes to reach the grazing area (" + (currentIndex + 1) + "/" + Waypoints.Length + ")";
+        dadLanteanFace = GameObject.Find("_DadLanteanFace");
     }
 
     public void SheepKilled()
@@ -63,7 +65,7 @@ public class MissionHerd : Mission
         if (index < VoiceLines.Length && !VoiceLines[index].IsNull)
         {
 
-            GameManager.FMODPlayOnceEvent(VoiceLines[index], GameManager.Instance.Player.transform.position, GameManager.Instance.Player.GetComponent<Rigidbody>().velocity, true, true);
+            GameManager.FMODPlayOnceEvent(VoiceLines[index], dadLanteanFace.transform.position, Vector3.zero, true, true);
             UnityEngine.Debug.Log("In P2-2, played voice line" + index);
         }
     }

@@ -7,12 +7,12 @@ public class KillerFish : MonoBehaviour
     public Transform Player, ReturnMarker, InBoundsSpawn, Sheepfish;
     public bool Leave, ChasePlayer, ChaseSheep;
 
-    private float timer;
+    public float timer;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
-        ReturnMarker = GameObject.FindGameObjectWithTag("KillerFishSpawn").transform;
+        ReturnMarker = gameObject.transform.parent.GetChild(0).transform;
         InBoundsSpawn = GameObject.FindGameObjectWithTag("PlayerRespawn").transform;
     }
 
@@ -22,12 +22,13 @@ public class KillerFish : MonoBehaviour
         if(ChaseSheep  == true)
         {
             transform.LookAt(Sheepfish);
-            transform.position += transform.forward / 5 * timer;
+            transform.position += transform.forward  *timer /2;
         }
         if(ChasePlayer == true)
         {
+            Player = GameObject.FindGameObjectWithTag("Player").transform;
             transform.LookAt(Player);
-            transform.position += transform.forward / 5 *timer;
+            transform.position += transform.forward  *timer/2;
         }
         if(Leave == true)
         {
@@ -40,13 +41,17 @@ public class KillerFish : MonoBehaviour
             gameObject.SetActive(false);
             
         }
-        
+        timer += Time.deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Player.transform.position = InBoundsSpawn.position;
+            Player.transform.position = InBoundsSpawn.transform.position;
+            Leave = true;
+            ChasePlayer = false;
+            timer = 0;
+            gameObject.transform.parent.GetComponent<JellyfishBarrier>().timer = 0;
         }
         if(other.tag == "Sheep")
         {
