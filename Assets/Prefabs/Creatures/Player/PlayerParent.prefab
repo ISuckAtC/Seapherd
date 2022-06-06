@@ -642,6 +642,7 @@ MonoBehaviour:
   StoppingBoost: 8
   ThreatenRange: 50
   ThreatenAmount: 10
+  HandwaveMultiplier: 3
   InteractRange: 10
   Marker: {fileID: 0}
   Dog: {fileID: 0}

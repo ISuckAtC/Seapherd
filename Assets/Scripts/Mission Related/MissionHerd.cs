@@ -62,16 +62,9 @@ public class MissionHerd : Mission
 
         if (index < VoiceLines.Length && !VoiceLines[index].IsNull)
         {
-            var voiceLine = FMODUnity.RuntimeManager.CreateInstance(VoiceLines[index]);
-            ATTRIBUTES_3D attributes;
-            attributes.position = GameManager.Instance.Player.transform.position.ToFMODVector();
-            attributes.velocity = Vector3.zero.ToFMODVector();
-            attributes.forward = transform.forward.ToFMODVector();
-            attributes.up = transform.up.ToFMODVector();
-            voiceLine.set3DAttributes(attributes);
-            UnityEngine.Debug.Log("played voice line" + index);
-            voiceLine.start();
-            //voiceLine.release();
+
+            GameManager.FMODPlayOnceEvent(VoiceLines[index], GameManager.Instance.Player.transform.position, GameManager.Instance.Player.GetComponent<Rigidbody>().velocity, true, true);
+            UnityEngine.Debug.Log("In P2-2, played voice line" + index);
         }
     }
 }
