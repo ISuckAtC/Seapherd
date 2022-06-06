@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 270248927550266095}
   - component: {fileID: 270248927551560399}
   - component: {fileID: 270248927552690191}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: cola_can
   m_TagString: Untagged
   m_Icon: {fileID: 0}

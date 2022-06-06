@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2621947443497127782}
   - component: {fileID: 8173009619348152118}
   - component: {fileID: 5903199630174834339}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: SideStrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1735882795087060739}
   - component: {fileID: 2278154321463687403}
   - component: {fileID: 2278154321463687402}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Quest2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 2758602693776945874}
   - component: {fileID: 5719981801030801162}
   - component: {fileID: 4337358063522205646}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 4874887949559931609}
   - component: {fileID: 6189578501283594413}
   - component: {fileID: 8966168725916782135}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 4384420697300799949}
   - component: {fileID: 5906013655995838938}
   - component: {fileID: 3292069042632631030}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: TopStrap.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 6479226614231042699}
   - component: {fileID: 2285429464220870601}
   - component: {fileID: 1068792964848570010}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Pillow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
