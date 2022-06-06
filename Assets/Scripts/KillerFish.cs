@@ -49,6 +49,7 @@ public class KillerFish : MonoBehaviour
         {
             Player.transform.position = InBoundsSpawn.transform.position;
             Leave = true;
+            ChasePlayer = false;
             timer = 0;
             gameObject.transform.parent.GetComponent<JellyfishBarrier>().timer = 0;
         }
