@@ -31,6 +31,7 @@ public class TutorialVoice4 : MonoBehaviour
         }
     }
     
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Sheep"))  

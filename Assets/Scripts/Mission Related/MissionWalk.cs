@@ -9,6 +9,7 @@ public class MissionWalk : Mission
     public FMODUnity.EventReference[] VoiceLines;
     public GameObject[] WalkPoints;
     public string[] PointTexts;
+    public GameObject dadLanteanFace;
 
     // Start is called before the first frame update
     public override void Start()
@@ -26,6 +27,7 @@ public class MissionWalk : Mission
         {
             //TutorialPoints[0].SetActive(true);
         }
+        dadLanteanFace = GameObject.Find("_DadLanteanFace");
     }
 
     // Update is called once per frame
@@ -51,7 +53,7 @@ public class MissionWalk : Mission
         
         if (index < VoiceLines.Length && !VoiceLines[index].IsNull)
         {
-            GameManager.FMODPlayOnceEvent(VoiceLines[index], GameManager.Instance.Player.position, Vector3.zero, true, true);
+            GameManager.FMODPlayOnceEvent(VoiceLines[index], dadLanteanFace.transform.position, Vector3.zero, true, true);
         }
     }
 }
