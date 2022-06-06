@@ -48,6 +48,9 @@ public class KillerFish : MonoBehaviour
         if (other.tag == "Player")
         {
             Player.transform.position = InBoundsSpawn.transform.position;
+            Leave = true;
+            timer = 0;
+            gameObject.transform.parent.GetComponent<JellyfishBarrier>().timer = 0;
         }
         if(other.tag == "Sheep")
         {

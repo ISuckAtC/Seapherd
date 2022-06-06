@@ -107,7 +107,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4867042258905506274}
-  - component: {fileID: 4867042258905506275}
   - component: {fileID: 4867042258905506284}
   - component: {fileID: -3823940549099006220}
   m_Layer: 0
@@ -134,48 +133,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4867042258905506275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4867042258905506285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b1949441c16b984fb0d6f5e0e8ec78c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnEvent:
-    Guid:
-      Data1: 1075205301
-      Data2: 1288846175
-      Data3: -522544709
-      Data4: 303119055
-    Path: event:/SFX/Animals/BearSpawn
-  grabEvent:
-    Guid:
-      Data1: 1411982339
-      Data2: 1272652193
-      Data3: 2085716136
-      Data4: 9164371
-    Path: event:/SFX/Animals/BearGrab
-  releaseEvent:
-    Guid:
-      Data1: 1661920954
-      Data2: 1239458769
-      Data3: 861995447
-      Data4: -766758300
-    Path: event:/SFX/Animals/BearRelease
-  Speed: 10
-  ChaseSpeed: 15
-  EscapeSpeed: 20
-  StealSpeed: 7
-  ChaseRange: 30
-  EscapeThreshold: 80
-  threatLevel: 0
-  ThreatThreshold: 50
-  escaping: 0
 --- !u!54 &4867042258905506284
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -206,8 +163,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   ReturnMarker: {fileID: 0}
+  InBoundsSpawn: {fileID: 0}
+  Sheepfish: {fileID: 0}
   Leave: 0
   ChasePlayer: 0
+  ChaseSheep: 0
+  timer: 0
 --- !u!1 &4867042259578621102
 GameObject:
   m_ObjectHideFlags: 0
