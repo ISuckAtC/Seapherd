@@ -9,6 +9,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
     [HideInInspector]
     public GameObject Player;
     public GameObject ExclamationMark;
+    public GameObject handToPointWith;
     [Header("Put What MissionGiver This is, we use this to specify what missions can be given by them, 0 is for the Tutorial,  1 is for Mission 1 to 4 will be possible, for MissionGiver 2 another version of Mission 3 or 4 is possible, Mission Giver 3 is tied to jokes, mainly unused")]
     [Tooltip("Use anything from 0, 1, 2 or 3")]
     public int MissionGiverNumber;
@@ -79,7 +80,7 @@ public class MissionGiver : MonoBehaviour, IToolTip
             //ExclamationMark.SetActive(false);
             // gameObject.GetComponent<BoxCollider>().enabled = false;
         }
-        gameObject.transform.LookAt(Player.transform.position);
+        handToPointWith.transform.LookAt(Player.transform.position, handToPointWith.transform.up);
         if (GM.CurrentMission == MissionNumber && GM.OptionalObjectiveCompleted == true)
         {
             OptionalObjectiveCheck = true;

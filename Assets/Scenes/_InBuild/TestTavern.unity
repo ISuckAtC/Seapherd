@@ -2161,6 +2161,7 @@ MonoBehaviour:
   BoardM2Complete: {fileID: 0}
   Player: {fileID: 0}
   ExclamationMark: {fileID: 0}
+  handToPointWith: {fileID: 0}
   MissionGiverNumber: 2
   GM: {fileID: 0}
   OptionalObjectiveCheck: 0
@@ -3625,6 +3626,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 2215702862789337738, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2563808793675524201, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -3641,9 +3646,17 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 2876899016894324207, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3025921845125803064, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028688309210723144, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3048311984765821715, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3697,6 +3710,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 4011581687762934566, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4078829176520584081, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -3719,6 +3736,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4574668597396392879, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687572447680162914, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826643103736738578, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
@@ -3797,6 +3818,10 @@ PrefabInstance:
       propertyPath: m_BounceIntensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6995194733745405228, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6998421941544748903, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -3837,6 +3862,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 8174957274913009922, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8189667723834868623, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -3848,6 +3877,10 @@ PrefabInstance:
     - target: {fileID: 8434114820764730500, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695031750019676792, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8714251080348740131, guid: 2d45ec239ff2bdb47bbfeca9ad4108e7, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7240,6 +7273,7 @@ MonoBehaviour:
   BoardM2Complete: {fileID: 0}
   Player: {fileID: 0}
   ExclamationMark: {fileID: 0}
+  handToPointWith: {fileID: 1987055865}
   MissionGiverNumber: 0
   GM: {fileID: 0}
   OptionalObjectiveCheck: 0
@@ -14564,6 +14598,11 @@ Transform:
   m_Father: {fileID: 728701863}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1987055865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1958765373751519460, guid: bb7eaf3b6ca1ec34b9186898d483a2d3, type: 3}
+  m_PrefabInstance: {fileID: 642728679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2000713382
 GameObject:
   m_ObjectHideFlags: 0

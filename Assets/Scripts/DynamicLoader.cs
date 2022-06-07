@@ -7,11 +7,20 @@ public class DynamicLoader : MonoBehaviour
 {
     public Transform LoadPoint;
     public string SceneToLoad;
+
+    public GameObject lightsToLoad;
+
+    void Awake()
+    {
+        lightsToLoad.SetActive(false);
+
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadSceneAsync(SceneToLoad, LoadSceneMode.Additive).completed += OnSceneLoadComplete;
+            lightsToLoad.SetActive (true);
         }
     }
     public void OnSceneLoadComplete(AsyncOperation a)
@@ -26,6 +35,7 @@ public class DynamicLoader : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             SceneManager.UnloadSceneAsync(SceneToLoad);
+            lightsToLoad.SetActive(false);
         }
     }
 }
