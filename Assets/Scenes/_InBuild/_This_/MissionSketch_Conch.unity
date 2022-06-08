@@ -28315,6 +28315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StayOutside: 0
+  LFO: {fileID: 0}
   Dog: {fileID: 0}
 --- !u!65 &754367894
 BoxCollider:
@@ -51162,7 +51163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1356070596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56575,7 +56576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1512636305
 Transform:
   m_ObjectHideFlags: 0
@@ -62057,6 +62058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1670987550}
+  - component: {fileID: 1670987551}
   m_Layer: 0
   m_Name: Lights
   m_TagString: Untagged
@@ -62087,6 +62089,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1670987551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670987549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ad30a50ceae9e41a65af16f2c68e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lights:
+  - {fileID: 1450838643}
+  - {fileID: 1590032952}
+  - {fileID: 447389170}
+  - {fileID: 1356070595}
+  - {fileID: 2032955116}
+  - {fileID: 1512636304}
+  LightCurrent: 0
+  DoOnce: 0
 --- !u!1001 &1673310165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73489,7 +73512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2032955117
 MonoBehaviour:
   m_ObjectHideFlags: 0

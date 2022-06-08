@@ -15,6 +15,7 @@ TagManager:
   - KillerFishSpawn
   - PlayerRespawn
   - StayOut
+  - Lights
   layers:
   - Default
   - TransparentFX

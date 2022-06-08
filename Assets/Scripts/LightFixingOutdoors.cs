@@ -5,8 +5,8 @@ using UnityEngine;
 public class LightFixingOutdoors : MonoBehaviour
 {
     public GameObject[] Lights;
-    private int LightCurrent;
-    private bool DoOnce;
+    public int LightCurrent;
+    public bool DoOnce;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +18,9 @@ public class LightFixingOutdoors : MonoBehaviour
     {
         if(GameManager.Instance.InTavern == true && DoOnce == false)
         {
-            Lights[LightCurrent].SetActive(true);
+            Lights[LightCurrent].SetActive(false);
             LightCurrent++;
-            if(LightCurrent > Lights.Length)
+            if(LightCurrent == Lights.Length)
             {
                 DoOnce = true;
                 LightCurrent = 0;
@@ -28,9 +28,9 @@ public class LightFixingOutdoors : MonoBehaviour
         }
         if(GameManager.Instance.InTavern == false && DoOnce == false)
         {
-            Lights[LightCurrent].SetActive(false);
+            Lights[LightCurrent].SetActive(true);
             LightCurrent++;
-            if (LightCurrent > Lights.Length)
+            if (LightCurrent == Lights.Length)
             {
                 DoOnce = true;
                 LightCurrent = 0;

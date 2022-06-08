@@ -5,11 +5,14 @@ using UnityEngine;
 public class DogStayOutside : MonoBehaviour
 {
     public bool StayOutside;
+    public LightFixingOutdoors LFO;
     public EntityDog Dog;
+    private bool FireOnce;
     // Start is called before the first frame update
     void Start()
     {
         Dog = GameObject.Find("Dog").GetComponent<EntityDog>();
+        LFO = GameObject.FindGameObjectWithTag("Lights").GetComponent<LightFixingOutdoors>();
     }
 
     // Update is called once per frame
@@ -29,7 +32,11 @@ public class DogStayOutside : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Player") 
-        { 
+        {if( FireOnce== false)
+            {
+                LFO.DoOnce = false;
+                FireOnce = true;
+            }
             StayOutside = true; 
         }
         
@@ -38,7 +45,9 @@ public class DogStayOutside : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            LFO.DoOnce = false;
             StayOutside = false;
+            FireOnce = false;
         }
     }
 }
