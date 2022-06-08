@@ -17,10 +17,12 @@ public class DogStayOutside : MonoBehaviour
     {
      if(StayOutside == true)
         {
+            GameManager.Instance.InTavern = true;
             Dog.Outside = true;
         }
         else
         {
+            GameManager.Instance.InTavern = false;
             Dog.Outside = false;
         }
     }
