@@ -21566,6 +21566,37 @@ Transform:
   m_Father: {fileID: 1976616230}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &592359228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592359229}
+  m_Layer: 0
+  m_Name: DogStayOut
+  m_TagString: StayOut
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &592359229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592359228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -57.54, y: 9.24, z: 76.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &592581897
 GameObject:
   m_ObjectHideFlags: 0
@@ -28253,6 +28284,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8300995661456084980, guid: 05255ff67193cd14da960b3071f0c352, type: 3}
   m_PrefabInstance: {fileID: 745865646}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &754367892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 754367895}
+  - component: {fileID: 754367894}
+  - component: {fileID: 754367893}
+  m_Layer: 0
+  m_Name: DogTriggerOutdoors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &754367893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754367892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a274331374d70488a8086edf2ac2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StayOutside: 0
+  Dog: {fileID: 0}
+--- !u!65 &754367894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754367892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 120.4, y: 57.8, z: 106.6}
+  m_Center: {x: -37.2, y: 0, z: 0}
+--- !u!4 &754367895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754367892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -79.77, y: 6.62, z: 60.236202}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &755034882
 GameObject:
   m_ObjectHideFlags: 0
@@ -48088,6 +48179,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8300995661456084980, guid: 05255ff67193cd14da960b3071f0c352, type: 3}
   m_PrefabInstance: {fileID: 1276468291}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1276606631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1276606632}
+  - component: {fileID: 1276606633}
+  m_Layer: 7
+  m_Name: MeshColliderFixed?
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1276606632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276606631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.013, z: 0.009}
+  m_LocalScale: {x: 1.4, y: 1, z: 1.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1637925704}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1276606633
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276606631}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8631329391991926734, guid: 017d68ab7e02a2a4fa43fe7af5cd4462, type: 3}
 --- !u!1 &1277696854
 GameObject:
   m_ObjectHideFlags: 0
@@ -60751,6 +60888,14 @@ PrefabInstance:
       propertyPath: OutsideTavern
       value: 
       objectReference: {fileID: 4687830919955183754}
+    - target: {fileID: 3194070855510153119, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1704438279}
+    - target: {fileID: 3194070855510153119, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
+      propertyPath: OutsideTavern
+      value: 
+      objectReference: {fileID: 592359229}
     - target: {fileID: 3316785320041730721, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -60814,6 +60959,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3316785320041730721, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
   m_PrefabInstance: {fileID: 1637925703}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1637925711
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472273886}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: e0de9f849f3651d4d847b15323ec78e1, type: 3}
+  m_Controller: {fileID: 9100000, guid: 44820262026cbb0498245fef95dc6515, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &1637925713
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472273886}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1639355067
 PrefabInstance:
   m_ObjectHideFlags: 0

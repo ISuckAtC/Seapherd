@@ -26,6 +26,7 @@ public class EntityDog : MonoBehaviour, IToolTip
     public float GoLeeway;
     public string ToolTipText;
     public string ToolTip { get { return ToolTipText; } }
+    public bool Outside;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,14 @@ public class EntityDog : MonoBehaviour, IToolTip
     // Update is called once per frame
     void Update()
     {
+        if(Outside == true)
+        {
+            State = DogState.Outside;
+        }
+        else
+        {
+          State =  DogState.Follow;
+        }
 
     }
 
