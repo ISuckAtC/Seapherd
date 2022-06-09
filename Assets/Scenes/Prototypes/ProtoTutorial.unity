@@ -2229,6 +2229,10 @@ PrefabInstance:
       propertyPath: OutsideTavern
       value: 
       objectReference: {fileID: 1169494076}
+    - target: {fileID: 3194070855510153119, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 204083813}
     - target: {fileID: 3316785320041730721, guid: 76bd5b4c714d0ff4bbb943367c463cae, type: 3}
       propertyPath: m_RootOrder
       value: 11
