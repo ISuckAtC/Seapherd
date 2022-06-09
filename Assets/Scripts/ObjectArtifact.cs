@@ -39,7 +39,11 @@ public class ObjectArtifact : MonoBehaviour, IToolTip, IPickup, IGrabbable
 
     public void Pocket(GameObject player)
     {
-        PickedUp.Invoke();
+        if (PickedUp.GetInvocationList().Length > 0)
+        {
+            PickedUp.Invoke();
+            Debug.LogWarning("Picked up event fired, but no listeners were found.");
+        }
         Destroy(gameObject);
     }
 }
