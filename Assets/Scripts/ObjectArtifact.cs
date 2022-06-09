@@ -39,7 +39,7 @@ public class ObjectArtifact : MonoBehaviour, IToolTip, IPickup, IGrabbable
 
     public void Pocket(GameObject player)
     {
-        if (PickedUp.GetInvocationList() != null)
+        if (PickedUp != null)
         {
             PickedUp.Invoke();
         }
