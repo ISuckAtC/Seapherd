@@ -27,6 +27,7 @@ public class EntityDog : MonoBehaviour, IToolTip
     public string ToolTipText;
     public string ToolTip { get { return ToolTipText; } }
     public bool Outside;
+    private bool outsideLast;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,12 +41,13 @@ public class EntityDog : MonoBehaviour, IToolTip
         if(Outside == true)
         {
             State = DogState.Outside;
+            outsideLast = true;
         }
-        else
+        else if (outsideLast)
         {
-          State =  DogState.Follow;
+            State =  DogState.Follow;
+            outsideLast = false;
         }
-
     }
 
     void FixedUpdate()
